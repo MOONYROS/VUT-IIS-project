@@ -108,12 +108,4 @@ ALTER TABLE `Rozvrh` ADD CONSTRAINT `Rozvrh_fk2` FOREIGN KEY (`vyucujici`) REFER
 
 ALTER TABLE `Rozvrh` ADD CONSTRAINT `Rozvrh_fk3` FOREIGN KEY (`rozvrhar`) REFERENCES `Rozvrhar`(`ID_Rozvrhar`);
 
-
-
-
-
-
-
-
-
-
+SELECT * FROM Administrator;
