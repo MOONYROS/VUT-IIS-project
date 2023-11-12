@@ -12,10 +12,8 @@ class AccountService {
 //                PDO::MYSQL_ATTR_INIT_COMMAND => "set names utf-8"
 //            );
             $this->pdo = new PDO($connString, $userName, $password);
-//            echo "Succcessful Database connection!";
         }
         catch (PDOException $e) {
-//            echo "Chyba pri navazani spojeni s databazi:" . $e->getMessage();
             error_log("Chyba při navazování spojení s databází: " . $e->getMessage());
         }
     }
@@ -32,7 +30,8 @@ class AccountService {
         }
     }
 
-    function verifyLogin($email, $heslo) {
+    function verifyLogin($email, $heslo)
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM Osoba WHERE email = ?");
             $stmt->execute([$email]);
@@ -47,5 +46,18 @@ class AccountService {
             echo "Chyba při ověřování uživatele: " . $e->getMessage();
         }
         return null;
+    }
+
+    function getUserById($userId)
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM Osoba WHERE ID_Osoba = ?");
+            $stmt->execute([$userId]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            error_log("Chyba při načítání uživatelských informací: " . $e->getMessage());
+            return null;
+        }
     }
 }
