@@ -8,10 +8,10 @@ class AccountService {
             $connString = "mysql:host=db;dbname=mydatabase";
             $userName = "myuser";
             $password = "mypassword";
-//            $options = array(
-//                PDO::MYSQL_ATTR_INIT_COMMAND => "set names utf-8"
-//            );
-            $this->pdo = new PDO($connString, $userName, $password);
+            $options = array(
+                PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"
+            );
+            $this->pdo = new PDO($connString, $userName, $password, $options);
         }
         catch (PDOException $e) {
             error_log("Chyba při navazování spojení s databází: " . $e->getMessage());
