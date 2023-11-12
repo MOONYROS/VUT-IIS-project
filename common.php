@@ -2,7 +2,7 @@
 
 session_start();
 
-function make_header($title)
+function make_header($title): void
 {
     ?>
     <!DOCTYPE html>
@@ -16,7 +16,7 @@ function make_header($title)
 }
 
 
-function make_footer()
+function make_footer() : void
 {
     ?>
     <footer>&copy; FIT 2023</footer>
