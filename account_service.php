@@ -11,16 +11,20 @@ class AccountService {
             //     PDO::MYSQL_ATTR_INIT_COMMAND => "set names utf-8"
             // );
             $this->pdo = new PDO($connString, $userName, $password);
-        } catch (PDOException $e) {
+            echo "Succcessful Database connetion!";
+        }
+        catch (PDOException $e) {
             echo "Chyba pri navazani spojeni s databazi:" . $e->getMessage();
         }
     }
 
     function insertNewAccount($data) {
         try {
-            $stmt = $this->pdo->prepare("INSERT INTO osoba (jmeno, prijmeni, login, heslo, email, telefon, role) values (?, ?, ?, ?, ?, ?)");
+            $stmt = $this->pdo->prepare("INSERT INTO Osoba (jmeno, prijmeni, email, telefon, role) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute($data);
-        } catch (PDOException $e) {
+            echo "Data input successful!";
+        }
+        catch (PDOException $e) {
             echo "Chyba pri vkladani zaznamu:" . $e->getMessage();
         }
     }
