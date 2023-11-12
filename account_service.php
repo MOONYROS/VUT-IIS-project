@@ -22,7 +22,7 @@ class AccountService {
     function insertNewAccount($data): void
     {
         try {
-            $stmt = $this->pdo->prepare("INSERT INTO Osoba (jmeno, prijmeni, email, telefon, role) VALUES (?, ?, ?, ?, ?)");
+            $stmt = $this->pdo->prepare("INSERT INTO Osoba (jmeno, prijmeni, email, heslo, telefon, role) VALUES (?, ?, ?,  ?, ?, ?)");
             $stmt->execute($data);
             echo "Data input successful!";
         }

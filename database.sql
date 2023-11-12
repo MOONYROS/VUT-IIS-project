@@ -11,6 +11,7 @@ CREATE TABLE Osoba (
 	jmeno varchar(15) NOT NULL,
 	prijmeni varchar(15) NOT NULL,
 	email varchar(20) NOT NULL,
+    heslo varchar(255) NOT NULL, -- Ideal password legth ideal by the documentation
 	telefon INT(9) NOT NULL,
     role varchar(4) NOT NULL, -- ADMI, STUD, ROZV, GARA, VYUC
 	PRIMARY KEY (ID_Osoba)

@@ -2,7 +2,7 @@
 
 require "account_service.php";
 
-$requiredFields = array("jmeno", "prijmeni", "email", "telefon", "role");
+$requiredFields = array("jmeno", "prijmeni", "email", "heslo", "telefon", "role");
 $toInsert = array();
 
 foreach($requiredFields as $field) {
