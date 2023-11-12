@@ -1,5 +1,6 @@
 <?php
     require "common.php";
+
     make_header("login");
 ?>
 

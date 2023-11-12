@@ -7,10 +7,10 @@ class AccountService {
         try {
             $connString = "mysql:host=db;dbname=mydatabase";
             $userName = "myuser";
-            $password = "mypassword";   
-            // $options = array(
-            //     PDO::MYSQL_ATTR_INIT_COMMAND => "set names utf-8"
-            // );
+            $password = "mypassword";
+//            $options = array(
+//                PDO::MYSQL_ATTR_INIT_COMMAND => "set names utf-8"
+//            );
             $this->pdo = new PDO($connString, $userName, $password);
             echo "Succcessful Database connection!";
         }

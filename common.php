@@ -15,7 +15,6 @@ function make_header($title): void
     <?php
 }
 
-
 function make_footer() : void
 {
     ?>
