@@ -15,7 +15,12 @@ make_header("správa místností");
     <input type="text" name="kapacita" id="kapacita"><br>
 
     <label for="typ">Typ</label>
-    <input type="text" name="typ" id="typ"><br>
+    <select id="typ" name="typ">
+        <option value="poslucharna" selected>Poslucharna</option>
+        <option value="studovna">Studovna</option>
+        <option value="pracovna">Pracovna</option>
+        <option value="chodba">Chodba</option>
+    </select><br>
 
     <label for="popis">Popis</label>
     <textarea name="popis" id="popis"></textarea><br>
@@ -25,3 +30,28 @@ make_header("správa místností");
 
     <input type="submit" value="Pridat mistnost">
 </form>
+
+<h2>
+    Správa místností
+</h2>
+
+<div>
+    <table>
+        <tr>
+            <th>Název</th>
+            <th>Kapacita</th>
+            <th>Typ</th>
+            <th>Popis</th>
+            <th>Umisteni</th>
+        </tr>
+        <?php
+        require_once "../services/room_service.php";
+        require "../controllers/load_room.php";
+        $servis = new roomService();
+        $rooms = $servis->getRoomIDs();
+        foreach($rooms as $room) {
+            echo '<tr>' . loadRoom($room) . '</tr>';
+        }
+        ?>
+    </table>
+</div>
