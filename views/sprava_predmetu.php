@@ -3,6 +3,10 @@ require "../common.php";
 make_header("tvorba predmetu");
 ?>
 
+<h2>
+   Vytvořit předmět
+</h2>
+
 <form action="../controllers/vytvor_predmet.php" method="post">
     <label for="nazev">Nazev</label>
     <input type="text" name="nazev" id="nazev"><br>
@@ -26,3 +30,16 @@ make_header("tvorba predmetu");
 
     <input type="submit" value="Vytvorit predmet">
 </form>
+
+
+<h2>
+   Správa předmětů
+</h2>
+
+<p>
+    <?php 
+    require "../services/predmet_sluzba.php";
+    $servis = new predmetSluzba();
+    echo $servis->ziskejZkratky();
+    ?>
+</p>

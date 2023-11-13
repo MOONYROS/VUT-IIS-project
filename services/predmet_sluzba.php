@@ -28,4 +28,25 @@ class predmetSluzba {
             echo "Data input failed:" . $e->getMessage();
         }
     }
+    
+    function ziskejZkratky() {
+        try {
+            $stmt = $this->pdo->prepare("SELECT zkratka from Predmet");
+            $stmt->execute();
+            $zkratky = "";
+            while ($row = $stmt->fetch()) {
+                $tmp = $row["zkratka"];
+                if ($zkratky == "") {
+                    $zkratky = $tmp;
+                }
+                else {
+                    $zkratky = $zkratky . ", $tmp";
+                }
+            }
+            return $zkratky;
+        }
+        catch (PDOException $e) {
+            return "Data input not successful";
+        }
+    }
 }
