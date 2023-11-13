@@ -20,7 +20,7 @@ make_header('Hlavní stránka');
 
 <nav>
     <ul>
-        <li>Tady</li>
+        <li><a href="tvorba_predmetu.php">Vytvořit předmět</a></li>
         <li>Budou</li>
         <li>Nejake</li>
         <li>Odkazy</li>
