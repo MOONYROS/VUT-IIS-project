@@ -20,7 +20,7 @@ make_header('Hlavní stránka');
 
 <nav>
     <ul>
-        <li><a href="sprava_predmetu.php">Spravovat předměty</a></li>
+        <li><a href="subject_management.php">Spravovat předměty</a></li>
         <li>Budou</li>
         <li>Nejake</li>
         <li>Odkazy</li>

@@ -7,7 +7,7 @@ make_header("tvorba predmetu");
    Vytvořit předmět
 </h2>
 
-<form action="../controllers/vytvor_predmet.php" method="post">
+<form action="../controllers/create_subject.php" method="post">
     <label for="nazev">Nazev</label>
     <input type="text" name="nazev" id="nazev"><br>
 
@@ -38,8 +38,12 @@ make_header("tvorba predmetu");
 
 <p>
     <?php 
-    require "../services/predmet_sluzba.php";
-    $servis = new predmetSluzba();
-    echo $servis->ziskejZkratky();
+    require "../services/subject_service.php";
+    $servis = new subjectService();
+    $zkratky = $servis->getSubjectIDs();
+    $zkratkyList = explode(', ', $zkratky);
+    foreach($zkratkyList as $tmp) {
+        echo '<a href="subject.php?clickedZkratka=' . urlencode($tmp) . '">' . $tmp . '</a>, ';
+    }
     ?>
 </p>

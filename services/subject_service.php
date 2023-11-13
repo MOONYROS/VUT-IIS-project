@@ -1,6 +1,6 @@
 <?php
 
-class predmetSluzba {
+class subjectService {
     private PDO $pdo;
     function __construct()
     {
@@ -18,7 +18,7 @@ class predmetSluzba {
         }
     }
 
-    function vlozPredmet($data) {
+    function insertNewSubject($data) {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute($data);
@@ -29,9 +29,9 @@ class predmetSluzba {
         }
     }
     
-    function ziskejZkratky() {
+    function getSubjectIDs() {
         try {
-            $stmt = $this->pdo->prepare("SELECT zkratka from Predmet");
+            $stmt = $this->pdo->prepare("SELECT zkratka FROM Predmet");
             $stmt->execute();
             $zkratky = "";
             while ($row = $stmt->fetch()) {
@@ -47,6 +47,18 @@ class predmetSluzba {
         }
         catch (PDOException $e) {
             return "Data input not successful";
+        }
+    }
+
+    function getSubjectInfo($id) {
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM Predmet WHERE zkratka = (?)");
+            $stmt->execute(array($id));
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            error_log("Data input not successful");
+            return null;
         }
     }
 }
