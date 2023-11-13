@@ -1,23 +1,18 @@
 <?php
-require "../services/subject_service.php";
+require_once "../services/subject_service.php";
 
-function loadSubject() {
-    if (isset($_GET['clickedZkratka'])) {
-        $clickedZkratka = $_GET['clickedZkratka'];
-        $subjectService = new subjectService();
-        $subjectInfo = $subjectService->getSubjectInfo($clickedZkratka);
-        if ($subjectInfo == null) {
-            echo "Nejsou informace o předmětu: $clickedZkratka";
-            return;
+function loadSubject($zkratka) {
+    $subjectService = new subjectService();
+    $subjectInfo = $subjectService->getSubjectInfo($zkratka);
+    $finalValue = "";
+    foreach ($subjectInfo as $item) {
+        if ($finalValue == "") {
+            $finalValue = '<td><a href="../views/subject_info.php?zkratka='. $item . '">' . $item. '</a></td>';
         }
-        $toPrint = "";
-        foreach ($subjectInfo as $columnName => $item) {
-            $toPrint = $toPrint . "$columnName: " . $item . "</br>";
+        else {
+            $finalValue = $finalValue . '<td>' . $item . '</td>';
         }
-        echo $toPrint;
     }
-    else {
-        echo "No zkratka clicked.";
-    }
+    return $finalValue;
 }
 

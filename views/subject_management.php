@@ -36,14 +36,23 @@ make_header("tvorba predmetu");
    Správa předmětů
 </h2>
 
-<p>
-    <?php 
-    require "../services/subject_service.php";
-    $servis = new subjectService();
-    $zkratky = $servis->getSubjectIDs();
-    $zkratkyList = explode(', ', $zkratky);
-    foreach($zkratkyList as $tmp) {
-        echo '<a href="subject.php?clickedZkratka=' . urlencode($tmp) . '">' . $tmp . '</a>, ';
-    }
-    ?>
-</p>
+<div>
+    <table>
+        <tr>
+            <th>Zkratka</th>
+            <th>Nazev</th>
+            <th>Anotace</th>
+            <th>Pocet kreditu</th>
+            <th>Typ ukonceni</th>
+        </tr>
+        <?php
+        require_once "../services/subject_service.php";
+        require "../controllers/load_subject.php";
+        $servis = new subjectService();
+        $zkratky = $servis->getSubjectIDs();
+        foreach($zkratky as $zkratka) {
+            echo '<tr>' . loadSubject($zkratka) . '</tr>';
+        }
+        ?>
+    </table>
+</div>

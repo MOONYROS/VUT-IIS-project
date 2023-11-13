@@ -33,17 +33,11 @@ class subjectService {
         try {
             $stmt = $this->pdo->prepare("SELECT zkratka FROM Predmet");
             $stmt->execute();
-            $zkratky = "";
-            while ($row = $stmt->fetch()) {
-                $tmp = $row["zkratka"];
-                if ($zkratky == "") {
-                    $zkratky = $tmp;
-                }
-                else {
-                    $zkratky = $zkratky . ", $tmp";
-                }
+            $subjectArray = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $subjectArray[] = $row['zkratka'];
             }
-            return $zkratky;
+            return $subjectArray;
         }
         catch (PDOException $e) {
             return "Data input not successful";
