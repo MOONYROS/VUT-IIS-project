@@ -28,6 +28,17 @@ class subjectService {
             echo "Data input failed:" . $e->getMessage();
         }
     }
+
+    function updateSubject($data) {
+        try {
+            $stmt = $this->pdo->prepare("UPDATE Predmet SET nazev = ?, anotace = ?, pocet_kreditu = ?, typ_ukonceni = ? WHERE zkratka = ?");
+            $stmt->execute($data);
+            echo "Subject update successful!";
+        }
+        catch (PDOException $e) {
+            echo "Subject update failed:" . $e->getMessage();
+        }
+    }
     
     function getSubjectIDs() {
         try {

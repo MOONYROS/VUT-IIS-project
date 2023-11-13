@@ -5,7 +5,7 @@ require_once "../common.php";
 
 make_header("Info o predmetu");
 
-function checkSelect($option, $to_check) {
+function checkSelect($option, $to_check): string {
     if ($option == $to_check)
         return "selected";
     else
@@ -18,17 +18,19 @@ $infoArray = $subjectService->getSubjectInfo($_GET["zkratka"]);
 
 <h2>Edit Subject: <?= $infoArray['zkratka']; ?></h2>
 
-<form>
+<form action="../controllers/subject_edit.php" method="post">
+    <input type="hidden" name="zkratka" value="<?= $infoArray['zkratka']; ?>"/>
+
     <label for="nazev">Nazev predmetu</label>
-    <input type="text" value="<?= $infoArray['nazev']; ?>" id="nazev"/>
+    <input type="text" name="nazev" value="<?= $infoArray['nazev']; ?>" id="nazev"/>
     <br>
 
     <label for="anotace">Anotace predmetu</label>
     <textarea name="anotace" id="anotace"><?= $infoArray['anotace']; ?></textarea>
     <br>
 
-    <label for="pocet_kreditu">Nazev predmetu</label>
-    <input type="number" value="<?= $infoArray['pocet_kreditu']; ?>" id="pocet_kreditu"/>
+    <label for="pocet_kreditu">Pocet kreditu</label>
+    <input type="number" name="pocet kreditu" value="<?= $infoArray['pocet_kreditu']; ?>" id="pocet_kreditu"/>
     <br>
 
     <label for="typ_ukonceni">Typ ukonceni</label>
@@ -38,4 +40,6 @@ $infoArray = $subjectService->getSubjectInfo($_GET["zkratka"]);
         <option value="zk" <?= checkSelect("zk", $infoArray['typ_ukonceni']) ?>>zkouska</option>
         <option value="zazk" <?= checkSelect("zazk", $infoArray['typ_ukonceni']) ?>>zapocet zkouska</option>
     </select><br>
+
+    <input type="submit" value="Ulozit zmeny">
 </form>
