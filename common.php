@@ -18,7 +18,6 @@ function make_header($title): void
 function make_footer() : void
 {
     ?>
-    <footer>&copy; FIT 2023</footer>
     </body>
     </html>
     <?php

@@ -11,7 +11,7 @@ CREATE TABLE Osoba (
 	jmeno varchar(15) NOT NULL,
 	prijmeni varchar(15) NOT NULL,
 	email varchar(20) NOT NULL,
-    heslo varchar(255) NOT NULL, -- Ideal password legth ideal by the documentation
+    heslo varchar(255) NOT NULL, -- Ideal password length by the documentation
 	telefon INT(9) NOT NULL,
     role varchar(4) NOT NULL, -- ADMI, STUD, ROZV, GARA, VYUC
 	PRIMARY KEY (ID_Osoba)
@@ -40,9 +40,7 @@ CREATE TABLE Mistnost (
 	typ varchar(15) NOT NULL,
 	popis varchar(100) NOT NULL,
 	umisteni varchar(20) NOT NULL,
-	admin INT(5) NOT NULL,
-	PRIMARY KEY (`ID_mist`),
-    FOREIGN KEY (admin) REFERENCES Osoba(ID_Osoba)
+	PRIMARY KEY (`ID_mist`)
 );
 
 CREATE TABLE Vyuk_aktivita (
@@ -76,3 +74,27 @@ CREATE TABLE Rozvrh_aktivita (
     FOREIGN KEY (ID_Rozvrh) REFERENCES Rozvrh(ID_Rozvrh),
     FOREIGN KEY (ID_Aktiv) REFERENCES Vyuk_aktivita(ID_Aktiv)
 );
+
+-- heslo "admin"
+INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
+VALUES (1, "admin", "admin", "admin@admin.admin", "$2y$10$krWfrVmZh6PVfES6TeEJWe18dEV8l.ZLvvyEgE0wLvRKcFtYhMhGC", 111111111, "admi");
+
+-- heslo "student"
+INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
+VALUES (2, "student", "student", "stud@stud.stud", "$2y$10$.7uByVdYNUtMT6zWvIvLYeL1tXWLnV17JBE.a9lq6Y.ChTjtMD3Z6", 123123123, "stud");
+
+-- heslo "vyucujici"
+INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
+VALUES (3, "vyucujici", "vyucujici", "vyuc@vyuc.vyuc", "$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS", 123412341, "vyuc");
+
+-- heslo "rozvrhar"
+INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
+VALUES (4, "rozvrhar", "rozvrhar", "rozv@rozv.rozv", "$2y$10$Fw3uu/mQiX3V74XLoKZZguCjggMITIOIxSJC2JFysCrF2EAPUcxLO", 123456789, "rozv");
+
+-- heslo "garant"
+INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
+VALUES (5, "garant", "garant", "gara@gara.gara", "$2y$10$yYDldR4XAP3dZ49qCydMmON/lprRgyc2IE/bzrKbYsLHDDXE1QoXq", 987654321, "gara");
+
+
+
+
