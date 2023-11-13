@@ -7,7 +7,7 @@
 <h1>GigaWeb</h1>
 
 <h2>Prihlaseni</h2>
-<form action="login.php" method="post">
+<form action="controllers/login.php" method="post">
     <label for="email">Email</label>
     <input type="email" name="email" id="email" required><br>
 
@@ -18,7 +18,7 @@
 </form>
 
 <h2>Registrace uzivatele</h2>
-<form action="register_user.php" method="post">
+<form action="controllers/register_user.php" method="post">
     <label for="jmeno">Jmeno</label>
     <input type="text" name="jmeno" id="jmeno"><br>
 
