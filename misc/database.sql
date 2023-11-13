@@ -35,7 +35,7 @@ CREATE TABLE Osoba_predmet (
 );
 
 CREATE TABLE Mistnost (
-	ID_mist INT(5) NOT NULL AUTO_INCREMENT,
+	ID_mist varchar(5) NOT NULL,
 	kapacita INT(4) NOT NULL,
 	typ varchar(15) NOT NULL,
 	popis varchar(100) NOT NULL,
@@ -49,7 +49,7 @@ CREATE TABLE Vyuk_aktivita (
 	delka varchar(10) NOT NULL,
 	popis varchar(100) NOT NULL,
 	opakovani varchar(20) NOT NULL,
-	mistnost INT(5) NOT NULL,
+	mistnost varchar(5) NOT NULL,
     predmet varchar(3) NOT NULL,
 	PRIMARY KEY (ID_Aktiv),
     FOREIGN KEY (predmet) REFERENCES Predmet(zkratka),
