@@ -1,6 +1,6 @@
 <?php
-require 'common.php';
-require 'services/account_service.php';
+require '../common.php';
+require '../services/account_service.php';
 
 // Zde můžete přidat ověření, zda je uživatel přihlášen
 if (!isset($_SESSION['user_id'])) {

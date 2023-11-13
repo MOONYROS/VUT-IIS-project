@@ -1,6 +1,6 @@
 <?php
 
-require "services/account_service.php";
+require "../services/account_service.php";
 
 $requiredFields = array("jmeno", "prijmeni", "email", "heslo", "telefon", "role");
 $toInsert = array();
