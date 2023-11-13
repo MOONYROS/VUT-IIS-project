@@ -36,6 +36,7 @@
 
     <label for="role">Role</label>
     <select id="role" name="role">
+        <option value="admi" selected>Admin</option>
         <option value="stud" selected>Student</option>
         <option value="vyuc">Vyucujici</option>
         <option value="rozv">Rozvrhar</option>
