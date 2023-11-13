@@ -20,10 +20,10 @@ make_header("tvorba predmetu");
     <label for="pocet_kreditu">Pocet kreditu</label>
     <input type="number" name="pocet_kreditu" id="pocet_kreditu"><br>
 
-    <label for="typ_ukonceni">Role</label>
+    <label for="typ_ukonceni">Typ ukonceni</label>
     <select id="typ_ukonceni" name="typ_ukonceni">
         <option value="za" selected>zapocet</option>
-        <option value="klza" selected>kl zapocet</option>
+        <option value="klza">kl zapocet</option>
         <option value="zk">zkouska</option>
         <option value="zazk">zapocet zkouska</option>
     </select><br>
