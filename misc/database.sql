@@ -76,54 +76,54 @@ CREATE TABLE Rozvrh_aktivita (
 );
 
 # SAMPLOVI UZIVATELE
--- heslo "admin"
+-- heslo 'admin'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
-VALUES (1, "admin", "admin", "admin@admin.admin", "$2y$10$krWfrVmZh6PVfES6TeEJWe18dEV8l.ZLvvyEgE0wLvRKcFtYhMhGC", 111111111, "admi");
+VALUES (1, 'admin', 'admin', 'admin@admin.admin', '$2y$10$krWfrVmZh6PVfES6TeEJWe18dEV8l.ZLvvyEgE0wLvRKcFtYhMhGC', 111111111, 'admi');
 
--- heslo "student"
+-- heslo 'student'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
-VALUES (2, "student", "student", "stud@stud.stud", "$2y$10$.7uByVdYNUtMT6zWvIvLYeL1tXWLnV17JBE.a9lq6Y.ChTjtMD3Z6", 123123123, "stud");
+VALUES (2, 'student', 'student', 'stud@stud.stud', '$2y$10$.7uByVdYNUtMT6zWvIvLYeL1tXWLnV17JBE.a9lq6Y.ChTjtMD3Z6', 123123123, 'stud');
 
--- heslo "vyucujici"
+-- heslo 'vyucujici'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
-VALUES (3, "vyucujici", "vyucujici", "vyuc@vyuc.vyuc", "$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS", 123412341, "vyuc");
+VALUES (3, 'vyucujici', 'vyucujici', 'vyuc@vyuc.vyuc', '$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS', 123412341, 'vyuc');
 
--- heslo "rozvrhar"
+-- heslo 'rozvrhar'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
-VALUES (4, "rozvrhar", "rozvrhar", "rozv@rozv.rozv", "$2y$10$Fw3uu/mQiX3V74XLoKZZguCjggMITIOIxSJC2JFysCrF2EAPUcxLO", 123456789, "rozv");
+VALUES (4, 'rozvrhar', 'rozvrhar', 'rozv@rozv.rozv', '$2y$10$Fw3uu/mQiX3V74XLoKZZguCjggMITIOIxSJC2JFysCrF2EAPUcxLO', 123456789, 'rozv');
 
--- heslo "garant"
+-- heslo 'garant'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
-VALUES (5, "garant", "garant", "gara@gara.gara", "$2y$10$yYDldR4XAP3dZ49qCydMmON/lprRgyc2IE/bzrKbYsLHDDXE1QoXq", 987654321, "gara");
+VALUES (5, 'garant', 'garant', 'gara@gara.gara', '$2y$10$yYDldR4XAP3dZ49qCydMmON/lprRgyc2IE/bzrKbYsLHDDXE1QoXq', 987654321, 'gara');
 
 # SAMPLOVE PREDMETY
 INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni)
-VALUES ("IZP", "Zaklady programovani", "Predmet o zakladech programovani v jazyce C.", 7, "zazk");
+VALUES ('IZP', 'Zaklady programovani', 'Predmet o zakladech programovani v jazyce C.', 7, 'zazk');
 
 INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni)
-VALUES ("IOS", "Operacni systemy", "Naprosta deadly silenost o tom, jak funguji operacni systemy.", 5, "zazk");
+VALUES ('IOS', 'Operacni systemy', 'Naprosta deadly silenost o tom, jak funguji operacni systemy.', 5, 'zazk');
 
 INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni)
-VALUES ("IEL", "Elektronika pro FIT", "Nejaky zaklady o elektronice, rezistory, tranzistory, etc.", 5, "zazk");
+VALUES ('IEL', 'Elektronika pro FIT', 'Nejaky zaklady o elektronice, rezistory, tranzistory, etc.', 5, 'zazk');
 
 INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni)
-VALUES ("HVR", "Vedeni tymu", "Dalsi to-be-banger predmet se Silvii.", 3, "za");
+VALUES ('HVR', 'Vedeni tymu', 'Dalsi to-be-banger predmet se Silvii.', 3, 'za');
 
 INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni)
-VALUES ("ITU", "Tvorba UI", "Predmet, ktery taky bude naprosta silenost s divnymi pravidly.", 5, "klza");
+VALUES ('ITU', 'Tvorba UI', 'Predmet, ktery taky bude naprosta silenost s divnymi pravidly.', 5, 'klza');
 
 # SAMPLOVE MISTNOSTI
 INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
-VALUES ("C127.1", 6, "studovna", "Naprosto banger roomka.", "knihovna");
+VALUES ('C127.1', 6, 'studovna', 'Naprosto banger roomka.', 'knihovna');
 
 INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
-VALUES ("D105", 380, "poslucharna", "Nejvetsi prednaskovka na celym FITu. Celkem solid.", "u fontany");
+VALUES ('D105', 380, 'poslucharna', 'Nejvetsi prednaskovka na celym FITu. Celkem solid.', 'u fontany');
 
 INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
-VALUES ("Q202", 8, "pracovna", "Pracovna grafiku z FITu, jako treba gigachada Mileta.", "chodba k menze");
+VALUES ('Q202', 8, 'pracovna', 'Pracovna grafiku z FITu, jako treba gigachada Mileta.', 'chodba k menze');
 
 INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
-VALUES ("M202", 1500, "chodba", "Chodba okolo CVT k menze.", "u CVTcka");
+VALUES ('M202', 1500, 'chodba', 'Chodba okolo CVT k menze.', 'u CVTcka');
 
 INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
-VALUES ("S207", 12, "studovna", "Velka studovna v Sku, kdysi tam byla spatna wifi, tedka uz to celkem jde.", "oddelena budova");
+VALUES ('S207', 12, 'studovna', 'Velka studovna v Sku, kdysi tam byla spatna wifi, tedka uz to celkem jde.', 'oddelena budova');
