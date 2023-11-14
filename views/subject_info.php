@@ -35,4 +35,6 @@ $infoArray = $subjectService->getSubjectInfo($_GET["zkratka"]);
     </select><br>
 
     <input type="submit" value="Ulozit zmeny">
+    <input type="submit" formaction="../controllers/delete_subject.php" value="Odstranit predmet">
 </form>
+

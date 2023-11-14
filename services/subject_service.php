@@ -66,4 +66,15 @@ class subjectService {
             return null;
         }
     }
+
+    function deleteSubject($id) {
+        try {
+            $stmt = $this->pdo->prepare("DELETE from Predmet where zkratka = ?");
+            $stmt->execute(array($id));
+            echo "Subject removal successful";
+        }
+        catch (PDOException $e) {
+            echo "Subject removal not successful:" . $e->getMessage();
+        }
+    }
 }
