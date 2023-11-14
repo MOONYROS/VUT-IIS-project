@@ -13,7 +13,6 @@ $infoArray = $userService->getUserInfo($_GET["ID"]);
 
 <form action="../controllers/user_edit.php" method="post">
     <input type="hidden" name="ID_Osoba" value="<?= $infoArray['ID_Osoba']; ?>"/>
-    <input type="hidden" name="heslo" value="<?= $infoArray['heslo']; ?>"/>
 
     <label for="jmeno">Jmeno</label>
     <input type="text" name="jmeno" value="<?= $infoArray['jmeno']; ?>" id="jmeno"/>
@@ -25,6 +24,10 @@ $infoArray = $userService->getUserInfo($_GET["ID"]);
 
     <label for="email">Email</label>
     <input type="email" name="email" value="<?= $infoArray['email']; ?>" id="email"/>
+    <br>
+
+    <label for="heslo">Heslo</label>
+    <input type="password" name="heslo" value="<?= $infoArray['heslo']; ?>" id="heslo"/>
     <br>
 
     <label for="telefon">Telefon</label>
