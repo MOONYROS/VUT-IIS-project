@@ -22,7 +22,7 @@ make_header('Hlavní stránka');
     <ul>
         <li><a href="subject_management.php">Spravovat předměty</a></li>
         <li><a href="room_management.php">Spravovat místnosti</a></li>
-        <li>Nejake</li>
+        <li><a href="user_management.php">Spravovat uživatele</a></li>
         <li>Odkazy</li>
     </ul>
 </nav>
