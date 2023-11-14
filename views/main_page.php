@@ -1,6 +1,6 @@
 <?php
 require '../common.php';
-require '../services/account_service.php';
+require '../services/user_service.php';
 
 // Zde můžete přidat ověření, zda je uživatel přihlášen
 if (!isset($_SESSION['user_id'])) {
@@ -8,7 +8,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-$service = new AccountService();
+$service = new UserService();
 $user = $service->getUserById($_SESSION['user_id']);
 
 make_header('Hlavní stránka');

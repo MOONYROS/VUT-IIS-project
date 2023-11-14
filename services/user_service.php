@@ -1,6 +1,6 @@
 <?php
 
-class AccountService {
+class UserService {
     private PDO $pdo;
     function __construct()
     {
@@ -18,15 +18,16 @@ class AccountService {
         }
     }
 
-    function insertNewAccount($data): void
+    function insertNewUser($data)
     {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO Osoba (jmeno, prijmeni, email, heslo, telefon, role) VALUES (?, ?, ?, ?, ?, ?)");
             $stmt->execute($data);
-            echo "Data input successful!";
+            return "User successfully created.";
         }
         catch (PDOException $e) {
-            echo "Chyba pri vkladani zaznamu:" . $e->getMessage();
+            error_log("Chyba pri vkladani zaznamu:" . $e->getMessage());
+            return "User insert failed:" . $e->getMessage();
         }
     }
 
@@ -34,10 +35,11 @@ class AccountService {
         try {
             $stmt = $this->pdo->prepare("UPDATE Osoba SET jmeno = ?, prijmeni = ?, email = ?, heslo = ?, telefon = ?, role = ? WHERE ID_Osoba = ?");
             $stmt->execute($data);
-            echo "Subject update successful!";
+            return "User successfully updated";
         }
         catch (PDOException $e) {
-            echo "Subject update failed:" . $e->getMessage();
+            error_log("User update failed:" . $e->getMessage());
+            return "User update failed:" . $e->getMessage();
         }
     }
 
@@ -97,6 +99,18 @@ class AccountService {
         catch (PDOException $e) {
             error_log("Fetch of user information unsuccessful: " . $e->getMessage());
             return null;
+        }
+    }
+
+    function deleteUser($id): string {
+        try {
+            $stmt = $this->pdo->prepare("DELETE from Osoba where ID_Osoba = ?");
+            $stmt->execute(array($id));
+            return "User successfully deleted.";
+        }
+        catch (PDOException $e) {
+            error_log("User removal not successful:" . $e->getMessage());
+            return "Error when deleting user:" . $e->getMessage();
         }
     }
 }

@@ -1,12 +1,12 @@
 <?php
 
 require '../common.php';
-require '../services/account_service.php';
+require '../services/user_service.php';
 
 $email = $_POST['email'];
 $heslo = $_POST['heslo'];
 
-$service = new AccountService();
+$service = new UserService();
 $user = $service->verifyLogin($email, $heslo);
 
 if ($user) {

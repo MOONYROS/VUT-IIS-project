@@ -32,6 +32,14 @@
 
     <input type="submit" value="Create new user">
 </form>
+<br>
+<div>
+    <?php
+    if (isset($_GET["message"])) {
+        echo $_GET["message"];
+    }
+    ?>
+</div>
 
 <h2>
     Správa Uživatelů
@@ -46,9 +54,9 @@
             <th>Role</th>
         </tr>
         <?php
-        require_once "../services/account_service.php";
+        require_once "../services/user_service.php";
         require "../controllers/user_load.php";
-        $service = new AccountService();
+        $service = new UserService();
         $userIDs = $service->getUserIDs();
         foreach($userIDs as $ID) {
             echo '<tr>' . loadUser($ID) . '</tr>';

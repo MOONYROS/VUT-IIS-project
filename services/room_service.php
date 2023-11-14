@@ -23,10 +23,11 @@ class roomService{
         try {
             $stmt = $this->pdo->prepare("INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute($data);
-            echo "Data input successful";
+            return "Room successfully added";
         }
         catch (PDOException $e) {
-            echo "Data input failed:" . $e->getMessage();
+            error_log("Data input failed:" . $e->getMessage());
+            return "Room insert failed: " . $e->getMessage();
         }
     }
 
@@ -34,10 +35,11 @@ class roomService{
         try {
             $stmt = $this->pdo->prepare("UPDATE Mistnost SET kapacita = ?, typ = ?, popis = ?, umisteni = ? WHERE ID_mist = ?");
             $stmt->execute($data);
-            echo "Room update successful!";
+            return "Room info successfully updated";
         }
         catch (PDOException $e) {
-            echo "Room update failed:" . $e->getMessage();
+            error_log("Room update failed:" . $e->getMessage());
+            return "Room update failed:" . $e->getMessage();
         }
     }
 
@@ -52,7 +54,7 @@ class roomService{
             return $subjectArray;
         }
         catch (PDOException $e) {
-            return "Data input not successful";
+            error_log("Room not found: " . $e->getMessage());
         }
     }
 
@@ -65,6 +67,18 @@ class roomService{
         catch (PDOException $e) {
             error_log("Data input not successful");
             return null;
+        }
+    }
+
+    function deleteRoom($id) {
+        try {
+            $stmt = $this->pdo->prepare("DELETE from Mistnost where ID_mist = ?");
+            $stmt->execute(array($id));
+            return "Room successfully deleted.";
+        }
+        catch (PDOException $e) {
+            error_log("Room removal not successful:" . $e->getMessage());
+            return "Room removal not successfull: " . $e->getMessage();
         }
     }
 }

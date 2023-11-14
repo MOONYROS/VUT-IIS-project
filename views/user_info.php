@@ -1,11 +1,11 @@
 <?php
 require_once "../common.php";
 require_once "../controllers/user_load.php";
-require_once "../services/account_service.php";
+require_once "../services/user_service.php";
 
 make_header("uprava osoby");
 
-$userService = new AccountService();
+$userService = new UserService();
 $infoArray = $userService->getUserInfo($_GET["ID"]);
 ?>
 
@@ -41,4 +41,5 @@ $infoArray = $userService->getUserInfo($_GET["ID"]);
     </select><br>
 
     <input type="submit" value="Ulozit zmeny">
+    <input type="submit" formaction="../controllers/user_delete.php" value="Smazat uzivatele">
 </form>

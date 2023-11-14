@@ -1,9 +1,9 @@
 <?php
-require_once "../services/account_service.php";
+require_once "../services/user_service.php";
 
 function loadUser($ID): string
 {
-    $accountService = new AccountService();
+    $accountService = new UserService();
     $userInfo = $accountService->getUserInfo($ID);
     $fullName = '<td><a href="../views/user_info.php?ID='. $userInfo['ID_Osoba'] .'">' . $userInfo['prijmeni'] . ' ' . $userInfo['jmeno'] . '</a></td>';
     $email = '<td>' . $userInfo['email'] . '</td>';

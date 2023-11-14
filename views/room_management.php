@@ -30,6 +30,14 @@ make_header("správa místností");
 
     <input type="submit" value="Pridat mistnost">
 </form>
+<br>
+<div>
+    <?php
+        if (isset($_GET["message"])) {
+            echo $_GET["message"];
+        }
+    ?>
+</div>
 
 <h2>
     Správa místností

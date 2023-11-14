@@ -10,4 +10,5 @@ foreach($requiredFields as $field) {
 }
 
 $service = new roomService();
-$service->insertNewRoom($toInsert);
+$message = $service->insertNewRoom($toInsert);
+header("Location: ../views/room_management.php?message=$message");
