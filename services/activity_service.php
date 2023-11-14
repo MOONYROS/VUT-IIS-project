@@ -27,7 +27,15 @@ class activityService{
         }
         catch (PDOException $e) {
             error_log("Data input failed:" . $e->getMessage());
-            return "Activity insert failed: " . $e->getMessage();
+            if(strpos($e->getMessage(), 'mistnost') !== false){
+                return "Activity input failed - neznama mistnost: " . $e->getMessage();
+            }
+            elseif(strpos($e->getMessage(), 'predmet') !== false){
+                return "Activity input failed - neznamy predmet: " . $e->getMessage();
+            }
+            else{
+                return "Activity input failed: " . $e->getMessage();
+            }
         }
     }
 }
