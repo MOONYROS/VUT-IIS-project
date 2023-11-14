@@ -40,10 +40,7 @@
 <div>
     <table>
         <tr>
-            <th>ID</th>
-            <th>Jméno</th>
-            <th>Příjmení</th>
-            <th>Heslo</th>
+            <th>Příjmení a jméno</th>
             <th>Email</th>
             <th>Telefon</th>
             <th>Role</th>
