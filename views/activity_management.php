@@ -45,3 +45,30 @@ make_header("správa výukových aktitit");
     }
     ?>
 </div>
+
+<h2>
+    Správa výukových aktivit
+</h2>
+
+<div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Typ</th>
+            <th>Delka</th>
+            <th>Popis</th>
+            <th>Opakovani</th>
+            <th>Mistnost</th>
+            <th>Predmet</th>
+        </tr>
+        <?php
+        require_once "../services/activity_service.php";
+        require "../controllers/activity_load.php";
+        $servis = new activityService();
+        $activities = $servis->getActivityIDs();
+        foreach($activities as $activity) {
+            echo '<tr>' . loadActivity($activity) . '</tr>';
+        }
+        ?>
+    </table>
+</div>

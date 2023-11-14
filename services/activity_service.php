@@ -38,4 +38,63 @@ class activityService{
             }
         }
     }
+
+    function updateActivity($data){
+        try {
+            $stmt = $this->pdo->prepare("UPDATE Vyuk_aktivita SET  typ = ?, delka = ?, popis = ?, opakovani = ?, mistnost = ?, predmet = ? WHERE ID_Aktiv = ?");
+            $stmt->execute($data);
+            return "Activity info successfully updated";
+        }
+        catch (PDOException $e) {
+            error_log("Activity update failed:" . $e->getMessage());
+            if(strpos($e->getMessage(), 'mistnost') !== false){
+                return "Activity update failed - neznama mistnost: " . $e->getMessage();
+            }
+            elseif(strpos($e->getMessage(), 'predmet') !== false){
+                return "Activity update failed - neznamy predmet: " . $e->getMessage();
+            }
+            else{
+                return "Activity update failed: " . $e->getMessage();
+            }
+        }
+    }
+
+    function getActivityIDs(){
+        try {
+            $stmt = $this->pdo->prepare("SELECT ID_Aktiv FROM Vyuk_aktivita");
+            $stmt->execute();
+            $subjectArray = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $subjectArray[] = $row['ID_Aktiv'];
+            }
+            return $subjectArray;
+        }
+        catch (PDOException $e) {
+            error_log("Activity not found: " . $e->getMessage());
+        }
+    }
+
+    function getActivityInfo($id){
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM Vyuk_aktivita WHERE ID_Aktiv = (?)");
+            $stmt->execute(array($id));
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            error_log("Data input not successful");
+            return null;
+        }
+    }
+
+    function deleteActivity($id) {
+        try {
+            $stmt = $this->pdo->prepare("DELETE from Vyuk_aktivita where ID_Aktiv = ?");
+            $stmt->execute(array($id));
+            return "Activity successfully deleted.";
+        }
+        catch (PDOException $e) {
+            error_log("Activity removal not successful:" . $e->getMessage());
+            return "Activity removal not successfull: " . $e->getMessage();
+        }
+    }
 }
