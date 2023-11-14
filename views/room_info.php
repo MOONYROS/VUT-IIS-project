@@ -5,13 +5,6 @@ require_once "../common.php";
 
 make_header("Info o mistnosti");
 
-function checkSelect($option, $to_check): string {
-    if ($option == $to_check)
-        return "selected";
-    else
-        return "";
-}
-
 $roomService = new roomService();
 $infoArray = $roomService->getRoomInfo($_GET["ID_mist"]);
 ?>
