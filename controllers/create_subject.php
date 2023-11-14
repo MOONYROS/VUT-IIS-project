@@ -11,3 +11,4 @@ foreach($requiredFields as $field) {
 
 $service = new subjectService();
 $service->insertNewSubject($toInsert);
+header("Location: ../views/subject_management.php");

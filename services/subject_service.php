@@ -22,21 +22,19 @@ class subjectService {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute($data);
-            echo "Data input successful";
         }
         catch (PDOException $e) {
-            echo "Data input failed:" . $e->getMessage();
+            error_log("Data input failed:" . $e->getMessage());
         }
     }
 
-    function updateSubject($data) {
+    function updateSubject($data): void {
         try {
             $stmt = $this->pdo->prepare("UPDATE Predmet SET nazev = ?, anotace = ?, pocet_kreditu = ?, typ_ukonceni = ? WHERE zkratka = ?");
             $stmt->execute($data);
-            echo "Subject update successful!";
         }
         catch (PDOException $e) {
-            echo "Subject update failed:" . $e->getMessage();
+            error_log("Subject update failed:" . $e->getMessage());
         }
     }
     
@@ -51,7 +49,7 @@ class subjectService {
             return $subjectArray;
         }
         catch (PDOException $e) {
-            return "Data input not successful";
+            return "Data input not successful: " . $e->getMessage();
         }
     }
 
@@ -67,14 +65,14 @@ class subjectService {
         }
     }
 
-    function deleteSubject($id) {
+    function deleteSubject($id): void {
         try {
             $stmt = $this->pdo->prepare("DELETE from Predmet where zkratka = ?");
             $stmt->execute(array($id));
-            echo "Subject removal successful";
+            echo $id;
         }
         catch (PDOException $e) {
-            echo "Subject removal not successful:" . $e->getMessage();
+            error_log("Subject removal not successful:" . $e->getMessage());
         }
     }
 }
