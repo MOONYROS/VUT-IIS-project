@@ -5,7 +5,7 @@
 ?>
 
 <h2>Registrace uzivatele</h2>
-<form action="../controllers/register_user.php" method="post">
+<form action="../controllers/user_register.php" method="post">
     <label for="jmeno">Jmeno</label>
     <input type="text" name="jmeno" id="jmeno"><br>
 
@@ -47,7 +47,7 @@
         </tr>
         <?php
         require_once "../services/account_service.php";
-        require "../controllers/load_user.php";
+        require "../controllers/user_load.php";
         $service = new AccountService();
         $userIDs = $service->getUserIDs();
         foreach($userIDs as $ID) {

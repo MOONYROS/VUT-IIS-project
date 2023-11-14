@@ -1,5 +1,5 @@
 <?php
-require_once "../controllers/load_subject.php";
+require_once "../controllers/subject_load.php";
 require_once "../services/subject_service.php";
 require_once "../common.php";
 

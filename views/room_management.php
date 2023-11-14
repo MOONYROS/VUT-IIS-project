@@ -7,7 +7,7 @@ make_header("správa místností");
     Přidat místnost
 </h2>
 
-<form action="../controllers/create_room.php" method="post">
+<form action="../controllers/room_create.php" method="post">
     <label for="ID_mist">Nazev</label>
     <input type="text" name="ID_mist" id="ID_mist"><br>
 
@@ -46,7 +46,7 @@ make_header("správa místností");
         </tr>
         <?php
         require_once "../services/room_service.php";
-        require "../controllers/load_room.php";
+        require "../controllers/room_load.php";
         $servis = new roomService();
         $rooms = $servis->getRoomIDs();
         foreach($rooms as $room) {

@@ -1,6 +1,6 @@
 <?php
 require_once "../common.php";
-require_once "../controllers/load_user.php";
+require_once "../controllers/user_load.php";
 require_once "../services/account_service.php";
 
 make_header("uprava osoby");

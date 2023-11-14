@@ -7,7 +7,7 @@ make_header("tvorba predmetu");
    Vytvořit předmět
 </h2>
 
-<form action="../controllers/create_subject.php" method="post">
+<form action="../controllers/subject_create.php" method="post">
     <label for="nazev">Nazev</label>
     <input type="text" name="nazev" id="nazev"><br>
 
@@ -47,7 +47,7 @@ make_header("tvorba predmetu");
         </tr>
         <?php
         require_once "../services/subject_service.php";
-        require "../controllers/load_subject.php";
+        require "../controllers/subject_load.php";
         $servis = new subjectService();
         $zkratky = $servis->getSubjectIDs();
         foreach($zkratky as $zkratka) {
