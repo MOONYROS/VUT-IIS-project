@@ -5,7 +5,7 @@ function loadUser($ID): string
 {
     $accountService = new AccountService();
     $userInfo = $accountService->getUserInfo($ID);
-    $fullName = '<td>' . $userInfo['prijmeni'] . ' ' . $userInfo['jmeno'] . '</td>';
+    $fullName = '<td><a href="../views/user_info.php?ID='. $userInfo['ID_Osoba'] .'">' . $userInfo['prijmeni'] . ' ' . $userInfo['jmeno'] . '</a></td>';
     $email = '<td>' . $userInfo['email'] . '</td>';
     $phone = '<td>' . $userInfo['telefon'] . '</td>';
     $role = '<td>' . $userInfo['role'] . '</td>';

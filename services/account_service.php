@@ -30,6 +30,17 @@ class AccountService {
         }
     }
 
+    function updateUser($data) {
+        try {
+            $stmt = $this->pdo->prepare("UPDATE Osoba SET jmeno = ?, prijmeni = ?, email = ?, heslo = ?, telefon = ?, role = ? WHERE ID_Osoba = ?");
+            $stmt->execute($data);
+            echo "Subject update successful!";
+        }
+        catch (PDOException $e) {
+            echo "Subject update failed:" . $e->getMessage();
+        }
+    }
+
     function verifyLogin($email, $heslo)
     {
         try {
