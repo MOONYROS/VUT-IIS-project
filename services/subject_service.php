@@ -69,7 +69,6 @@ class subjectService {
         try {
             $stmt = $this->pdo->prepare("DELETE from Predmet where zkratka = ?");
             $stmt->execute(array($id));
-            echo $id;
         }
         catch (PDOException $e) {
             error_log("Subject removal not successful:" . $e->getMessage());
