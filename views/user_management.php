@@ -33,5 +33,32 @@
     <input type="submit" value="Create new user">
 </form>
 
+<h2>
+    Správa Uživatelů
+</h2>
+
+<div>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Jméno</th>
+            <th>Příjmení</th>
+            <th>Heslo</th>
+            <th>Email</th>
+            <th>Telefon</th>
+            <th>Role</th>
+        </tr>
+        <?php
+        require_once "../services/account_service.php";
+        require "../controllers/load_user.php";
+        $service = new AccountService();
+        $userIDs = $service->getUserIDs();
+        foreach($userIDs as $ID) {
+            echo '<tr>' . loadUser($ID) . '</tr>';
+        }
+        ?>
+    </table>
+</div>
+
 <?php
 make_footer();

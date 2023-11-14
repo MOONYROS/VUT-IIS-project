@@ -60,4 +60,32 @@ class AccountService {
             return null;
         }
     }
+
+    function getUserIDs(): array|string
+    {
+        try {
+            $stmt = $this->pdo->prepare("SELECT ID_Osoba FROM Osoba");
+            $stmt->execute();
+            $userArray = array();
+            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
+                $userArray[] = $row['ID_Osoba'];
+            }
+            return $userArray;
+        }
+        catch (PDOException $e) {
+            return "Getting User IDs was unsuccessful: " . $e->getMessage();
+        }
+    }
+
+    function getUserInfo($ID) {
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM Osoba WHERE ID_Osoba = ?");
+            $stmt->execute(array($ID));
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            error_log("Fetch of user information unsuccessful: " . $e->getMessage());
+            return null;
+        }
+    }
 }
