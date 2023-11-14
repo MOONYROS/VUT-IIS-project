@@ -22,19 +22,23 @@ class subjectService {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute($data);
+            return "Subject successfully added.";
         }
         catch (PDOException $e) {
-            error_log("Data input failed:" . $e->getMessage());
+            error_log("Subject insert failed:" . $e->getMessage());
+            return "Subject insert failed: " . $e->getMessage();
         }
     }
 
-    function updateSubject($data): void {
+    function updateSubject($data) {
         try {
             $stmt = $this->pdo->prepare("UPDATE Predmet SET nazev = ?, anotace = ?, pocet_kreditu = ?, typ_ukonceni = ? WHERE zkratka = ?");
             $stmt->execute($data);
+            return "Subject successfully edited.";
         }
         catch (PDOException $e) {
             error_log("Subject update failed:" . $e->getMessage());
+            return "Subject update failed: " . $e->getMessage();
         }
     }
     
@@ -65,13 +69,15 @@ class subjectService {
         }
     }
 
-    function deleteSubject($id): void {
+    function deleteSubject($id) {
         try {
             $stmt = $this->pdo->prepare("DELETE from Predmet where zkratka = ?");
             $stmt->execute(array($id));
+            return "Subject successfully deleted.";
         }
         catch (PDOException $e) {
             error_log("Subject removal not successful:" . $e->getMessage());
+            return "Subject delete failed: " . $e->getMessage();
         }
     }
 }

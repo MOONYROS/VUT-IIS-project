@@ -30,7 +30,14 @@ make_header("tvorba predmetu");
 
     <input type="submit" value="Vytvorit predmet">
 </form>
-
+<br>
+<div>
+    <?php
+        if (isset($_GET["message"])) {
+            echo $_GET["message"];
+        }
+    ?>
+</div>
 
 <h2>
    Správa předmětů

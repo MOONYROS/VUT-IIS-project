@@ -13,6 +13,7 @@ function make_header($title): void
     </head>
     <body>
     <?php
+        
 }
 
 function make_footer() : void

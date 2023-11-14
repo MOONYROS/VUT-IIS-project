@@ -2,6 +2,7 @@
 
 require_once "../services/room_service.php";
 
+
 function loadRoom($ID) {
     $roomService = new roomService();
     $roomInfo = $roomService->getRoomInfo($ID);
