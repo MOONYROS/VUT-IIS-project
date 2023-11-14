@@ -5,13 +5,6 @@ require_once "../common.php";
 
 make_header("Info o predmetu");
 
-function checkSelect($option, $to_check): string {
-    if ($option == $to_check)
-        return "selected";
-    else
-        return "";
-}
-
 $subjectService = new subjectService();
 $infoArray = $subjectService->getSubjectInfo($_GET["zkratka"]);
 ?>

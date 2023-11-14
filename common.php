@@ -22,3 +22,10 @@ function make_footer() : void
     </html>
     <?php
 }
+
+function checkSelect($option, $to_check): string {
+    if ($option == $to_check)
+        return "selected";
+    else
+        return "";
+}
