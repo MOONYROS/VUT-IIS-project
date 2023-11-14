@@ -35,7 +35,7 @@ CREATE TABLE Osoba_predmet (
 );
 
 CREATE TABLE Mistnost (
-	ID_mist varchar(5) NOT NULL,
+	ID_mist varchar(6) NOT NULL,
 	kapacita INT(4) NOT NULL,
 	typ varchar(15) NOT NULL,
 	popis varchar(100) NOT NULL,
@@ -75,6 +75,7 @@ CREATE TABLE Rozvrh_aktivita (
     FOREIGN KEY (ID_Aktiv) REFERENCES Vyuk_aktivita(ID_Aktiv)
 );
 
+# SAMPLOVI UZIVATELE
 -- heslo "admin"
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
 VALUES (1, "admin", "admin", "admin@admin.admin", "$2y$10$krWfrVmZh6PVfES6TeEJWe18dEV8l.ZLvvyEgE0wLvRKcFtYhMhGC", 111111111, "admi");
@@ -95,6 +96,34 @@ VALUES (4, "rozvrhar", "rozvrhar", "rozv@rozv.rozv", "$2y$10$Fw3uu/mQiX3V74XLoKZ
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
 VALUES (5, "garant", "garant", "gara@gara.gara", "$2y$10$yYDldR4XAP3dZ49qCydMmON/lprRgyc2IE/bzrKbYsLHDDXE1QoXq", 987654321, "gara");
 
+# SAMPLOVE PREDMETY
+INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni)
+VALUES ("IZP", "Zaklady programovani", "Predmet o zakladech programovani v jazyce C.", 7, "zazk");
 
+INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni)
+VALUES ("IOS", "Operacni systemy", "Naprosta deadly silenost o tom, jak funguji operacni systemy.", 5, "zazk");
 
+INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni)
+VALUES ("IEL", "Elektronika pro FIT", "Nejaky zaklady o elektronice, rezistory, tranzistory, etc.", 5, "zazk");
 
+INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni)
+VALUES ("HVR", "Vedeni tymu", "Dalsi to-be-banger predmet se Silvii.", 3, "za");
+
+INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni)
+VALUES ("ITU", "Tvorba UI", "Predmet, ktery taky bude naprosta silenost s divnymi pravidly.", 5, "klza");
+
+# SAMPLOVE MISTNOSTI
+INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
+VALUES ("C127.1", 6, "studovna", "Naprosto banger roomka.", "knihovna");
+
+INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
+VALUES ("D105", 380, "poslucharna", "Nejvetsi prednaskovka na celym FITu. Celkem solid.", "u fontany");
+
+INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
+VALUES ("Q202", 8, "pracovna", "Pracovna grafiku z FITu, jako treba gigachada Mileta.", "chodba k menze");
+
+INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
+VALUES ("M202", 1500, "chodba", "Chodba okolo CVT k menze.", "u CVTcka");
+
+INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
+VALUES ("S207", 12, "studovna", "Velka studovna v Sku, kdysi tam byla spatna wifi, tedka uz to celkem jde.", "oddelena budova");
