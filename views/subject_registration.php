@@ -3,6 +3,8 @@ require "../common.php";
 make_header("Registrace predmetu");
 ?>
 
+<?= toMainPage(); ?>
+
 <h2>
     Registrace předmětů
 </h2>

@@ -4,6 +4,8 @@
     make_header("sprava uzivatelu");
 ?>
 
+<?= toMainPage(); ?>
+
 <h2>Registrace uzivatele</h2>
 <form action="../controllers/user_register.php" method="post">
     <label for="jmeno">Jmeno</label>

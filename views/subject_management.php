@@ -3,6 +3,8 @@ require "../common.php";
 make_header("tvorba predmetu");
 ?>
 
+<?= toMainPage(); ?>
+
 <h2>
    Vytvořit předmět
 </h2>

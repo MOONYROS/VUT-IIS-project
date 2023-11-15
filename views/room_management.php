@@ -3,6 +3,8 @@ require "../common.php";
 make_header("správa místností");
 ?>
 
+<?= toMainPage(); ?>
+
 <h2>
     Přidat místnost
 </h2>

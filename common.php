@@ -30,3 +30,7 @@ function checkSelect($option, $to_check): string {
     else
         return "";
 }
+
+function toMainPage(): string {
+    return '<a href="main_page.php">Zpět na hlavní obrazovku</a>';
+}

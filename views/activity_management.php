@@ -3,6 +3,8 @@ require "../common.php";
 make_header("správa výukových aktitit");
 ?>
 
+<?= toMainPage(); ?>
+
 <h2>
     Přidat výukovou aktivitu
 </h2>
