@@ -31,6 +31,17 @@ function checkSelect($option, $to_check): string {
         return "";
 }
 
+function roleName($input): string {
+    return match ($input) {
+        "admi" => "Administrátor",
+        "stud" => "Student",
+        "vyuc" => "Vyučující",
+        "rozv" => "Rozvrhář",
+        "gara" => "Garant",
+        default => $input,
+    };
+}
+
 function toMainPage(): string {
     return '<a href="main_page.php">Zpět na hlavní obrazovku</a>';
 }

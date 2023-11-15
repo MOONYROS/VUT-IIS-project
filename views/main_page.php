@@ -15,7 +15,7 @@ make_header('Hlavní stránka');
 ?>
 
 <h1>Vítejte v systému</h1>
-<p>Přihlášen jako: <b><?php echo htmlspecialchars($user['role']); ?></b></p>
+<p>Přihlášen jako: <b><?= roleName($user['role']); ?></b></p>
 <p>Toto je hlavní stránka. Račte se odnavigovat.</p>
 
 <nav>
