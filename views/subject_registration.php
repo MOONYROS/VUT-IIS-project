@@ -24,3 +24,24 @@ make_header("Registrace predmetu");
     <input type="submit" value="Potvrdit registraci">
 </form>
 
+<h2>
+    Registrovane predmety
+</h2>
+
+<table>
+    <tr>
+        <th>Zkratka</th>
+        <th>Nazev</th>
+        <th>Anotace</th>
+        <th>Pocet kreditu</th>
+        <th>Typ ukonceni</th>
+    </tr>
+    <?php
+    require "../controllers/subject_load.php";
+    global $registeredSubjects;
+    foreach($registeredSubjects as $subject) {
+        echo '<tr>' . loadSubject($subject) . '</tr>';
+    }
+    ?>
+</table>
+
