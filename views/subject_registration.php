@@ -16,7 +16,7 @@ make_header("Registrace predmetu");
     $zkratky = $servis->getSubjectIDs();
     foreach($zkratky as $zkratka) {
         echo '<label for="' . $zkratka . '">' . $zkratka . '</label>
-              <input type="checkbox" id="' . $zkratka . '" name="' . $zkratka . '"><br>';
+              <input type="checkbox" id="' . $zkratka . '" name="' . $zkratka . '" value="'. $zkratka .'"><br>';
     }
     ?>
     <input type="submit" value="Potvrdit registraci">
