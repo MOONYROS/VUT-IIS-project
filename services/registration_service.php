@@ -32,6 +32,7 @@ class registrationService
         }
         catch (PDOException $e) {
             error_log("Nepodarilo se najit predmety uzivatele: " . $e->getMessage());
+            return null;
         }
     }
 
