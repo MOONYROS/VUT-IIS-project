@@ -42,6 +42,16 @@ function roleName($input): string {
     };
 }
 
+function checkRole($targetRole): bool {
+    global $user;
+    if ($user['role'] == $targetRole) {
+        return true;
+    }
+    else {
+        return false;
+    }
+}
+
 function toMainPage(): string {
     return '<a href="main_page.php">Zpět na hlavní obrazovku</a>';
 }
