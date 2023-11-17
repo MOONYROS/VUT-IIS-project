@@ -49,7 +49,7 @@ CREATE TABLE Vyuk_aktivita (
 	delka varchar(10) NOT NULL,
 	popis varchar(100) NOT NULL,
 	opakovani varchar(20) NOT NULL,
-	mistnost varchar(5) NOT NULL,
+	mistnost varchar(6) NOT NULL,
     predmet varchar(3) NOT NULL,
 	PRIMARY KEY (ID_Aktiv),
     FOREIGN KEY (predmet) REFERENCES Predmet(zkratka),
