@@ -1,5 +1,8 @@
 <?php
-require "../common.php";
+require_once "../common.php";
+require_once "../services/room_service.php";
+require_once "../services/subject_service.php";
+
 make_header("správa výukových aktitit");
 ?>
 
@@ -15,13 +18,15 @@ make_header("správa výukových aktitit");
         <option value="prednaska" selected>Prednaska</option>
         <option value="cviceni">Cviceni</option>
         <option value="zkouska">Zkouska</option>
-    </select><br>
+    </select>
+    <br>
 
-    <label for="delka">Delka</label>
+    <label for="delka">Delka v hodinach</label>
     <input type="number" name="delka" id="delka"><br>
 
     <label for="popis">Popis</label>
-    <textarea name="popis" id="popis"></textarea><br>
+    <textarea name="popis" id="popis"></textarea>
+    <br>
 
     <label for="opakovani">Opakovani</label>
     <select id="opakovani" name="opakovani">
@@ -29,13 +34,32 @@ make_header("správa výukových aktitit");
         <option value="KT">Kazdy tyden</option>
         <option value="ST">Sudy tyden</option>
         <option value="LT">Lichy tyden</option>
-    </select><br>
+    </select>
+    <br>
 
     <label for="mistnost">Mistnost</label>
-    <input type="text" name="mistnost" id="mistnost"><br>
+    <select id="mistnost" name="mistnost">
+        <?php
+        $roomService = new roomService();
+        $roomIDs = $roomService->getRoomIDs();
+        foreach ($roomIDs as $ID) {
+            echo "<option value='$ID'>$ID</option>";
+        }
+        ?>
+    </select>
+    <br>
 
     <label for="predmet">Predmet</label>
-    <input type="text" name="predmet" id="predmet"><br>
+    <select id="predmet" name="predmet">
+        <?php
+        $subjectService = new subjectService();
+        $subjectIDs = $subjectService->getSubjectIDs();
+        foreach ($subjectIDs as $ID) {
+            echo "<option value='$ID'>$ID</option>";
+        }
+        ?>
+    </select>
+    <br>
 
     <input type="submit" value="Pridat vyukovou aktivitu">
 </form>
