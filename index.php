@@ -16,6 +16,9 @@
 
     <input type="submit" value="Přihlásit se">
 </form>
+<br>
+
+<a href="views/anotations.php">Vstup bez prihlaseni</a>
 
 <?php
     make_footer();
