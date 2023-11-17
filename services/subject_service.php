@@ -69,14 +69,24 @@ class subjectService {
         }
     }
 
-    function deleteSubject($id) {
+    function deleteSubject($id): string {
         try {
-            $stmt = $this->pdo->prepare("DELETE from Predmet where zkratka = ?");
+            $this->pdo->beginTransaction();
+
+            $stmt = $this->pdo->prepare("DELETE FROM Osoba_predmet WHERE zkratka = ?");
             $stmt->execute(array($id));
-            return "Subject successfully deleted.";
+
+            $stmt = $this->pdo->prepare("DELETE FROM Predmet WHERE zkratka = ?");
+            $stmt->execute(array($id));
+
+            $this->pdo->commit();
+
+            return "Subject successfully deleted from Predmet and Osoba_predmet table.";
         }
         catch (PDOException $e) {
-            error_log("Subject removal not successful:" . $e->getMessage());
+            $this->pdo->rollBack();
+
+            error_log("Subject removal not successful: " . $e->getMessage());
             return "Subject delete failed: " . $e->getMessage();
         }
     }
