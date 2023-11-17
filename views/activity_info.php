@@ -1,6 +1,8 @@
 <?php
 require_once "../controllers/activity_load.php";
 require_once "../services/activity_service.php";
+require_once "../services/room_service.php";
+require_once "../services/subject_service.php";
 require_once "../common.php";
 
 make_header("Info o vyukove aktivite");
@@ -38,11 +40,27 @@ $infoArray = $activityService->getActivityInfo($_GET["ID_Aktiv"]);
     </select><br>
 
     <label for="mistnost">Mistnost</label>
-    <input type="text" name="mistnost" value="<?php if (isset($infoArray["mistnost"])) echo $infoArray['mistnost']; ?>" id="mistnost"/>
+    <select id="mistnost" name="mistnost">
+        <?php
+        $roomService = new roomService();
+        $roomIDs = $roomService->getRoomIDs();
+        foreach ($roomIDs as  $ID) {
+            echo "<option value='$ID' " . checkSelect($ID, $infoArray['mistnost']) . ">$ID</option>";
+        }
+        ?>
+    </select>
     <br>
 
     <label for="predmet">Predmet</label>
-    <input type="text" name="predmet" value="<?php if (isset($infoArray["predmet"])) echo $infoArray['predmet']; ?>" id="predmet"/>
+    <select id="predmet" name="predmet">
+        <?php
+        $subjectService = new subjectService();
+        $subjectIDs = $subjectService->getSubjectIDs();
+        foreach ($subjectIDs as  $ID) {
+            echo "<option value='$ID' " . checkSelect($ID, $infoArray['predmet']) . ">$ID</option>";
+        }
+        ?>
+    </select>
     <br>
 
     <input type="submit" value="Ulozit zmeny">
