@@ -55,6 +55,7 @@ class roomService{
         }
         catch (PDOException $e) {
             error_log("Room not found: " . $e->getMessage());
+            return null;
         }
     }
 
@@ -72,11 +73,21 @@ class roomService{
 
     function deleteRoom($id) {
         try {
+            $this->pdo->beginTransaction();
+
+            $stmt = $this->pdo->prepare("DELETE from Vyuk_aktivita where mistnost = ?");
+            $stmt->execute(array($id));
+
             $stmt = $this->pdo->prepare("DELETE from Mistnost where ID_mist = ?");
             $stmt->execute(array($id));
+
+            $this->pdo->commit();
+
             return "Room successfully deleted.";
         }
         catch (PDOException $e) {
+            $this->pdo->rollBack();
+
             error_log("Room removal not successful:" . $e->getMessage());
             return "Room removal not successfull: " . $e->getMessage();
         }

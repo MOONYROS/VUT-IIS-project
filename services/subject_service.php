@@ -76,12 +76,15 @@ class subjectService {
             $stmt = $this->pdo->prepare("DELETE FROM Osoba_predmet WHERE zkratka = ?");
             $stmt->execute(array($id));
 
+            $stmt = $this->pdo->prepare("DELETE FROM Vyuk_aktivita WHERE predmet = ?");
+            $stmt->execute(array($id));
+
             $stmt = $this->pdo->prepare("DELETE FROM Predmet WHERE zkratka = ?");
             $stmt->execute(array($id));
 
             $this->pdo->commit();
 
-            return "Subject successfully deleted from Predmet and Osoba_predmet table.";
+            return "Subject successfully deleted from Predmet, Osoba_predmet and Vyuk_aktivita table.";
         }
         catch (PDOException $e) {
             $this->pdo->rollBack();
