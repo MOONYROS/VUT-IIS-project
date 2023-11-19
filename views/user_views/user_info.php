@@ -1,7 +1,8 @@
 <?php
-require_once "../common.php";
-require_once "../controllers/user_load.php";
-require_once "../services/user_service.php";
+
+require_once "../../common.php";
+require_once "../../controllers/user_controllers/user_load.php";
+require_once "../../services/user_service.php";
 
 make_header("uprava osoby");
 
@@ -16,7 +17,7 @@ $infoArray = $userService->getUserInfo($_GET["ID"]);
     ?>
 </h2>
 
-<form action="../controllers/user_edit.php" method="post">
+<form action="../../controllers/user_controllers/user_edit.php" method="post">
     <input type="hidden" name="ID_Osoba" value="<?php if (isset($infoArray["ID_Osoba"])) echo $infoArray['ID_Osoba']; ?>"/>
 
     <label for="jmeno">Jmeno</label>
@@ -49,5 +50,5 @@ $infoArray = $userService->getUserInfo($_GET["ID"]);
     </select><br>
 
     <input type="submit" value="Ulozit zmeny">
-    <input type="submit" formaction="../controllers/user_delete.php" value="Smazat uzivatele">
+    <input type="submit" formaction="../../controllers/user_controllers/user_delete.php" value="Smazat uzivatele">
 </form>

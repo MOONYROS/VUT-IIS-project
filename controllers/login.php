@@ -1,7 +1,8 @@
 <?php
 
-require '../common.php';
-require '../services/user_service.php';
+require_once '../common.php';
+require_once "../services/user_service.php";
+
 
 $email = $_POST['email'];
 $heslo = $_POST['heslo'];

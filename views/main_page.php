@@ -13,18 +13,18 @@ $user = $service->getUserById($_SESSION['user_id']);
 
 make_header('Hlavní stránka');
 ?>
-
+<a href="/controllers/logout.php">Odhlásit se</a>
 <h1>Vítejte v systému</h1>
 <p>Přihlášen jako: <b><?= roleName($user['role']); ?></b></p>
 <p>Toto je hlavní stránka. Račte se odnavigovat.</p>
 
 <nav>
     <ul>
-        <li><a href="subject_management.php">Spravovat předměty</a></li>
-        <li><a href="room_management.php">Spravovat místnosti</a></li>
-        <li><a href="user_management.php">Spravovat uživatele</a></li>
-        <li><a href="activity_management.php">Spravovat výukové aktitity</a></li>
-        <li><a href="subject_registration.php">Registrace předmětů</a></li>
+        <li><a href="subject_views/subject_management.php">Spravovat předměty</a></li>
+        <li><a href="room_views/room_management.php">Spravovat místnosti</a></li>
+        <li><a href="user_views/user_management.php">Spravovat uživatele</a></li>
+        <li><a href="activity_views/activity_management.php">Spravovat výukové aktitity</a></li>
+        <li><a href="subject_views/subject_registration.php">Registrace předmětů</a></li>
     </ul>
 </nav>
 

@@ -1,5 +1,9 @@
 <?php
-require "../common.php";
+
+require_once "../../common.php";
+require_once "../../controllers/subject_controllers/subject_load.php";
+require_once "../../services/subject_service.php";
+
 make_header("tvorba predmetu");
 ?>
 
@@ -9,7 +13,7 @@ make_header("tvorba predmetu");
    Vytvořit předmět
 </h2>
 
-<form action="../controllers/subject_create.php" method="post">
+<form action="../../controllers/subject_controllers/subject_create.php" method="post">
     <label for="nazev">Nazev</label>
     <input type="text" name="nazev" id="nazev"><br>
 
@@ -55,8 +59,6 @@ make_header("tvorba predmetu");
             <th>Typ ukonceni</th>
         </tr>
         <?php
-        require_once "../services/subject_service.php";
-        require "../controllers/subject_load.php";
         $servis = new subjectService();
         $zkratky = $servis->getSubjectIDs();
         foreach($zkratky as $zkratka) {

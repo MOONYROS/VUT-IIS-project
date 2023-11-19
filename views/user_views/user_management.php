@@ -1,13 +1,16 @@
 <?php
-    require_once "../common.php";
 
-    make_header("sprava uzivatelu");
+require_once "../../common.php";
+require_once "../../controllers/user_controllers/user_load.php";
+require_once "../../services/user_service.php";
+
+make_header("sprava uzivatelu");
 ?>
 
 <?= toMainPage(); ?>
 
 <h2>Registrace uzivatele</h2>
-<form action="../controllers/user_register.php" method="post">
+<form action="../../controllers/user_controllers/user_register.php" method="post">
     <label for="jmeno">Jmeno</label>
     <input type="text" name="jmeno" id="jmeno"><br>
 
@@ -56,8 +59,7 @@
             <th>Role</th>
         </tr>
         <?php
-        require_once "../services/user_service.php";
-        require "../controllers/user_load.php";
+
         $service = new UserService();
         $userIDs = $service->getUserIDs();
         foreach($userIDs as $ID) {

@@ -1,7 +1,6 @@
 <?php
 
-require_once "../services/room_service.php";
-
+require_once "../../services/room_service.php";
 
 function loadRoom($ID) {
     $roomService = new roomService();
@@ -9,7 +8,7 @@ function loadRoom($ID) {
     $finalValue = "";
     foreach ($roomInfo as $item) {
         if ($finalValue == "") {
-            $finalValue = '<td><a href="../views/room_info.php?ID_mist='. $item . '">' . $item. '</a></td>';
+            $finalValue = '<td><a href="../../views/room_views/room_info.php?ID_mist='. $item . '">' . $item. '</a></td>';
         }
         else {
             $finalValue = $finalValue . '<td>' . $item . '</td>';

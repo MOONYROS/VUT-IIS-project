@@ -1,6 +1,9 @@
 <?php
-require "../common.php";
-require_once "../controllers/check_registered.php";
+
+require_once "../../common.php";
+require_once "../../controllers/subject_controllers/check_registered.php";
+require_once "../../controllers/subject_controllers/subject_load.php";
+require_once "../../services/subject_service.php";
 
 make_header("Registrace predmetu");
 ?>
@@ -11,9 +14,8 @@ make_header("Registrace predmetu");
     Registrace předmětů
 </h2>
 
-<form action="../controllers/register_subjects.php" method="post">
+<form action="../../controllers/subject_controllers/register_subjects.php" method="post">
     <?php
-    require_once "../services/subject_service.php";
     $servis = new subjectService();
     $zkratky = $servis->getSubjectIDs();
     foreach($zkratky as $zkratka) {
@@ -37,7 +39,6 @@ make_header("Registrace predmetu");
         <th>Typ ukonceni</th>
     </tr>
     <?php
-    require "../controllers/subject_load.php";
     global $registeredSubjects;
     foreach($registeredSubjects as $subject) {
         echo '<tr>' . loadSubject($subject) . '</tr>';

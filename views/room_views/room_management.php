@@ -1,5 +1,9 @@
 <?php
-require "../common.php";
+
+require_once "../../common.php";
+require_once "../../controllers/room_controllers/room_load.php";
+require_once "../../services/room_service.php";
+
 make_header("správa místností");
 ?>
 
@@ -9,7 +13,7 @@ make_header("správa místností");
     Přidat místnost
 </h2>
 
-<form action="../controllers/room_create.php" method="post">
+<form action="../../controllers/room_controllers/room_create.php" method="post">
     <label for="ID_mist">Nazev</label>
     <input type="text" name="ID_mist" id="ID_mist"><br>
 
@@ -55,8 +59,7 @@ make_header("správa místností");
             <th>Umisteni</th>
         </tr>
         <?php
-        require_once "../services/room_service.php";
-        require "../controllers/room_load.php";
+
         $servis = new roomService();
         $rooms = $servis->getRoomIDs();
         foreach($rooms as $room) {

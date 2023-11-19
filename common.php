@@ -53,5 +53,5 @@ function checkRole($targetRole): bool {
 }
 
 function toMainPage(): string {
-    return '<a href="main_page.php">Zpět na hlavní obrazovku</a>';
+    return "<a href='/views/main_page.php'>Zpět na hlavní obrazovku</a>";
 }

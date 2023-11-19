@@ -1,9 +1,9 @@
 <?php
-require_once "../controllers/activity_load.php";
-require_once "../services/activity_service.php";
-require_once "../services/room_service.php";
-require_once "../services/subject_service.php";
-require_once "../common.php";
+
+require_once "../../common.php";
+require_once "../../services/activity_service.php";
+require_once "../../services/room_service.php";
+require_once "../../services/subject_service.php";
 
 make_header("Info o vyukove aktivite");
 
@@ -13,7 +13,7 @@ $infoArray = $activityService->getActivityInfo($_GET["ID_Aktiv"]);
 
 <h2>Edit activity: <?php if (isset($infoArray["ID_Aktiv"])) echo $infoArray['ID_Aktiv']; ?></h2>
 
-<form action="../controllers/activity_edit.php" method="post">
+<form action="../../controllers/activity_controllers/activity_edit.php" method="post">
     <input type="hidden" name="ID_Aktiv" value="<?php if (isset($infoArray["ID_Aktiv"])) echo $infoArray['ID_Aktiv']; ?>"/>
 
     <label for="typ">Typ</label>
@@ -64,5 +64,5 @@ $infoArray = $activityService->getActivityInfo($_GET["ID_Aktiv"]);
     <br>
 
     <input type="submit" value="Ulozit zmeny">
-    <input type="submit" formaction="../controllers/activity_delete.php" value="Smazat vyukovou aktivitu">
+    <input type="submit" formaction="../../controllers/activity_controllers/activity_delete.php" value="Smazat vyukovou aktivitu">
 </form>

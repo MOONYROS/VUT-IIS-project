@@ -1,7 +1,8 @@
 <?php
-require_once "../misc/db_conn_parameters.php";
 
-class activityService{
+require_once __DIR__ . "/../misc/db_conn_parameters.php";
+
+class activityService {
 
     private PDO $pdo;
     function __construct()
@@ -15,7 +16,7 @@ class activityService{
         }
     }
 
-    function insertNewActivity($data){
+    function insertNewActivity($data) {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO Vyuk_aktivita(typ, delka, popis, opakovani, mistnost, predmet) VALUES (?, ?, ?, ?, ?, ?)");
             $stmt->execute($data);
@@ -23,13 +24,13 @@ class activityService{
         }
         catch (PDOException $e) {
             error_log("Data input failed:" . $e->getMessage());
-            if(strpos($e->getMessage(), 'mistnost') !== false){
+            if (str_contains($e->getMessage(), 'mistnost')) {
                 return "Activity input failed - neznama mistnost: " . $e->getMessage();
             }
-            elseif(strpos($e->getMessage(), 'predmet') !== false){
+            elseif (str_contains($e->getMessage(), 'predmet')) {
                 return "Activity input failed - neznamy predmet: " . $e->getMessage();
             }
-            else{
+            else {
                 return "Activity input failed: " . $e->getMessage();
             }
         }

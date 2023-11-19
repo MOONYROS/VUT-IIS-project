@@ -1,5 +1,6 @@
 <?php
-require_once "../services/subject_service.php";
+
+require_once "../../services/subject_service.php";
 
 function loadSubject($zkratka) {
     $subjectService = new subjectService();
@@ -7,7 +8,7 @@ function loadSubject($zkratka) {
     $finalValue = "";
     foreach ($subjectInfo as $item) {
         if ($finalValue == "") {
-            $finalValue = '<td><a href="../views/subject_info.php?zkratka='. $item . '">' . $item. '</a></td>';
+            $finalValue = '<td><a href="../../views/subject_views/subject_info.php?zkratka='. $item . '">' . $item. '</a></td>';
         }
         else {
             $finalValue = $finalValue . '<td>' . $item . '</td>';

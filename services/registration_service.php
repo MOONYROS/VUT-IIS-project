@@ -1,5 +1,6 @@
 <?php
-require_once "../misc/db_conn_parameters.php";
+
+require_once __DIR__ . "/../misc/db_conn_parameters.php";
 
 class registrationService
 {

@@ -1,7 +1,8 @@
 <?php
-require_once "../controllers/room_load.php";
-require_once "../services/room_service.php";
-require_once "../common.php";
+
+require_once "../../controllers/room_controllers/room_load.php";
+require_once "../../common.php";
+require_once "../../services/room_service.php";
 
 make_header("Info o mistnosti");
 
@@ -11,7 +12,7 @@ $infoArray = $roomService->getRoomInfo($_GET["ID_mist"]);
 
 <h2>Edit room: <?php if (isset($infoArray["ID_mist"])) echo $infoArray['ID_mist']; ?></h2>
 
-<form action="../controllers/room_edit.php" method="post">
+<form action="../../controllers/room_controllers/room_edit.php" method="post">
     <input type="hidden" name="ID_mist" value="<?php if (isset($infoArray["ID_mist"])) echo $infoArray['ID_mist']; ?>"/>
 
     <label for="kapacita">Kapacita</label>
@@ -35,5 +36,5 @@ $infoArray = $roomService->getRoomInfo($_GET["ID_mist"]);
     <br>
 
     <input type="submit" value="Ulozit zmeny">
-    <input type="submit" formaction="../controllers/room_delete.php" value="Smazat mistnost">
+    <input type="submit" formaction="../../controllers/room_controllers/room_delete.php" value="Smazat mistnost">
 </form>

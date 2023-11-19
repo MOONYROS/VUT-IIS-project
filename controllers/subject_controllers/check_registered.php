@@ -1,5 +1,6 @@
 <?php
-require_once "../services/registration_service.php";
+
+require_once "../../services/registration_service.php";
 
 $registrationService = new registrationService();
 $registeredSubjects = $registrationService->retrieveRegistered($_SESSION['user_id']);

@@ -1,7 +1,11 @@
 <?php
-require_once "../common.php";
-require_once "../services/room_service.php";
-require_once "../services/subject_service.php";
+
+require_once "../../common.php";
+require_once "../../controllers/activity_controllers/activity_load.php";
+require_once "../../services/activity_service.php";
+require_once "../../services/room_service.php";
+require_once "../../services/subject_service.php";
+
 
 make_header("správa výukových aktitit");
 ?>
@@ -12,7 +16,7 @@ make_header("správa výukových aktitit");
     Přidat výukovou aktivitu
 </h2>
 
-<form action="../controllers/activity_create.php" method="post">
+<form action="../../controllers/activity_controllers/activity_create.php" method="post">
     <label for="typ">Typ</label>
     <select id="typ" name="typ">
         <option value="prednaska" selected>Prednaska</option>
@@ -88,8 +92,6 @@ make_header("správa výukových aktitit");
             <th>Predmet</th>
         </tr>
         <?php
-        require_once "../services/activity_service.php";
-        require "../controllers/activity_load.php";
         $servis = new activityService();
         $activities = $servis->getActivityIDs();
         foreach($activities as $activity) {

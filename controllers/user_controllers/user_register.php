@@ -1,6 +1,6 @@
 <?php
 
-require "../services/user_service.php";
+require_once "../../services/user_service.php";
 
 $requiredFields = array("jmeno", "prijmeni", "email", "heslo", "telefon", "role");
 $toInsert = array();
@@ -16,4 +16,4 @@ foreach($requiredFields as $field) {
 
 $service = new UserService();
 $message = $service->insertNewUser($toInsert);
-header("Location: ../views/user_management.php?message=$message");
+header("Location: ../../views/user_views/user_management.php?message=$message");
