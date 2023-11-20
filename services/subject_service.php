@@ -90,4 +90,16 @@ class subjectService {
             return "Subject delete failed: " . $e->getMessage();
         }
     }
+
+    function getGarantedSubjects($ID) {
+        try {
+            $stmt = $this->pdo->prepare("SELECT zkratka FROM Predmet WHERE garant = ?");
+            $stmt->execute(array($ID));
+            return $stmt->fetchAll();
+        }
+        catch (PDOException $e) {
+            error_log("Could not get subjects garanted by $ID: " . $e->getMessage());
+            return null;
+        }
+    }
 }

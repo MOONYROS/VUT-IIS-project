@@ -6,6 +6,8 @@ require_once "../../services/activity_service.php";
 require_once "../../services/room_service.php";
 require_once "../../services/subject_service.php";
 
+$subjectService = new subjectService();
+$subjects = $subjectService->getGarantedSubjects($_SESSION['user_id']);
 
 make_header("správa výukových aktitit");
 ?>
@@ -56,10 +58,8 @@ make_header("správa výukových aktitit");
     <label for="predmet">Predmet</label>
     <select id="predmet" name="predmet">
         <?php
-        $subjectService = new subjectService();
-        $subjectIDs = $subjectService->getSubjectIDs();
-        foreach ($subjectIDs as $ID) {
-            echo "<option value='$ID'>$ID</option>";
+        foreach ($subjects as $subject) {
+            echo "<option value='" . $subject['zkratka'] . "'>" . $subject['zkratka'] . "</option>";
         }
         ?>
     </select>
@@ -93,9 +93,12 @@ make_header("správa výukových aktitit");
         </tr>
         <?php
         $servis = new activityService();
-        $activities = $servis->getActivityIDs();
-        foreach($activities as $activity) {
-            echo '<tr>' . loadActivity($activity) . '</tr>';
+        $activities = array();
+        foreach ($subjects as $subject){
+            $activities = $servis->getActivityIDs($subject['zkratka']);
+            foreach($activities as $activity) {
+                echo '<tr>' . loadActivity($activity) . '</tr>';
+            }
         }
         ?>
     </table>

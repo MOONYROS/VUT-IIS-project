@@ -7,6 +7,12 @@ require_once "../../services/subject_service.php";
 
 make_header("Info o vyukove aktivite");
 
+$subjectService = new subjectService();
+$subjects = $subjectService->getGarantedSubjects($_SESSION['user_id']);
+
+$roomService = new roomService();
+$roomIDs = $roomService->getRoomIDs();
+
 $activityService = new activityService();
 $infoArray = $activityService->getActivityInfo($_GET["ID_Aktiv"]);
 ?>
@@ -42,8 +48,6 @@ $infoArray = $activityService->getActivityInfo($_GET["ID_Aktiv"]);
     <label for="mistnost">Mistnost</label>
     <select id="mistnost" name="mistnost">
         <?php
-        $roomService = new roomService();
-        $roomIDs = $roomService->getRoomIDs();
         foreach ($roomIDs as  $ID) {
             echo "<option value='$ID' " . checkSelect($ID, $infoArray['mistnost']) . ">$ID</option>";
         }
@@ -54,10 +58,8 @@ $infoArray = $activityService->getActivityInfo($_GET["ID_Aktiv"]);
     <label for="predmet">Predmet</label>
     <select id="predmet" name="predmet">
         <?php
-        $subjectService = new subjectService();
-        $subjectIDs = $subjectService->getSubjectIDs();
-        foreach ($subjectIDs as  $ID) {
-            echo "<option value='$ID' " . checkSelect($ID, $infoArray['predmet']) . ">$ID</option>";
+        foreach ($subjects as $subject) {
+            echo "<option value='" . $subject['zkratka'] . "'>" . $subject['zkratka'] . "</option>";
         }
         ?>
     </select>

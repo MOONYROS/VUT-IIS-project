@@ -56,10 +56,10 @@ class activityService {
         }
     }
 
-    function getActivityIDs(){
+    function getActivityIDs($zkratka){
         try {
-            $stmt = $this->pdo->prepare("SELECT ID_Aktiv FROM Vyuk_aktivita");
-            $stmt->execute();
+            $stmt = $this->pdo->prepare("SELECT ID_Aktiv FROM Vyuk_aktivita WHERE predmet = ?");
+            $stmt->execute(array($zkratka));
             $subjectArray = array();
             while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
                 $subjectArray[] = $row['ID_Aktiv'];
@@ -68,6 +68,7 @@ class activityService {
         }
         catch (PDOException $e) {
             error_log("Activity not found: " . $e->getMessage());
+            return null;
         }
     }
 
@@ -88,6 +89,18 @@ class activityService {
             $stmt = $this->pdo->prepare("DELETE from Vyuk_aktivita where ID_Aktiv = ?");
             $stmt->execute(array($id));
             return "Activity successfully deleted.";
+        }
+        catch (PDOException $e) {
+            error_log("Activity removal not successful:" . $e->getMessage());
+            return "Activity removal not successfull: " . $e->getMessage();
+        }
+    }
+
+    function getGarantedActivities($zkratka) {
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM Vyuk_aktivita WHERE predmet = ?");
+            $stmt->execute(array($zkratka));
+            return $stmt->fetchAll();
         }
         catch (PDOException $e) {
             error_log("Activity removal not successful:" . $e->getMessage());
