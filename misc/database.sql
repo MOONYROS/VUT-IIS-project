@@ -3,17 +3,17 @@ DROP TABLE Rozvrh_aktivita;
 DROP TABLE Vyuk_aktivita;
 DROP TABLE Mistnost;
 DROP TABLE Rozvrh;
-DROP TABLE Osoba;
 DROP TABLE Predmet;
+DROP TABLE Osoba;
 
 CREATE TABLE Osoba (
 	ID_Osoba INT(5) NOT NULL AUTO_INCREMENT,
 	jmeno varchar(15) NOT NULL,
 	prijmeni varchar(15) NOT NULL,
-	email varchar(20) NOT NULL,
+	email varchar(50) NOT NULL,
     heslo varchar(255) NOT NULL, -- Ideal password length by the documentation
 	telefon INT(9) NOT NULL,
-    role varchar(4) NOT NULL, -- ADMI, STUD, ROZV, GARA, VYUC
+    role varchar(4) NOT NULL, -- ADMI, STUD, ROZV, VYUC
 	PRIMARY KEY (ID_Osoba)
 );
 
@@ -23,7 +23,9 @@ CREATE TABLE Predmet (
 	anotace varchar(200) NOT NULL,
 	pocet_kreditu INT(1) NOT NULL,
 	typ_ukonceni varchar(6) NOT NULL,
-	PRIMARY KEY (zkratka)
+    garant int(5) NOT NULL,
+	PRIMARY KEY (zkratka),
+    FOREIGN KEY (garant) REFERENCES Osoba(ID_Osoba)
 );
 
 CREATE TABLE Osoba_predmet (
@@ -40,7 +42,7 @@ CREATE TABLE Mistnost (
 	typ varchar(15) NOT NULL,
 	popis varchar(100) NOT NULL,
 	umisteni varchar(20) NOT NULL,
-	PRIMARY KEY (`ID_mist`)
+	PRIMARY KEY (ID_mist)
 );
 
 CREATE TABLE Vyuk_aktivita (
@@ -78,39 +80,39 @@ CREATE TABLE Rozvrh_aktivita (
 # SAMPLOVI UZIVATELE
 -- heslo 'admin'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
-VALUES (1, 'admin', 'admin', 'admin@admin.admin', '$2y$10$krWfrVmZh6PVfES6TeEJWe18dEV8l.ZLvvyEgE0wLvRKcFtYhMhGC', 111111111, 'admi');
+VALUES (1, 'admin', 'adminovaty', 'admin@admin.admin', '$2y$10$krWfrVmZh6PVfES6TeEJWe18dEV8l.ZLvvyEgE0wLvRKcFtYhMhGC', 111111111, 'admi');
 
 -- heslo 'student'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
-VALUES (2, 'student', 'student', 'stud@stud.stud', '$2y$10$.7uByVdYNUtMT6zWvIvLYeL1tXWLnV17JBE.a9lq6Y.ChTjtMD3Z6', 123123123, 'stud');
+VALUES (2, 'student', 'studentsky', 'stud@stud.stud', '$2y$10$.7uByVdYNUtMT6zWvIvLYeL1tXWLnV17JBE.a9lq6Y.ChTjtMD3Z6', 123123123, 'stud');
 
 -- heslo 'vyucujici'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
-VALUES (3, 'vyucujici', 'vyucujici', 'vyuc@vyuc.vyuc', '$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS', 123412341, 'vyuc');
+VALUES (3, 'vyucujici', 'Mucici', 'vyuc@vyuc.vyuc', '$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS', 123412341, 'vyuc');
+
+-- heslo 'vyucujici'
+INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
+VALUES (4, 'Doktor', 'Doktorsky', 'vyucitel@vyucitel.vyuc', '$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS', 123412341, 'vyuc');
 
 -- heslo 'rozvrhar'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
-VALUES (4, 'rozvrhar', 'rozvrhar', 'rozv@rozv.rozv', '$2y$10$Fw3uu/mQiX3V74XLoKZZguCjggMITIOIxSJC2JFysCrF2EAPUcxLO', 123456789, 'rozv');
-
--- heslo 'garant'
-INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
-VALUES (5, 'garant', 'garant', 'gara@gara.gara', '$2y$10$yYDldR4XAP3dZ49qCydMmON/lprRgyc2IE/bzrKbYsLHDDXE1QoXq', 987654321, 'gara');
+VALUES (5, 'rozvrhar', 'rozvrzeny', 'rozv@rozv.rozv', '$2y$10$Fw3uu/mQiX3V74XLoKZZguCjggMITIOIxSJC2JFysCrF2EAPUcxLO', 123456789, 'rozv');
 
 # SAMPLOVE PREDMETY
-INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni)
-VALUES ('IZP', 'Zaklady programovani', 'Predmet o zakladech programovani v jazyce C.', 7, 'zazk');
+INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni, garant)
+VALUES ('IZP', 'Zaklady programovani', 'Predmet o zakladech programovani v jazyce C.', 7, 'zazk', 3);
 
-INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni)
-VALUES ('IOS', 'Operacni systemy', 'Naprosta deadly silenost o tom, jak funguji operacni systemy.', 5, 'zazk');
+INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni, garant)
+VALUES ('IOS', 'Operacni systemy', 'Naprosta deadly silenost o tom, jak funguji operacni systemy.', 5, 'zazk', 3);
 
-INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni)
-VALUES ('IEL', 'Elektronika pro FIT', 'Nejaky zaklady o elektronice, rezistory, tranzistory, etc.', 5, 'zazk');
+INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni, garant)
+VALUES ('IEL', 'Elektronika pro FIT', 'Nejaky zaklady o elektronice, rezistory, tranzistory, etc.', 5, 'zazk', 4);
 
-INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni)
-VALUES ('HVR', 'Vedeni tymu', 'Dalsi to-be-banger predmet se Silvii.', 3, 'za');
+INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni, garant)
+VALUES ('HVR', 'Vedeni tymu', 'Dalsi to-be-banger predmet se Silvii.', 3, 'za', 4);
 
-INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni)
-VALUES ('ITU', 'Tvorba UI', 'Predmet, ktery taky bude naprosta silenost s divnymi pravidly.', 5, 'klza');
+INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni, garant)
+VALUES ('ITU', 'Tvorba UI', 'Predmet, ktery taky bude naprosta silenost s divnymi pravidly.', 5, 'klza', 3);
 
 # SAMPLOVE MISTNOSTI
 INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)

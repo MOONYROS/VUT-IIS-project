@@ -2,7 +2,7 @@
 
 require_once "../../services/subject_service.php";
 
-$requiredFields = array("nazev", "anotace", "pocet_kreditu", "typ_ukonceni", "zkratka");
+$requiredFields = array("nazev", "anotace", "pocet_kreditu", "typ_ukonceni", "garant",  "zkratka");
 $toInsert = array();
 
 foreach($requiredFields as $field) {

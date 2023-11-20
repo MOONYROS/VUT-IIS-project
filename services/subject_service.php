@@ -17,7 +17,7 @@ class subjectService {
 
     function insertNewSubject($data) {
         try {
-            $stmt = $this->pdo->prepare("INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni) VALUES (?, ?, ?, ?, ?)");
+            $stmt = $this->pdo->prepare("INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni, garant) VALUES (?, ?, ?, ?, ?, ?)");
             $stmt->execute($data);
             return "Subject successfully added.";
         }
@@ -29,7 +29,7 @@ class subjectService {
 
     function updateSubject($data) {
         try {
-            $stmt = $this->pdo->prepare("UPDATE Predmet SET nazev = ?, anotace = ?, pocet_kreditu = ?, typ_ukonceni = ? WHERE zkratka = ?");
+            $stmt = $this->pdo->prepare("UPDATE Predmet SET nazev = ?, anotace = ?, pocet_kreditu = ?, typ_ukonceni = ?, garant = ? WHERE zkratka = ?");
             $stmt->execute($data);
             return "Subject successfully edited.";
         }

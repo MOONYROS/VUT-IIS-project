@@ -71,6 +71,18 @@ class UserService {
         }
     }
 
+    function getUsersByRole($role) {
+        try {
+            $stmt = $this->pdo->prepare("SELECT ID_Osoba, jmeno, prijmeni FROM Osoba WHERE role = ?");
+            $stmt->execute(array($role));
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            error_log("Chyba při načítání informací o uživatelech $role: " . $e->getMessage());
+            return null;
+        }
+    }
+
     function getUserIDs(): array|string
     {
         try {
