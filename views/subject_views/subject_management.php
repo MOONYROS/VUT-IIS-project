@@ -70,6 +70,7 @@ make_header("tvorba predmetu");
             <th>Anotace</th>
             <th>Pocet kreditu</th>
             <th>Typ ukonceni</th>
+            <th>ID Garanta</th>
         </tr>
         <?php
         $servis = new subjectService();
