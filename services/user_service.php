@@ -122,4 +122,17 @@ class UserService {
             return "Error when deleting user:" . $e->getMessage();
         }
     }
+
+    function getRole($ID) {
+        try {
+            $stmt = $this->pdo->prepare("SELECT role FROM Osoba WHERE ID_Osoba = ?");
+            $stmt->execute(array($ID));
+            $output = $stmt->fetch(PDO::FETCH_ASSOC);
+            return $output['role'];
+        }
+        catch (PDOException $e) {
+            error_log("Fetch of user role unsuccessful: " . $e->getMessage());
+            return null;
+        }
+    }
 }

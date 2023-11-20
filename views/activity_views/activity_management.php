@@ -5,9 +5,16 @@ require_once "../../controllers/activity_controllers/activity_load.php";
 require_once "../../services/activity_service.php";
 require_once "../../services/room_service.php";
 require_once "../../services/subject_service.php";
+require_once "../../services/user_service.php";
+
+$userService = new UserService();
+$isAdmin = false;
+
+if ($userService->getRole($_SESSION['user_id']) == 'admi') {
+    $isAdmin = true;
+}
 
 $subjectService = new subjectService();
-$subjects = $subjectService->getGarantedSubjects($_SESSION['user_id']);
 
 make_header("správa výukových aktitit");
 ?>
@@ -58,8 +65,17 @@ make_header("správa výukových aktitit");
     <label for="predmet">Predmet</label>
     <select id="predmet" name="predmet">
         <?php
-        foreach ($subjects as $subject) {
-            echo "<option value='" . $subject['zkratka'] . "'>" . $subject['zkratka'] . "</option>";
+        if ($isAdmin) {
+            $subjects = $subjectService->getSubjectIDs();
+            foreach ($subjects as $subject) {
+                echo "<option value='" . $subject . "'>" . $subject . "</option>";
+            }
+        }
+        else {
+            $subjects = $subjectService->getGarantedSubjects($_SESSION['user_id']);
+            foreach ($subjects as $subject) {
+                echo "<option value='" . $subject['zkratka'] . "'>" . $subject['zkratka'] . "</option>";
+            }
         }
         ?>
     </select>
@@ -95,9 +111,17 @@ make_header("správa výukových aktitit");
         $servis = new activityService();
         $activities = array();
         foreach ($subjects as $subject){
-            $activities = $servis->getActivityIDs($subject['zkratka']);
-            foreach($activities as $activity) {
-                echo '<tr>' . loadActivity($activity) . '</tr>';
+            if ($isAdmin) {
+                $activities = $servis->getActivityIDs($subject);
+                foreach($activities as $activity) {
+                    echo '<tr>' . loadActivity($activity) . '</tr>';
+                }
+            }
+            else {
+                $activities = $servis->getActivityIDs($subject['zkratka']);
+                foreach($activities as $activity) {
+                    echo '<tr>' . loadActivity($activity) . '</tr>';
+                }
             }
         }
         ?>

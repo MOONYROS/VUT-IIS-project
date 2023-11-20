@@ -4,8 +4,7 @@ require_once "../../common.php";
 require_once "../../services/activity_service.php";
 require_once "../../services/room_service.php";
 require_once "../../services/subject_service.php";
-
-make_header("Info o vyukove aktivite");
+require_once "../../services/user_service.php";
 
 $subjectService = new subjectService();
 $subjects = $subjectService->getGarantedSubjects($_SESSION['user_id']);
@@ -15,6 +14,16 @@ $roomIDs = $roomService->getRoomIDs();
 
 $activityService = new activityService();
 $infoArray = $activityService->getActivityInfo($_GET["ID_Aktiv"]);
+
+$isAdmin = false;
+
+$userService = new UserService();
+if ($userService->getRole($_SESSION['user_id']) == 'admi') {
+    $isAdmin = true;
+}
+
+make_header("Info o vyukove aktivite");
+
 ?>
 
 <h2>Edit activity: <?php if (isset($infoArray["ID_Aktiv"])) echo $infoArray['ID_Aktiv']; ?></h2>
@@ -58,8 +67,17 @@ $infoArray = $activityService->getActivityInfo($_GET["ID_Aktiv"]);
     <label for="predmet">Predmet</label>
     <select id="predmet" name="predmet">
         <?php
-        foreach ($subjects as $subject) {
-            echo "<option value='" . $subject['zkratka'] . "'>" . $subject['zkratka'] . "</option>";
+        if ($isAdmin) {
+            $subjects = $subjectService->getSubjectIDs();
+            foreach ($subjects as $subject) {
+                echo "<option value='" . $subject . "'>" . $subject . "</option>";
+            }
+        }
+        else {
+            $subjects = $subjectService->getGarantedSubjects($_SESSION['user_id']);
+            foreach ($subjects as $subject) {
+                echo "<option value='" . $subject['zkratka'] . "'>" . $subject['zkratka'] . "</option>";
+            }
         }
         ?>
     </select>
