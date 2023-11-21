@@ -7,6 +7,7 @@ function loadAdmin() {
         <li><a href="/views/user_views/user_management.php">Spravovat uživatele</a></li>
         <li><a href="/views/activity_views/activity_management.php">Spravovat výukové aktitity</a></li>
         <li><a href="/views/subject_views/subject_registration.php">Registrace předmětů</a></li>
+        <li><a href="/views/scheduler_views/schedule_activities.php">Zarazeni aktivit</a></li>
     </ul>';
 }
 

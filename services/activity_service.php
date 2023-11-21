@@ -107,4 +107,16 @@ class activityService {
             return "Activity removal not successfull: " . $e->getMessage();
         }
     }
+
+    function getAllActivities() {
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM Vyuk_aktivita");
+            $stmt->execute();
+            return $stmt->fetchAll();
+        }
+        catch (PDOException $e) {
+            error_log("Could not load activities: " . $e->getMessage());
+            return "Could not load activities:  " . $e->getMessage();
+        }
+    }
 }
