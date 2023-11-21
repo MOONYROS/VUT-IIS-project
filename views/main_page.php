@@ -1,6 +1,7 @@
 <?php
-require '../common.php';
-require '../services/user_service.php';
+require_once '../common.php';
+require_once '../services/user_service.php';
+require_once '../controllers/main_page_controller.php';
 
 // Zde můžete přidat ověření, zda je uživatel přihlášen
 if (!isset($_SESSION['user_id'])) {
@@ -19,13 +20,23 @@ make_header('Hlavní stránka');
 <p>Toto je hlavní stránka. Račte se odnavigovat.</p>
 
 <nav>
-    <ul>
-        <li><a href="subject_views/subject_management.php">Spravovat předměty</a></li>
-        <li><a href="room_views/room_management.php">Spravovat místnosti</a></li>
-        <li><a href="user_views/user_management.php">Spravovat uživatele</a></li>
-        <li><a href="activity_views/activity_management.php">Spravovat výukové aktitity</a></li>
-        <li><a href="subject_views/subject_registration.php">Registrace předmětů</a></li>
-    </ul>
+    <?php
+    switch ($user["role"]) {
+        case "admi": {
+           echo loadAdmin();
+           break;
+        }
+        case "stud": {
+            break;
+        }
+        case "vyuc": {
+            break;
+        }
+        default: {
+            break;
+        }
+    }
+    ?>
 </nav>
 
 <?php
