@@ -50,9 +50,11 @@ CREATE TABLE Vyuk_aktivita (
 	typ varchar(10) NOT NULL,
 	delka varchar(10) NOT NULL,
 	popis varchar(100) NOT NULL,
+    pozadavek varchar(200),
 	opakovani varchar(20) NOT NULL,
-	mistnost varchar(6) NOT NULL,
+	mistnost varchar(6),
     predmet varchar(3) NOT NULL,
+    start int(2),
 	PRIMARY KEY (ID_Aktiv),
     FOREIGN KEY (predmet) REFERENCES Predmet(zkratka),
     FOREIGN KEY (mistnost) REFERENCES Mistnost(ID_mist)

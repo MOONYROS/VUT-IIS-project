@@ -50,16 +50,18 @@ make_header("správa výukových aktitit");
     </select>
     <br>
 
-    <label for="mistnost">Mistnost</label>
-    <select id="mistnost" name="mistnost">
-        <?php
-        $roomService = new roomService();
-        $roomIDs = $roomService->getRoomIDs();
-        foreach ($roomIDs as $ID) {
-            echo "<option value='$ID'>$ID</option>";
-        }
-        ?>
-    </select>
+<!--    <label for="mistnost">Mistnost</label>-->
+<!--    <select id="mistnost" name="mistnost">-->
+<!--        --><?php
+//        $roomService = new roomService();
+//        $roomIDs = $roomService->getRoomIDs();
+//        foreach ($roomIDs as $ID) {
+//            echo "<option value='$ID'>$ID</option>";
+//        }
+//        ?>
+<!--    </select>-->
+    <label for="pozadavek">Pozadavek</label>
+    <textarea name="pozadavek" id="pozadavek"></textarea>
     <br>
 
     <label for="predmet">Predmet</label>
@@ -103,9 +105,11 @@ make_header("správa výukových aktitit");
             <th>Typ</th>
             <th>Delka</th>
             <th>Popis</th>
+            <th>Pozadavek</th>
             <th>Opakovani</th>
             <th>Mistnost</th>
             <th>Predmet</th>
+            <th>Start</th>
         </tr>
         <?php
         $servis = new activityService();

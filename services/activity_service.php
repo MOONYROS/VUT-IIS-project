@@ -18,7 +18,7 @@ class activityService {
 
     function insertNewActivity($data) {
         try {
-            $stmt = $this->pdo->prepare("INSERT INTO Vyuk_aktivita(typ, delka, popis, opakovani, mistnost, predmet) VALUES (?, ?, ?, ?, ?, ?)");
+            $stmt = $this->pdo->prepare("INSERT INTO Vyuk_aktivita(typ, delka, popis, opakovani, pozadavek, predmet) VALUES (?, ?, ?, ?, ?, ?)");
             $stmt->execute($data);
             return "Activity successfully added";
         }
@@ -38,7 +38,7 @@ class activityService {
 
     function updateActivity($data){
         try {
-            $stmt = $this->pdo->prepare("UPDATE Vyuk_aktivita SET  typ = ?, delka = ?, popis = ?, opakovani = ?, mistnost = ?, predmet = ? WHERE ID_Aktiv = ?");
+            $stmt = $this->pdo->prepare("UPDATE Vyuk_aktivita SET  typ = ?, delka = ?, popis = ?, opakovani = ?, pozadavek = ?, predmet = ? WHERE ID_Aktiv = ?");
             $stmt->execute($data);
             return "Activity info successfully updated";
         }

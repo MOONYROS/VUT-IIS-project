@@ -2,7 +2,7 @@
 
 require_once "../../services/activity_service.php";
 
-$requiredFields = array("typ", "delka", "popis", "opakovani", "mistnost", "predmet");
+$requiredFields = array("typ", "delka", "popis", "opakovani", "pozadavek", "predmet");
 $toInsert = array();
 
 foreach($requiredFields as $field) {

@@ -54,14 +54,16 @@ make_header("Info o vyukove aktivite");
         <option value="LT" <?php if (isset($infoArray["typ"])) echo checkSelect("LT", $infoArray['typ']) ?>>Lichy tyden</option>
     </select><br>
 
-    <label for="mistnost">Mistnost</label>
-    <select id="mistnost" name="mistnost">
-        <?php
-        foreach ($roomIDs as  $ID) {
-            echo "<option value='$ID' " . checkSelect($ID, $infoArray['mistnost']) . ">$ID</option>";
-        }
-        ?>
-    </select>
+<!--    <label for="mistnost">Mistnost</label>-->
+<!--    <select id="mistnost" name="mistnost">-->
+<!--        --><?php
+//        foreach ($roomIDs as  $ID) {
+//            echo "<option value='$ID' " . checkSelect($ID, $infoArray['mistnost']) . ">$ID</option>";
+//        }
+//        ?>
+<!--    </select>-->
+    <label for="pozadavek"></label>
+    <textarea name="pozadavek" id="pozadavek"><?= $infoArray['pozadavek']; ?></textarea>
     <br>
 
     <label for="predmet">Predmet</label>
