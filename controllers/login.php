@@ -7,7 +7,7 @@ require_once "../services/user_service.php";
 $email = $_POST['email'];
 $heslo = $_POST['heslo'];
 
-$service = new UserService();
+$service = new userService();
 $user = $service->verifyLogin($email, $heslo);
 
 if ($user) {

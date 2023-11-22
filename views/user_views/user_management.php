@@ -60,7 +60,7 @@ make_header("sprava uzivatelu");
         </tr>
         <?php
 
-        $service = new UserService();
+        $service = new userService();
         $userIDs = $service->getUserIDs();
         foreach($userIDs as $ID) {
             echo '<tr>' . loadUser($ID) . '</tr>';

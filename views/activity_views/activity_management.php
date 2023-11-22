@@ -7,7 +7,7 @@ require_once "../../services/room_service.php";
 require_once "../../services/subject_service.php";
 require_once "../../services/user_service.php";
 
-$userService = new UserService();
+$userService = new userService();
 $isAdmin = false;
 
 if ($userService->getRole($_SESSION['user_id']) == 'admi') {

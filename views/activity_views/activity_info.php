@@ -17,7 +17,7 @@ $infoArray = $activityService->getActivityInfo($_GET["ID_Aktiv"]);
 
 $isAdmin = false;
 
-$userService = new UserService();
+$userService = new userService();
 if ($userService->getRole($_SESSION['user_id']) == 'admi') {
     $isAdmin = true;
 }

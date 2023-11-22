@@ -9,7 +9,7 @@ if (!isset($_SESSION['user_id'])) {
     exit;
 }
 
-$service = new UserService();
+$service = new userService();
 $user = $service->getUserById($_SESSION['user_id']);
 
 make_header('Hlavní stránka');

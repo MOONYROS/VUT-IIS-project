@@ -38,7 +38,7 @@ make_header("tvorba predmetu");
     <label for="garant">Garant</label>
     <select name="garant" id="garant">
         <?php
-        $userService = new UserService();
+        $userService = new userService();
         $users = $userService->getUsersByRole("vyuc");
         foreach ($users as $user) {
             echo '<option value="' . $user['ID_Osoba'] . '">' . $user['jmeno'] . " " . $user['prijmeni'] . '</option>';

@@ -2,7 +2,7 @@
 
 require_once __DIR__ . "/../misc/db_conn_parameters.php";
 
-class UserService {
+class userService {
     private PDO $pdo;
     function __construct()
     {

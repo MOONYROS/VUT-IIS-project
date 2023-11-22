@@ -5,7 +5,7 @@ require_once "../../services/user_service.php";
 
 function loadUser($ID): string
 {
-    $accountService = new UserService();
+    $accountService = new userService();
     $userInfo = $accountService->getUserInfo($ID);
     $fullName = '<td><a href="../../views/user_views/user_info.php?ID='. $userInfo['ID_Osoba'] .'">' . $userInfo['prijmeni'] . ' ' . $userInfo['jmeno'] . '</a></td>';
     $email = '<td>' . $userInfo['email'] . '</td>';

@@ -14,6 +14,6 @@ foreach($requiredFields as $field) {
     }
 }
 
-$service = new UserService();
+$service = new userService();
 $message = $service->updateUser($toInsert);
 header("Location: ../../views/user_views/user_management.php?message=$message");

@@ -6,7 +6,7 @@ require_once "../../services/user_service.php";
 
 make_header("uprava osoby");
 
-$userService = new UserService();
+$userService = new userService();
 $infoArray = $userService->getUserInfo($_GET["ID"]);
 ?>
 
