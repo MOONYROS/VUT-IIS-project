@@ -18,6 +18,8 @@ if ($user) {
 }
 else {
     // Přihlášení selhalo, vrátit zpět na přihlašovací stránku s chybovou zprávou
-    header("Location: ../index.php?error=1");
+    $email = urlencode($_POST["email"]);
+    $message = urlencode("Přihlášení selhalo.");
+    header("Location: ../index.php?error=1&email={$email}&message={$message}");
     exit;
 }
