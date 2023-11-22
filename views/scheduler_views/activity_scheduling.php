@@ -15,6 +15,13 @@ $rooms = $roomService->getRoomIDs();
 
 ?>
 
+<script src="../../controllers/scheduler_controllers/activity_save_form_values.js"></script>
+
+<!-- THIS PART OF CODE IS CREATED DUE TO TRANSFER TO JAVASCRIPT-->
+<input type="hidden" id="tryMistnost" value="<?= isset($activity['mistnost']) ? $activity['mistnost'] : ''; ?>">
+<input type="hidden" id="tryDen" value="<?= isset($activity['den']) ? $activity['den'] : ''; ?>">
+<input type="hidden" id="tryStart" value="<?= isset($activity['start']) ? $activity['start'] : ''; ?>">
+
 <h1>
     Zařadit výukovou aktivitu
 </h1>
@@ -71,7 +78,7 @@ $rooms = $roomService->getRoomIDs();
     Rozvrh místností a dnů
 </h2>
 
-<form method="post">
+<form method="post" onclick="saveFormValues()">
     <label for="selectedRoom">Místnost:</label>
     <select name="selectedRoom" id="selectedRoom">
         <?php foreach ($rooms as $room) {
