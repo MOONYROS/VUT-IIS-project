@@ -44,7 +44,7 @@ $rooms = $roomService->getRoomIDs();
     <select name="mistnost" id="mistnost">
         <?php
         foreach ($rooms as $room) {
-            echo '<option value="'. $room .'">' . $room .'</option>';
+            echo '<option value="'. $room .'"' . checkSelect($room, $activity['mistnost']) . '>' . $room .'</option>';
         }
         ?>
     </select>
@@ -52,16 +52,16 @@ $rooms = $roomService->getRoomIDs();
 
     <label for="den">Den</label>
     <select name="den" id="den">
-        <option value="PO">Pondělí</option>
-        <option value="UT">Úterý</option>
-        <option value="ST">Středa</option>
-        <option value="CT">Čtvrtek</option>
-        <option value="PA">Pátek</option>
+        <option value="PO" <?= checkSelect("PO", $activity['den']) ?>>Pondělí</option>
+        <option value="UT" <?= checkSelect("UT", $activity['den']) ?>>Úterý</option>
+        <option value="ST" <?= checkSelect("ST", $activity['den']) ?>>Středa</option>
+        <option value="CT" <?= checkSelect("CT", $activity['den']) ?>>Čtvrtek</option>
+        <option value="PA" <?= checkSelect("PA", $activity['den']) ?>>Pátek</option>
     </select>
     <br>
 
     <label for="start">Začátek</label>
-    <input type="number" min="8" max="20" name="start" id="start" />
+    <input type="number" min="8" max="20" name="start" id="start" value="<?php if (isset($activity['start'])) {echo $activity['start'];}  ?>" />
     <br>
 
     <input type="submit" value="Potvrdit" />
@@ -75,17 +75,22 @@ $rooms = $roomService->getRoomIDs();
     <label for="selectedRoom">Místnost:</label>
     <select name="selectedRoom" id="selectedRoom">
         <?php foreach ($rooms as $room) {
-            echo '<option value="'. $room .'">' . $room .'</option>';
+            if (isset($_POST['selectedRoom'])) {
+                echo '<option value="'. $room .'"' . checkSelect($room, $_POST['selectedRoom']) . '>' . $room .'</option>';
+            }
+            else {
+                echo '<option value="'. $room .'">' . $room .'</option>';
+            }
         } ?>
     </select>
 
     <label for="selectedDay">Den:</label>
     <select name="selectedDay" id="selectedDay">
-        <option value="PO">Pondělí</option>
-        <option value="UT">Úterý</option>
-        <option value="ST">Středa</option>
-        <option value="CT">Čtvrtek</option>
-        <option value="PA">Pátek</option>
+        <option value="PO" <?php if (isset($_POST['selectedDay'])) echo checkSelect("PO", $_POST['selectedDay']); ?>>Pondělí</option>
+        <option value="UT" <?php if (isset($_POST['selectedDay'])) echo checkSelect("UT", $_POST['selectedDay']); ?>>Úterý</option>
+        <option value="ST" <?php if (isset($_POST['selectedDay'])) echo checkSelect("ST", $_POST['selectedDay']); ?>>Středa</option>
+        <option value="CT" <?php if (isset($_POST['selectedDay'])) echo checkSelect("CT", $_POST['selectedDay']); ?>>Čtvrtek</option>
+        <option value="PA" <?php if (isset($_POST['selectedDay'])) echo checkSelect("PA", $_POST['selectedDay']); ?>>Pátek</option>
     </select>
 
     <input type="submit" name="submit" value="Zobrazit rozvrh" />
