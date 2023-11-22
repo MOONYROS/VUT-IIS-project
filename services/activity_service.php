@@ -56,6 +56,18 @@ class activityService {
         }
     }
 
+    function scheduleActivity($data) {
+        try {
+            $stmt = $this->pdo->prepare("UPDATE Vyuk_aktivita SET mistnost = ?, den = ?, start = ? WHERE ID_Aktiv = ?");
+            $stmt->execute($data);
+            return "Activity info successfully updated";
+        }
+        catch (PDOException $e) {
+            error_log("Activity not found: " . $e->getMessage());
+            return null;
+        }
+    }
+
     function getActivityIDs($zkratka){
         try {
             $stmt = $this->pdo->prepare("SELECT ID_Aktiv FROM Vyuk_aktivita WHERE predmet = ?");

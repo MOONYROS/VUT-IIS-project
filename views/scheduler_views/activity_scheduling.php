@@ -36,7 +36,10 @@ $rooms = $roomService->getRoomIDs();
     </li>
 </ul>
 
-<form>
+<form action="../../controllers/scheduler_controllers/activity_schedule.php" method="post">
+
+    <input type="hidden" name="ID_Aktiv" value="<?= $_GET['id'] ?>"/>
+
     <label for="mistnost">Mistnost</label>
     <select name="mistnost" id="mistnost">
         <?php
