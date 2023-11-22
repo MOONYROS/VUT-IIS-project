@@ -119,4 +119,16 @@ class activityService {
             return "Could not load activities:  " . $e->getMessage();
         }
     }
+
+    function getRoomDayActivity($room, $day) {
+        try {
+            $stmt = $this->pdo->prepare("SELECT * FROM Vyuk_aktivita WHERE mistnost = ? AND den = ?");
+            $stmt->execute(array($room, $day));
+            return $stmt->fetchAll();
+        }
+        catch (PDOException $e) {
+            error_log("Could not load specific activities: " . $e->getMessage());
+            return "Could not load specific activities:  " . $e->getMessage();
+        }
+    }
 }

@@ -1,11 +1,9 @@
 <?php
 
 require_once "../../common.php";
-require_once "../../controllers/activity_controllers/activity_load.php";
 require_once "../../services/activity_service.php";
 require_once "../../services/room_service.php";
-require_once "../../services/subject_service.php";
-require_once "../../services/user_service.php";
+require_once "../../controllers/scheduler_controllers/activity_load_specific.php";
 
 make_header("Zaradit vyukovou aktivitu.");
 
@@ -91,6 +89,19 @@ $rooms = $roomService->getRoomIDs();
 </form>
 
 <?php
-if (isset($_POST['submit'])) {
-    echo $_POST['selectedRoom'] . " " .$_POST['selectedDay'];
-}
+if (isset($_POST['submit'])) { ?>
+    <table>
+        <tr>
+            <th>Předmět</th>
+            <th>Typ</th>
+            <th>Od-do</th>
+            <th>Opakování</th>
+            <th>Požadavek</th>
+        </tr>
+    <?php
+    echo loadRoomDayActivities($_POST['selectedRoom'], $_POST['selectedDay']);
+} ?>
+    </table>
+
+<?php
+make_footer();
