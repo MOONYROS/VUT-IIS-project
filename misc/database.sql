@@ -136,15 +136,3 @@ VALUES ('S207', 12, 'studovna', 'Velka studovna v Sku, kdysi tam byla spatna wif
 INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (1, 'IOS');
 INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (1, 'IEL');
 INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (1, 'HVR');
-
-INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, mistnost, predmet, start, den)
-VALUES ('prednaska', 2, 'nejaka prednaska predmetu nejakeho', 'prosim nekdy', 'KT', 'D105', 'IOS', 10, 'PO');
-
-INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani,  predmet)
-VALUES ('prednaska', 3, 'nejaka zajimava prednaska', '', 'ST', 'IOS');
-
-INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani,  predmet)
-VALUES ('cviceni', 2, 'Jirka Vitovec... BANGER', 'kazdy, den, cely den', 'KT', 'IEL');
-
-INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani,  predmet)
-VALUES ('zkouska', 2, 'snad to date', 'prosim mistnost, kde to nedaji', 'JR', 'IZP');
