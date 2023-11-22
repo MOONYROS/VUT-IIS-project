@@ -143,4 +143,36 @@ class activityService {
             return "Could not load specific activities:  " . $e->getMessage();
         }
     }
+
+    function getUserActivities($userId) {
+        try {
+            $stmt = $this->pdo->prepare(
+                "SELECT den, predmet, typ, start, delka, mistnost
+                FROM Vyuk_aktivita WHERE predmet IN 
+                (SELECT zkratka FROM Osoba_predmet WHERE ID_Osoba = ?);"
+            );
+            $stmt->execute([$userId]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            error_log("Could not load activities: " . $e->getMessage());
+            return "Could not load activities:  " . $e->getMessage();
+        }
+    }
+
+    function getUserActivitiesDay($userId, $day) {
+        try {
+            $stmt = $this->pdo->prepare(
+                "SELECT den, predmet, typ, start, delka, mistnost
+                FROM Vyuk_aktivita WHERE predmet IN 
+                (SELECT zkratka FROM Osoba_predmet WHERE ID_Osoba = ? AND den = ?);"
+            );
+            $stmt->execute([$userId, $day]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            error_log("Could not load activities: " . $e->getMessage());
+            return "Could not load activities:  " . $e->getMessage();
+        }
+    }
 }
