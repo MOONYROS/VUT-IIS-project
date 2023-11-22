@@ -55,6 +55,7 @@ CREATE TABLE Vyuk_aktivita (
 	mistnost varchar(6),
     predmet varchar(3) NOT NULL,
     start int(2),
+    den char(2), -- po, ut, st, ct, pa
 	PRIMARY KEY (ID_Aktiv),
     FOREIGN KEY (predmet) REFERENCES Predmet(zkratka),
     FOREIGN KEY (mistnost) REFERENCES Mistnost(ID_mist)
