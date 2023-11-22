@@ -8,7 +8,7 @@ function loadAdmin() {
         <li><a href="/views/activity_views/activity_management.php">Spravovat výukové aktitity</a></li>
         <li><a href="/views/subject_views/subject_registration.php">Registrace předmětů</a></li>
         <li><a href="/views/scheduler_views/schedule_activities.php">Zarazeni aktivit</a></li>
-        <li><a href="/views/student_views/schedule.php">Zobrazit rozvrh</a></li>
+        <li><a href="/views/student_views/schedule.php?day=tyden">Zobrazit rozvrh</a></li>
     </ul>';
 }
 
