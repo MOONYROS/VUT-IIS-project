@@ -92,5 +92,5 @@ $rooms = $roomService->getRoomIDs();
 
 <?php
 if (isset($_POST['submit'])) {
-    echo $_POST['selectedRoom'] . $_POST['selectedDay'];
+    echo $_POST['selectedRoom'] . " " .$_POST['selectedDay'];
 }
