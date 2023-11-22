@@ -20,6 +20,7 @@ echo toMainPage();
         <th>Pozadavek</th>
         <th>Opakovani</th>
         <th>Mistnost</th>
+        <th>Den</th>
         <th>Start</th>
     </tr>
 <?php

@@ -50,16 +50,6 @@ make_header("správa výukových aktitit");
     </select>
     <br>
 
-<!--    <label for="mistnost">Mistnost</label>-->
-<!--    <select id="mistnost" name="mistnost">-->
-<!--        --><?php
-//        $roomService = new roomService();
-//        $roomIDs = $roomService->getRoomIDs();
-//        foreach ($roomIDs as $ID) {
-//            echo "<option value='$ID'>$ID</option>";
-//        }
-//        ?>
-<!--    </select>-->
     <label for="pozadavek">Pozadavek</label>
     <textarea name="pozadavek" id="pozadavek"></textarea>
     <br>
