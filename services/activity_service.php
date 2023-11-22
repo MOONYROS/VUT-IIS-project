@@ -149,7 +149,9 @@ class activityService {
             $stmt = $this->pdo->prepare(
                 "SELECT den, predmet, typ, start, delka, mistnost
                 FROM Vyuk_aktivita WHERE predmet IN 
-                (SELECT zkratka FROM Osoba_predmet WHERE ID_Osoba = ?);"
+                (SELECT zkratka FROM Osoba_predmet WHERE ID_Osoba = ?)
+                AND start IS NOT NULL 
+                AND mistnost IS NOT NULL;"
             );
             $stmt->execute([$userId]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
