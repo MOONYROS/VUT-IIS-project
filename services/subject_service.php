@@ -170,6 +170,22 @@ class subjectService {
         }
     }
 
+    function getRequests() {
+        try {
+            $stmt = $this->pdo->prepare("SELECT Osoba.jmeno, Osoba.prijmeni, Osoba_predmet.zkratka, Osoba_predmet.zadost
+                                        FROM Osoba
+                                        JOIN Osoba_predmet ON Osoba.ID_Osoba = Osoba_predmet.ID_Osoba
+                                        WHERE Osoba.role = 'vyuc' AND Osoba_predmet.zadost IS NOT NULL
+                                        ORDER BY Osoba_predmet.zkratka");
+            $stmt->execute();
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            error_log("Nepodařilo se získat žádosti: " . $e->getMessage());
+            return "Nepodařilo se získat žádosti: " . $e->getMessage();
+        }
+    }
+
     function getSubjectTeachers($subjectId) {
         try {
             $stmt = $this->pdo->prepare("SELECT Osoba.ID_Osoba, jmeno, prijmeni 
