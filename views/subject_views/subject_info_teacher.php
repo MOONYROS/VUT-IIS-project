@@ -17,6 +17,7 @@ $infoArray = $subjectService->getSubjectInfo($_GET["zkratka"]);
 $subjectService = new subjectService();
 $subjectTeachers = $subjectService->getSubjectTeachers($infoArray["zkratka"]);
 if (!$subjectTeachers) {
+    // Shouldnt ever happen because there is always garant
     echo "<p>" . "K předmětu nejsou zařazeni žádní učitelé." . "</p>";
 }
 else { ?>

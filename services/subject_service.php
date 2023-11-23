@@ -135,6 +135,10 @@ class subjectService {
 
     function removeTeacher($subjectId, $teacherId) {
         try {
+            $subject = $this->getSubjectInfo($subjectId);
+            if ($teacherId == $subject["garant"]) {
+                return "Učitel je garantem.";
+            }
             $stmt = $this->pdo->prepare("DELETE FROM Osoba_predmet WHERE ID_Osoba = ? AND zkratka = ?");
             $stmt->execute(array($teacherId, $subjectId));
             return "Učitel úspěšně odebrán z předmětu.";
