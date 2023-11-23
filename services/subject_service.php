@@ -56,7 +56,9 @@ class subjectService {
 
     function getSubjectInfo($id) {
         try {
-            $stmt = $this->pdo->prepare("SELECT * FROM Predmet WHERE zkratka = (?)");
+            $stmt = $this->pdo->prepare("SELECT Predmet.*, Osoba.jmeno, Osoba.prijmeni
+                                        FROM Predmet JOIN Osoba ON Predmet.garant = Osoba.ID_Osoba 
+                                        WHERE zkratka = (?)");
             $stmt->execute(array($id));
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
@@ -99,6 +101,33 @@ class subjectService {
         }
         catch (PDOException $e) {
             error_log("Could not get subjects garanted by $ID: " . $e->getMessage());
+            return null;
+        }
+    }
+
+    function addTeacher($subjectId, $teacherId) {
+        try {
+            $stmt = $this->pdo->prepare("INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (?, ?)");
+            $stmt->execute(array($teacherId, $subjectId));
+            return "Učitel úspěšně přidán k předmětu.";
+        }
+        catch (PDOException $e) {
+            if ($e->getCode() == 23000) {
+                return "Učitel má předmět již zaregistrovaný.";
+            }
+            error_log("Chyba pri prirazovani ucitele k predmetu $subjectId:" . $e->getMessage());
+            return null;
+        }
+    }
+
+    function removeTeacher($subjectId, $teacherId) {
+        try {
+            $stmt = $this->pdo->prepare("DELETE FROM Osoba_predmet WHERE ID_Osoba = ? AND zkratka = ?");
+            $stmt->execute(array($teacherId, $subjectId));
+            return "Učitel úspěšně odebrán z předmětu.";
+        }
+        catch (PDOException $e) {
+            error_log("Chyba pri odstranovani ucitele z predmetu $subjectId:" . $e->getMessage());
             return null;
         }
     }
