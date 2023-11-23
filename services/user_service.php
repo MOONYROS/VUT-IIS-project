@@ -135,20 +135,4 @@ class userService {
             return null;
         }
     }
-
-    function getSubjectTeachers($subjectId) {
-        try {
-            $stmt = $this->pdo->prepare("SELECT Osoba.ID_Osoba, jmeno, prijmeni 
-                                        FROM Osoba 
-                                        JOIN Osoba_predmet ON Osoba.ID_Osoba = Osoba_predmet.ID_Osoba
-                                        JOIN Predmet ON Osoba_predmet.zkratka = Predmet.zkratka
-                                        WHERE Predmet.zkratka = ? AND Osoba.role = ?");
-            $stmt->execute(array($subjectId, "vyuc"));
-            return $stmt->fetchAll(PDO::FETCH_ASSOC);
-        }
-        catch (PDOException $e) {
-            error_log("Couldn't get subject teachers: " . $e->getMessage());
-            return null;
-        }
-    }
 }

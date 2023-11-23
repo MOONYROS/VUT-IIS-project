@@ -14,8 +14,8 @@ $infoArray = $subjectService->getSubjectInfo($_GET["zkratka"]);
 <h2>Vyučující předmětu: <?= $infoArray['zkratka']; ?></h2>
 
 <?php
-$userService = new userService();
-$subjectTeachers = $userService->getSubjectTeachers($infoArray["zkratka"]);
+$subjectService = new subjectService();
+$subjectTeachers = $subjectService->getSubjectTeachers($infoArray["zkratka"]);
 if (!$subjectTeachers) {
     echo "<p>" . "K předmětu nejsou zařazeni žádní učitelé." . "</p>";
 }
@@ -47,6 +47,7 @@ else { ?>
 <h2> Přiřadit učitele do kurzu </h2>
 
 <?php
+$userService = new userService();
 $teachers = $userService->getUsersByRole("vyuc");
 if (!$teachers) {
     echo "<p>" . "Žádní učitelé nejsou k dispozici." . "</p>";
@@ -75,7 +76,6 @@ else { ?>
         ?>
     </table>
 <?php } ?>
-
 
 <p><?php if (isset($_GET["message"])) echo $_GET["message"]; ?></p>
 

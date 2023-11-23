@@ -27,7 +27,7 @@ function getViewPath($role) {
     return match ($role) {
         'admin' => "../../views/subject_views/subject_info_admin.php",
         'teacher' => "../../views/subject_views/subject_info_teacher.php",
-        default => "../../views/subject_views/annotation.php.",
+        default => "../../views/subject_views/annotation.php",
     };
 }
 

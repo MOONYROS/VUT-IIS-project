@@ -19,6 +19,7 @@ class subjectService {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni, garant) VALUES (?, ?, ?, ?, ?, ?)");
             $stmt->execute($data);
+            $this->addTeacher($data["zkratka"], $data["garant"]);
             return "Subject successfully added.";
         }
         catch (PDOException $e) {
@@ -166,6 +167,22 @@ class subjectService {
         catch (PDOException $e) {
             error_log("Žádost se nepodařilo smazat: " . $e->getMessage());
             return "Žádost se nepodařilo smazat: " . $e->getMessage();
+        }
+    }
+
+    function getSubjectTeachers($subjectId) {
+        try {
+            $stmt = $this->pdo->prepare("SELECT Osoba.ID_Osoba, jmeno, prijmeni 
+                                        FROM Osoba 
+                                        JOIN Osoba_predmet ON Osoba.ID_Osoba = Osoba_predmet.ID_Osoba
+                                        JOIN Predmet ON Osoba_predmet.zkratka = Predmet.zkratka
+                                        WHERE Predmet.zkratka = ? AND Osoba.role = ?");
+            $stmt->execute(array($subjectId, "vyuc"));
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            error_log("Couldn't get subject teachers: " . $e->getMessage());
+            return null;
         }
     }
 }
