@@ -118,6 +118,22 @@ VALUES ('HVR', 'Vedeni tymu', 'Dalsi to-be-banger predmet se Silvii.', 3, 'za', 
 INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni, garant)
 VALUES ('ITU', 'Tvorba UI', 'Predmet, ktery taky bude naprosta silenost s divnymi pravidly.', 5, 'klza', 3);
 
+# SAMPLE GARANTI V KURZU
+INSERT INTO Osoba_predmet (zkratka, ID_Osoba)
+VALUES ('IZP', 3);
+
+INSERT INTO Osoba_predmet (zkratka, ID_Osoba)
+VALUES ('IOS', 3);
+
+INSERT INTO Osoba_predmet (zkratka, ID_Osoba)
+VALUES ('IEL', 4);
+
+INSERT INTO Osoba_predmet (zkratka, ID_Osoba)
+VALUES ('HVR', 4);
+
+INSERT INTO Osoba_predmet (zkratka, ID_Osoba)
+VALUES ('ITU', 3);
+
 # SAMPLOVE MISTNOSTI
 INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
 VALUES ('C127.1', 6, 'studovna', 'Naprosto banger roomka.', 'knihovna');
@@ -134,6 +150,6 @@ VALUES ('M202', 1500, 'chodba', 'Chodba okolo CVT k menze.', 'u CVTcka');
 INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
 VALUES ('S207', 12, 'studovna', 'Velka studovna v Sku, kdysi tam byla spatna wifi, tedka uz to celkem jde.', 'oddelena budova');
 
-INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (3, 'IOS');
+# SAMPLE VYUCUJICI V KURZU
 INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (3, 'IEL');
 INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (3, 'HVR');
