@@ -31,7 +31,14 @@ class subjectService {
     function updateSubject($data) {
         try {
             $stmt = $this->pdo->prepare("UPDATE Predmet SET nazev = ?, anotace = ?, pocet_kreditu = ?, typ_ukonceni = ?, garant = ? WHERE zkratka = ?");
-            $stmt->execute($data);
+            $stmt->execute([
+                $data["nazev"],
+                $data["anotace"],
+                $data["pocet_kreditu"],
+                $data["typ_ukonceni"],
+                $data["garant"],
+                $data["zkratka"]
+            ]);
             return "Subject successfully edited.";
         }
         catch (PDOException $e) {

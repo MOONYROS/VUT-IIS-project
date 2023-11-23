@@ -6,9 +6,10 @@ $requiredFields = array("nazev", "anotace", "pocet_kreditu", "typ_ukonceni", "ga
 $toInsert = array();
 
 foreach($requiredFields as $field) {
-    $toInsert[] = $_POST[$field];
+    $toInsert[$field] = $_POST[$field];
 }
 
 $service = new subjectService();
 $service->updateSubject($toInsert);
-header("Location: ../../views/subject_views/subject_management_admin.php");
+$subjectId = urlencode("{$_POST["zkratka"]}");
+header("Location: ../../views/subject_views/subject_info_admin.php?zkratka=$subjectId");
