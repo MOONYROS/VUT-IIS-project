@@ -58,3 +58,7 @@ function checkRole($targetRole): bool {
 function toMainPage(): string {
     return "<a href='/views/main_page.php'>Zpět na hlavní obrazovku</a>";
 }
+
+function toSelectedPage($pagePath, $name): string {
+    return "<a href=/views" . $pagePath . ">$name</a>";
+}

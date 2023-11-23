@@ -31,6 +31,7 @@ CREATE TABLE Predmet (
 CREATE TABLE Osoba_predmet (
     ID_Osoba INT(5) NOT NULL,
     zkratka varchar(3) NOT NULL,
+    zadost varchar(255),
     PRIMARY KEY (ID_Osoba, zkratka),
     FOREIGN KEY (ID_Osoba) REFERENCES Osoba(ID_Osoba),
     FOREIGN KEY (zkratka) REFERENCES Predmet(zkratka)
@@ -133,6 +134,6 @@ VALUES ('M202', 1500, 'chodba', 'Chodba okolo CVT k menze.', 'u CVTcka');
 INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
 VALUES ('S207', 12, 'studovna', 'Velka studovna v Sku, kdysi tam byla spatna wifi, tedka uz to celkem jde.', 'oddelena budova');
 
-INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (1, 'IOS');
-INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (1, 'IEL');
-INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (1, 'HVR');
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (3, 'IOS');
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (3, 'IEL');
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (3, 'HVR');

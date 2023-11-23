@@ -105,6 +105,18 @@ class subjectService {
         }
     }
 
+    function getTeachedSubjects($ID) {
+        try {
+            $stmt = $this->pdo->prepare("SELECT zkratka, zadost FROM Osoba_predmet WHERE ID_Osoba = ?");
+            $stmt->execute(array($ID));
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            error_log("Could not fetch teached subjects: " . $e->getMessage());
+            return null;
+        }
+    }
+
     function addTeacher($subjectId, $teacherId) {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (?, ?)");
@@ -129,6 +141,31 @@ class subjectService {
         catch (PDOException $e) {
             error_log("Chyba pri odstranovani ucitele z predmetu $subjectId:" . $e->getMessage());
             return null;
+        }
+    }
+
+    function createRequest($ID, $subject, $request) {
+        try {
+            $stmt = $this->pdo->prepare("UPDATE Osoba_predmet SET zadost = ? WHERE ID_Osoba = ? AND zkratka = ?");
+            $stmt->execute(array($request, $ID, $subject));
+            return "Žádost úspěšně vytvořena";
+        }
+        catch (PDOException $e) {
+            error_log("Tvorba žádosti selhala: " . $e->getMessage());
+            return false;
+        }
+    }
+
+    function deleteRequest($ID, $subject)
+    {
+        try {
+            $stmt = $this->pdo->prepare("UPDATE Osoba_predmet SET zadost = NULL WHERE ID_Osoba = ? AND zkratka = ?");
+            $stmt->execute(array($ID, $subject));
+            return "Žádost úspěšně smazána";
+        }
+        catch (PDOException $e) {
+            error_log("Žádost se nepodařilo smazat: " . $e->getMessage());
+            return "Žádost se nepodařilo smazat: " . $e->getMessage();
         }
     }
 }
