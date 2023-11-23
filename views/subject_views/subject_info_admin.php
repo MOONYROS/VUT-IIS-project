@@ -11,9 +11,13 @@ $subjectService = new subjectService();
 $infoArray = $subjectService->getSubjectInfo($_GET["zkratka"]);
 ?>
 
+<script>
+    let fields = ['nazev', 'anotace', 'pocet_kreditu'];
+</script>
+
 <h2>Edit Subject: <?= $infoArray['zkratka']; ?></h2>
 
-<form action="../../controllers/subject_controllers/subject_edit.php" method="post">
+<form action="../../controllers/subject_controllers/subject_edit.php" method="post" onsubmit="validateForm(fields)">
     <input type="hidden" name="zkratka" value="<?= $infoArray['zkratka']; ?>"/>
 
     <label for="nazev">Nazev predmetu</label>

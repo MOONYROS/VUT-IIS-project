@@ -10,11 +10,15 @@ make_header("tvorba predmetu");
 
 <?= toMainPage(); ?>
 
+<script>
+    let fields = ['nazev', 'zkratka', 'anotace', 'pocet_kreditu'];
+</script>
+
 <h2>
    Vytvořit předmět
 </h2>
 
-<form action="../../controllers/subject_controllers/subject_create.php" method="post">
+<form action="../../controllers/subject_controllers/subject_create.php" method="post" onsubmit="validateForm(fields)">
     <label for="nazev">Nazev</label>
     <input type="text" name="nazev" id="nazev"><br>
 
