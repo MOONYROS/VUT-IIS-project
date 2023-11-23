@@ -4,12 +4,15 @@ session_start();
 
 function make_header($title): void
 {
+    $domain = 'http://localhost:8080';
     ?>
     <!DOCTYPE html>
     <html lang="cs">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        <title><?php echo $title;?></title>
+        <link rel="stylesheet" href="<?= $domain . '/public/style.css'?>">
+        <script src="<?= $domain . '/public/validateForm.js'?>"></script>
+        <title><?= $title;?></title>
     </head>
     <body>
     <?php
