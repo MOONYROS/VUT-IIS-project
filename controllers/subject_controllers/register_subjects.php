@@ -11,4 +11,6 @@ $new = $registrationService->newlyRegistered($_POST);
 $final = $registrationService->unregisterSubject($old, $new);
 $final = $registrationService->registerNewSubject($final, $new);
 
-echo "Subjects successfully registered!";
+$message = urlencode("Předměty úspěšně registrovány!");
+header("Location: ../../views/subject_views/subject_registration.php?message=$message");
+exit;

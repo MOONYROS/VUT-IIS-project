@@ -25,6 +25,7 @@ make_header("Registrace predmetu");
     ?>
     <input type="submit" value="Potvrdit registraci">
 </form>
+<p> <?php if (isset($_GET["message"])) echo $_GET["message"]; ?><p>
 
 <h2>
     Registrovane predmety
