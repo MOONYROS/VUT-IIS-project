@@ -41,7 +41,7 @@ make_header("Registrace predmetu");
     <?php
     global $registeredSubjects;
     foreach($registeredSubjects as $subject) {
-        echo '<tr>' . loadSubject($subject) . '</tr>';
+        echo '<tr>' . loadSubject($subject, "student") . '</tr>';
     }
     ?>
 </table>

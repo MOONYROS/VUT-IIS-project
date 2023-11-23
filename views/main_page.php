@@ -15,7 +15,7 @@ $user = $service->getUserById($_SESSION['user_id']);
 make_header('Hlavní stránka');
 ?>
 <a href="/controllers/logout.php">Odhlásit se</a>
-<h1>Vítejte v systému</h1>
+<h1>Vítejte v systému: <?= $user["jmeno"] . " " . $user["prijmeni"] ?></h1>
 <p>Přihlášen jako: <b><?= roleName($user['role']); ?></b></p>
 <p>Toto je hlavní stránka. Račte se odnavigovat.</p>
 
@@ -27,12 +27,19 @@ make_header('Hlavní stránka');
            break;
         }
         case "stud": {
+            echo loadStudent();
             break;
         }
         case "vyuc": {
+            echo loadTeacher();
+            break;
+        }
+        case "rozv": {
+            echo loadRozv();
             break;
         }
         default: {
+            echo "Yikes neco neni uplne dobre";
             break;
         }
     }

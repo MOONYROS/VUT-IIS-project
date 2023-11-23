@@ -1,19 +1,40 @@
 <?php
 
 require_once "../../services/subject_service.php";
+require_once "../../services/user_service.php";
 
-function loadSubject($zkratka) {
+function loadSubject($abbreviation, $role) {
     $subjectService = new subjectService();
-    $subjectInfo = $subjectService->getSubjectInfo($zkratka);
+    $subjectInfo = $subjectService->getSubjectInfo($abbreviation);
+    $subjectInfo = replaceIdWithName($subjectInfo);
+
     $finalValue = "";
     foreach ($subjectInfo as $item) {
+        $viewPath = getViewPath($role);
         if ($finalValue == "") {
-            $finalValue = '<td><a href="../../views/subject_views/subject_info.php?zkratka='. $item . '">' . $item. '</a></td>';
+            $link = '<a href="' . $viewPath . '?zkratka=' . $item . '">' . $item . '</a>';
+            $finalValue = $finalValue . '<td>' . $link . '</td>';
         }
         else {
             $finalValue = $finalValue . '<td>' . $item . '</td>';
         }
     }
+
     return $finalValue;
 }
 
+function getViewPath($role) {
+    return match ($role) {
+        'admin' => "../../views/subject_views/subject_info_admin.php",
+        'teacher' => "../../views/subject_views/subject_info_teacher.php",
+        default => "../../views/subject_views/annotation.php.",
+    };
+}
+
+function replaceIdWithName($subjectInfo) {
+    $subjectInfo["garant"] = $subjectInfo["jmeno"] . " " . $subjectInfo["prijmeni"];
+    unset($subjectInfo["jmeno"]);
+    unset($subjectInfo["prijmeni"]);
+    unset($subjectInfo["anotace"]);
+    return $subjectInfo;
+}

@@ -70,13 +70,13 @@ make_header("tvorba predmetu");
             <th>Anotace</th>
             <th>Pocet kreditu</th>
             <th>Typ ukonceni</th>
-            <th>ID Garanta</th>
+            <th>Garant</th>
         </tr>
         <?php
         $servis = new subjectService();
         $zkratky = $servis->getSubjectIDs();
         foreach($zkratky as $zkratka) {
-            echo '<tr>' . loadSubject($zkratka) . '</tr>';
+            echo '<tr>' . loadSubject($zkratka, "admin") . '</tr>';
         }
         ?>
     </table>
