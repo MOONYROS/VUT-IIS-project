@@ -27,26 +27,11 @@ echo toMainPage();
         <th>Mistnost</th>
         <th>Den</th>
         <th>Start</th>
+        <th>Vyucujici</th>
     </tr>
 <?php
 echo listActivity();
 ?>
-</table>
-
-<h2>
-    Zadosti vyucujicich
-</h2>
-
-<table>
-    <tr>
-        <th>Predmet</th>
-        <th>Jmeno</th>
-        <th>Prijmeni</th>
-        <th>Zadost</th>
-    </tr>
-    <?php
-    echo listRequests();
-    ?>
 </table>
 
 <?php

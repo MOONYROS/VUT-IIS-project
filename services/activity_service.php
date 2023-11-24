@@ -58,7 +58,7 @@ class activityService {
 
     function scheduleActivity($data) {
         try {
-            $stmt = $this->pdo->prepare("UPDATE Vyuk_aktivita SET mistnost = ?, den = ?, start = ? WHERE ID_Aktiv = ?");
+            $stmt = $this->pdo->prepare("UPDATE Vyuk_aktivita SET mistnost = ?, den = ?, start = ?, vyucujici = ? WHERE ID_Aktiv = ?");
             $stmt->execute($data);
             return "Activity info successfully updated";
         }
