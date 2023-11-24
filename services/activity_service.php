@@ -64,7 +64,7 @@ class activityService {
         }
         catch (PDOException $e) {
             error_log("Activity not found: " . $e->getMessage());
-            return null;
+            return "Activity not found: " . $e->getMessage();
         }
     }
 

@@ -12,6 +12,10 @@ $infoArray = $userService->getUserInfo($_GET["ID"]);
 
 <?= toSelectedPage('/user_views/user_management.php', 'Zpět k uživatelům'); ?>
 
+<script>
+    let fields = ['jmeno', 'prijmeni', 'email', 'heslo', 'telefon'];
+</script>
+
 <h2>Edit User: 
     <?php 
         if (isset($infoArray["jmeno"]) && isset($infoArray["prijmeni"]))
@@ -19,7 +23,7 @@ $infoArray = $userService->getUserInfo($_GET["ID"]);
     ?>
 </h2>
 
-<form action="../../controllers/user_controllers/user_edit.php" method="post">
+<form action="../../controllers/user_controllers/user_edit.php" method="post" onsubmit="return validateForm(fields);">
     <input type="hidden" name="ID_Osoba" value="<?php if (isset($infoArray["ID_Osoba"])) echo $infoArray['ID_Osoba']; ?>">
 
     <label for="jmeno">Jmeno</label>

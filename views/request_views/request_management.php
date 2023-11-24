@@ -11,6 +11,10 @@ make_header("Sprava zadosti");
 
 <?= toMainPage(); ?>
 
+<script>
+    let fields = ['zadost'];
+</script>
+
 <h1>
     Moje žádosti na rozvrh
 </h1>
@@ -21,7 +25,7 @@ if ($subjects == null) {
 }
 else {
     echo '<h2>Vytvořit novou žádost</h2>
-          <form action="../../controllers/request_controllers/request_create.php" method="post">
+          <form action="../../controllers/request_controllers/request_create.php" method="post" onsubmit="return validateForm(fields);">
             <input type="hidden" name="ID_Osoba" value="' . $_SESSION['user_id'] . '">
 
             <label for="zkratka">Předmět</label>

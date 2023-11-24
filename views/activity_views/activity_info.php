@@ -28,9 +28,13 @@ make_header("Info o vyukove aktivite");
 
 <?= toSelectedPage('/activity_views/activity_management.php', 'Zpět k aktivitám'); ?>
 
+<script>
+    let fields = ['delka', 'popis'];
+</script>
+
 <h2>Edit activity: <?php if (isset($infoArray["ID_Aktiv"])) echo $infoArray['ID_Aktiv']; ?></h2>
 
-<form action="../../controllers/activity_controllers/activity_edit.php" method="post">
+<form action="../../controllers/activity_controllers/activity_edit.php" method="post" onsubmit="return validateForm(fields);">
     <input type="hidden" name="ID_Aktiv" value="<?php if (isset($infoArray["ID_Aktiv"])) echo $infoArray['ID_Aktiv']; ?>"/>
 
     <label for="typ">Typ</label>

@@ -21,11 +21,15 @@ make_header("správa výukových aktitit");
 
 <?= toMainPage(); ?>
 
+<script>
+    let fields = ['delka', 'popis'];
+</script>
+
 <h2>
     Přidat výukovou aktivitu
 </h2>
 
-<form action="../../controllers/activity_controllers/activity_create.php" method="post">
+<form action="../../controllers/activity_controllers/activity_create.php" method="post" onsubmit="return validateForm(fields);">
     <label for="typ">Typ</label>
     <select id="typ" name="typ">
         <option value="prednaska" selected>Prednaska</option>

@@ -4,10 +4,14 @@
     make_header("login");
 ?>
 
+<script>
+    let fields = ['email', 'heslo'];
+</script>
+
 <h1>GigaWeb</h1>
 
 <h2>Prihlaseni</h2>
-<form action="controllers/login.php" method="post">
+<form action="controllers/login.php" method="post" onsubmit="return validateForm(fields);">
     <label for="email">Email</label>
     <input type="email" name="email" id="email" value="<?php if (isset($_GET["email"])) echo $_GET["email"];?>" required><br>
 
