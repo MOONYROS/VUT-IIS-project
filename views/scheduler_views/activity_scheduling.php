@@ -4,6 +4,7 @@ require_once "../../common.php";
 require_once "../../services/activity_service.php";
 require_once "../../services/room_service.php";
 require_once "../../controllers/scheduler_controllers/activity_load_specific.php";
+require_once "../../controllers/request_controllers/requests_list.php";
 
 make_header("Zaradit vyukovou aktivitu.");
 
@@ -12,6 +13,8 @@ $activity = $activityService->getActivityInfo($_GET['id']);
 
 $roomService = new roomService();
 $rooms = $roomService->getRoomIDs();
+
+$subjectService = new subjectService();
 
 ?>
 
@@ -73,8 +76,35 @@ $rooms = $roomService->getRoomIDs();
     <input type="number" min="8" max="20" name="start" id="start" value="<?php if (isset($activity['start'])) {echo $activity['start'];}  ?>" />
     <br>
 
+    <label for="vyucujici">Vyučující</label>
+    <select>
+        <?php
+        $teachers = $subjectService->getSubjectTeachers($activity['predmet']);
+        foreach ($teachers as $teacher) {
+            echo "<option " . checkSelect($teacher['ID_Osoba'], $activity['vyucujici']) . " value='" . $teacher['ID_Osoba'] . "'>" . $teacher['jmeno'] . " " . $teacher['prijmeni'] . "</option>";
+
+        }
+        ?>
+    </select>
+    <br>
+
     <input type="submit" value="Potvrdit" />
 </form>
+
+<h2>
+        Žádosti vyučujících předmětu: <?= $activity['predmet'] ?>
+</h2>
+
+<table>
+    <tr>
+        <th>Jmeno</th>
+        <th>Prijmeni</th>
+        <th>Zadost</th>
+    </tr>
+    <?php
+    echo listRequests($activity['predmet']);
+    ?>
+</table>
 
 <h2>
     Rozvrh místností a dnů
