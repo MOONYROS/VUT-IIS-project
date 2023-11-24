@@ -57,6 +57,11 @@ $teachers = $subjectService->getSubjectTeachers($_GET["zkratka"]);
     <input type="submit" formaction="../../controllers/subject_controllers/subject_delete.php" value="Odstranit predmet">
 </form>
 
+<?php
+    if (isset($_GET["message"]))
+        echo "<br>{$_GET["message"]}";
+?>
+
 <h1><?= $_GET["zkratka"] ?></h1>
 <h3> Název</h3>
 <p> <?= $infoArray["nazev"] ?> </p>

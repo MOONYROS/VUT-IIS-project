@@ -212,4 +212,15 @@ class subjectService {
             return null;
         }
     }
+
+    function updateGarant($zkratka, $oldGarantId, $newGarantId) {
+        try {
+            $stmt = $this->pdo->prepare("DELETE FROM Osoba_predmet WHERE ID_Osoba = ? AND zkratka = ?");
+            $stmt->execute([$oldGarantId, $zkratka]);
+            $this->addTeacher($zkratka, $newGarantId);
+        }
+        catch (PDOException $e) {
+            error_log("Failed to remove garant: " . $e->getMessage());
+        }
+    }
 }
