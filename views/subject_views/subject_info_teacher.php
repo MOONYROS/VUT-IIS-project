@@ -11,6 +11,8 @@ $subjectService = new subjectService();
 $infoArray = $subjectService->getSubjectInfo($_GET["zkratka"]);
 ?>
 
+<?= toSelectedPage('/subject_views/subject_management_teacher.php', 'Zpět k předmětům'); ?>
+
 <h2>Vyučující předmětu: <?= $infoArray['zkratka']; ?></h2>
 
 <?php

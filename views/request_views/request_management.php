@@ -7,9 +7,9 @@ $subjects = $subjectService->getTeachedSubjects($_SESSION['user_id']);
 
 make_header("Sprava zadosti");
 
-echo toMainPage();
-
 ?>
+
+<?= toMainPage(); ?>
 
 <h1>
     Moje žádosti na rozvrh
@@ -18,8 +18,8 @@ echo toMainPage();
 <?php
 if ($subjects == null) {
     echo '<p>Nevyučujete žádné předměty.</p>';
-} else {
-    // Pozor na správné ukončení řetězce před PHP kódem
+}
+else {
     echo '<h2>Vytvořit novou žádost</h2>
           <form action="../../controllers/request_controllers/request_create.php" method="post">
             <input type="hidden" name="ID_Osoba" value="' . $_SESSION['user_id'] . '">

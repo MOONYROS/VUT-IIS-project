@@ -181,14 +181,13 @@ class subjectService {
         }
     }
 
-    function getRequests() {
+    function getRequestsBySubject($subject) {
         try {
-            $stmt = $this->pdo->prepare("SELECT Osoba.jmeno, Osoba.prijmeni, Osoba_predmet.zkratka, Osoba_predmet.zadost
+            $stmt = $this->pdo->prepare("SELECT Osoba.jmeno, Osoba.prijmeni, Osoba_predmet.zadost
                                         FROM Osoba
                                         JOIN Osoba_predmet ON Osoba.ID_Osoba = Osoba_predmet.ID_Osoba
-                                        WHERE Osoba.role = 'vyuc' AND Osoba_predmet.zadost IS NOT NULL
-                                        ORDER BY Osoba_predmet.zkratka");
-            $stmt->execute();
+                                        WHERE Osoba.role = 'vyuc' AND Osoba_predmet.zadost IS NOT NULL AND Osoba_predmet.zkratka = ?");
+            $stmt->execute(array($subject));
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         catch (PDOException $e) {

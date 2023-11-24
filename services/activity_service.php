@@ -58,7 +58,7 @@ class activityService {
 
     function scheduleActivity($data) {
         try {
-            $stmt = $this->pdo->prepare("UPDATE Vyuk_aktivita SET mistnost = ?, den = ?, start = ? WHERE ID_Aktiv = ?");
+            $stmt = $this->pdo->prepare("UPDATE Vyuk_aktivita SET mistnost = ?, den = ?, start = ?, vyucujici = ? WHERE ID_Aktiv = ?");
             $stmt->execute($data);
             return "Activity info successfully updated";
         }
@@ -148,11 +148,20 @@ class activityService {
         try {
             $stmt = $this->pdo->prepare(
                 "SELECT den, predmet, typ, start, delka, mistnost, opakovani, vyucujici
-                FROM Vyuk_aktivita WHERE predmet IN 
-                (SELECT zkratka FROM Osoba_predmet WHERE ID_Osoba = ?)
-                AND start IS NOT NULL 
-                AND mistnost IS NOT NULL;"
-            );
+                        FROM Vyuk_aktivita
+                        WHERE predmet IN (SELECT zkratka FROM Osoba_predmet WHERE ID_Osoba = ?)
+                            AND start IS NOT NULL
+                            AND mistnost IS NOT NULL
+                        ORDER BY
+                          CASE
+                            WHEN den = 'po' THEN 1
+                            WHEN den = 'ut' THEN 2
+                            WHEN den = 'st' THEN 3
+                            WHEN den = 'ct' THEN 4
+                            WHEN den = 'pa' THEN 5
+                            ELSE 6 
+                          END,
+                          start");
             $stmt->execute([$userId]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }

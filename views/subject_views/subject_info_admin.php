@@ -16,6 +16,8 @@ $teachers = $subjectService->getSubjectTeachers($_GET["zkratka"]);
     let fields = ['nazev', 'anotace', 'pocet_kreditu'];
 </script>
 
+<?= toSelectedPage('/subject_views/subject_management_admin.php', 'Zpět k předmětům'); ?>
+
 <h2>Edit Subject: <?= $infoArray['zkratka']; ?></h2>
 
 <form action="../../controllers/subject_controllers/subject_edit.php" method="post" onsubmit="return validateForm(fields)">

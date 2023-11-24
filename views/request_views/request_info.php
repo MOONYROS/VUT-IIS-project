@@ -4,6 +4,8 @@ require_once "../../common.php";
 make_header("Upravit žádost");
 ?>
 
+<?= toSelectedPage('/request_views/request_management.php', 'Zpět k žádostem'); ?>
+
 <h1>
     Úprava žádosti <?= $_POST['zkratka'] ?>
 </h1>

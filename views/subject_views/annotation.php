@@ -10,6 +10,8 @@ $infoArray = $subjectService->getSubjectInfo($subjectId);
 $teachers = $subjectService->getSubjectTeachers($subjectId);
 ?>
 
+<?= toSelectedPage('/subject_views/subject_registration.php', 'Zpět k registracím předmětů') ?>
+
 <h1><?= $subjectId ?></h1>
 <h3> Název</h3>
 <p> <?= $infoArray["nazev"] ?> </p>
