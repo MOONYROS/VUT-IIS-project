@@ -8,6 +8,9 @@ make_header("Správa předmětů");
 
 $subjectService = new subjectService();
 $garantedSubjects = $subjectService->getGarantedSubjects($_SESSION["user_id"]);
+
+echo toMainPage();
+
 if (!$garantedSubjects) {
     echo "<p>" . "Nejste garantem žádného předmětu." . "</p>";
 }

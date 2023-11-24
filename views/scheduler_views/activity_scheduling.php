@@ -15,6 +15,8 @@ $rooms = $roomService->getRoomIDs();
 
 ?>
 
+<?= toSelectedPage('/scheduler_views/schedule_activities.php', 'Zpět k aktivitám'); ?>
+
 <script src="../../controllers/scheduler_controllers/activity_save_form_values.js"></script>
 
 <!-- THIS PART OF CODE IS CREATED DUE TO TRANSFER TO JAVASCRIPT-->

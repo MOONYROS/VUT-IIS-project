@@ -7,13 +7,17 @@ require_once "../../services/room_service.php";
 make_header("správa místností");
 ?>
 
+<script>
+    let fields = ['ID_mist', 'kapacita', 'popis', 'umisteni'];
+</script>
+
 <?= toMainPage(); ?>
 
 <h2>
     Přidat místnost
 </h2>
 
-<form action="../../controllers/room_controllers/room_create.php" method="post">
+<form action="../../controllers/room_controllers/room_create.php" method="post" onsubmit=" return validateForm(fields)">
     <label for="ID_mist">Nazev</label>
     <input type="text" name="ID_mist" id="ID_mist"><br>
 

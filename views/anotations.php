@@ -6,7 +6,7 @@ require_once "../services/subject_service.php";
 make_header("Anotace");
 ?>
 
-<a href="../index.php">Zpet k prihlaseni</a>
+<?= toSelectedPage('/../index.php', 'Zpět k přihlášení'); ?>
 
 <h1>Prohlizeni anotaci predmetu</h1>
 

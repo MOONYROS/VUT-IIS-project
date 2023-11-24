@@ -10,13 +10,19 @@ $roomService = new roomService();
 $infoArray = $roomService->getRoomInfo($_GET["ID_mist"]);
 ?>
 
+<script>
+    let fields = ['kapacita', 'popis', 'umisteni'];
+</script>
+
+<?= toSelectedPage('/room_views/room_management.php', 'Zpět k místnostem'); ?>
+
 <h2>Edit room: <?php if (isset($infoArray["ID_mist"])) echo $infoArray['ID_mist']; ?></h2>
 
-<form action="../../controllers/room_controllers/room_edit.php" method="post">
+<form action="../../controllers/room_controllers/room_edit.php" method="post" onsubmit="return validateForm(fields)">
     <input type="hidden" name="ID_mist" value="<?php if (isset($infoArray["ID_mist"])) echo $infoArray['ID_mist']; ?>"/>
 
     <label for="kapacita">Kapacita</label>
-    <input type="text" name="kapacita" value="<?php if (isset($infoArray["kapacita"])) echo $infoArray['kapacita']; ?>" id="kapacita"/>
+    <input type="number" name="kapacita" value="<?php if (isset($infoArray["kapacita"])) echo $infoArray['kapacita']; ?>" id="kapacita"/>
     <br>
 
     <label for="typ">Typ</label>

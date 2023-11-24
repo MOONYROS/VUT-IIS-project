@@ -28,9 +28,7 @@ echo toMainPage();
         <th>Den</th>
         <th>Start</th>
     </tr>
-<?php
-echo listActivity();
-?>
+<?= listActivity(); ?>
 </table>
 
 <h2>
