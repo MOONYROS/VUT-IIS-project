@@ -57,12 +57,12 @@ else { ?>
     <table>
         <tr>
             <th>Jméno</th>
-            <th>Příjmení</th>`
+            <th>Příjmení</th>
         </tr>
         <?php
         foreach ($teachers as $teacher) {
-            $isChecked = in_array($teacher["ID_Osoba"], $subjectTeachers);
-            echo "<tr>
+            if (!isTeacher($teacher["ID_Osoba"], $subjectTeachers)) {
+                echo "<tr>
                     <td>{$teacher["jmeno"]}</td>
                     <td>{$teacher["prijmeni"]}</td>
                     <td>
@@ -73,6 +73,7 @@ else { ?>
                         </form>
                     </td>
                 </tr>";
+            }
         }
         ?>
     </table>

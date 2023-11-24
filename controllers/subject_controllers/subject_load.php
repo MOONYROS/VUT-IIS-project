@@ -38,3 +38,12 @@ function replaceIdWithName($subjectInfo) {
     unset($subjectInfo["anotace"]);
     return $subjectInfo;
 }
+
+function isTeacher($teacherId, $teachers) {
+    foreach ($teachers as $teacher) {
+        if ($teacherId == $teacher["ID_Osoba"]) {
+            return true;
+        }
+    }
+    return false;
+}
