@@ -57,9 +57,11 @@ CREATE TABLE Vyuk_aktivita (
     predmet varchar(3) NOT NULL,
     start int(2),
     den varchar(2),
+    vyucujici INT(5),
 	PRIMARY KEY (ID_Aktiv),
     FOREIGN KEY (predmet) REFERENCES Predmet(zkratka),
-    FOREIGN KEY (mistnost) REFERENCES Mistnost(ID_mist)
+    FOREIGN KEY (mistnost) REFERENCES Mistnost(ID_mist),
+    FOREIGN KEY (vyucujici) REFERENCES Osoba(ID_Osoba)
 );
 
 CREATE TABLE Rozvrh (
@@ -97,6 +99,14 @@ VALUES (3, 'vyucujici', 'Mucici', 'vyuc@vyuc.vyuc', '$2y$10$zEdObEn2JwT8wjNDUPrW
 -- heslo 'vyucujici'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
 VALUES (4, 'Doktor', 'Doktorsky', 'vyucitel@vyucitel.vyuc', '$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS', 123412341, 'vyuc');
+
+-- heslo 'vyucujici'
+INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
+VALUES (6, 'Učtel', 'Naškole', 'ucitel@ucitel.uc', '$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS', 922922922, 'vyuc');
+
+-- heslo 'vyucujici'
+INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
+VALUES (7, 'Van', 'Helsing', 'van@helsing.vh', '$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS', 666666666, 'vyuc');
 
 -- heslo 'rozvrhar'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
@@ -153,3 +163,75 @@ VALUES ('S207', 12, 'studovna', 'Velka studovna v Sku, kdysi tam byla spatna wif
 # SAMPLE VYUCUJICI V KURZU
 INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (3, 'IEL');
 INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (3, 'HVR');
+
+# SAMPLE VYUKOVE AKTIVITY
+# IOS
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('prednaska', 3, 'Celkem nekonečný maraton o operačních systémech.', 'Prosím v pondělí', 'KT', 'IOS');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('cviceni', 2, 'IOS ma teď cvičení.', 'Prosím mimo prednasku IOS', 'ST', 'IOS');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('cviceni', 2, 'IOS ma teď cvičení.', 'Prosím mimo prednasku IOS', 'LT', 'IOS');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('zkouska', 4, 'Dva turnusy hned za sebou.', 'Prosím na pátek', 'JR', 'IOS');
+
+# IEL
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('prednaska', 3, 'Zajímavosti o obvodech.', 'Prosím v uterý', 'KT', 'IEL');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('cviceni', 2, 'Laboratorní cvičení.', '', 'ST', 'IEL');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('cviceni', 2, 'Laboratorní cvičení.', '', 'LT', 'IEL');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('cviceni', 2, 'Laboratorní cvičení.', '', 'ST', 'IEL');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('cviceni', 2, 'Laboratorní cvičení.', '', 'LT', 'IEL');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('zkouska', 2, 'Předtermín 1.', 'Prosím dopoledne', 'JR', 'IEL');
+
+# IZP
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('prednaska', 3, 'Naprosté základy programování v C.', 'Někdy odpoledne', 'KT', 'IZP');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('cviceni', 2, 'Laboratorní cvičení.', '', 'KT', 'IZP');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('cviceni', 2, 'Laboratorní cvičení.', '', 'KT', 'IZP');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('cviceni', 2, 'Laboratorní cvičení.', '', 'KT', 'IZP');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('cviceni', 2, 'Laboratorní cvičení.', '', 'KT', 'IZP');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('zkouska', 2, 'Předtermín 1.', 'Pátek večer prosím.', 'JR', 'IZP');
+
+# ITU
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('prednaska', 3, 'Naučme se navrhovat uživatelská rozhraní.', 'Středa 10 dík', 'KT', 'ITU');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('cviceni', 2, 'Laboratorní cvičení FIGMA.', 'Počítačouvou laboratoř.', 'JR', 'ITU');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('cviceni', 2, 'Laboratorní cvičení QT.', 'Počítačouvou laboratoř.', 'JR', 'ITU');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('cviceni', 2, 'Laboratorní cvičení WINAPI.', 'Počítačouvou laboratoř.', 'JR', 'ITU');
+
+# HVR
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('cviceni', 5, 'Naučme se pracovat s lidmi.', 'Potřebuju pondělí.', 'ST', 'HVR');
+
+INSERT INTO Vyuk_aktivita (typ, delka, popis, pozadavek, opakovani, predmet )
+VALUES ('cviceni', 5, 'Naučme se pracovat s lidmi.', 'Potřebuju pondělí.', 'LT', 'HVR');
