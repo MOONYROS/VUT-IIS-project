@@ -94,6 +94,10 @@ $subjectService = new subjectService();
     <input type="submit" value="Potvrdit" />
 </form>
 
+<?php
+    if (isset($_GET["message"])) echo $_GET["message"];
+?>
+
 <h2>
         Žádosti vyučujících předmětu: <?= $activity['predmet'] ?>
 </h2>

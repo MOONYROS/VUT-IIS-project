@@ -59,7 +59,13 @@ class activityService {
     function scheduleActivity($data) {
         try {
             $stmt = $this->pdo->prepare("UPDATE Vyuk_aktivita SET mistnost = ?, den = ?, start = ?, vyucujici = ? WHERE ID_Aktiv = ?");
-            $stmt->execute($data);
+            $stmt->execute([
+                $data['mistnost'],
+                $data['den'],
+                $data['start'],
+                $data['vyucujici'],
+                $data['ID_Aktiv']
+            ]);
             return "Activity info successfully updated";
         }
         catch (PDOException $e) {
@@ -183,7 +189,17 @@ class activityService {
         }
         catch (PDOException $e) {
             error_log("Could not load activities: " . $e->getMessage());
-            return "Could not load activities:  " . $e->getMessage();
+        }
+    }
+
+    function getActivitiesDay($day) {
+        try {
+            $stmt = $this->pdo->prepare("SELECT mistnost, den, start, delka FROM Vyuk_aktivita WHERE den = ?");
+            $stmt->execute([$day]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            error_log("Could not load activities: " . $e->getMessage());
         }
     }
 }

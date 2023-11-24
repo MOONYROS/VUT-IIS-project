@@ -49,7 +49,7 @@ CREATE TABLE Mistnost (
 CREATE TABLE Vyuk_aktivita (
 	ID_Aktiv INT(5) NOT NULL AUTO_INCREMENT,
 	typ varchar(10) NOT NULL,
-	delka varchar(10) NOT NULL,
+	delka int(2),
 	popis varchar(100) NOT NULL,
     pozadavek varchar(200),
 	opakovani varchar(20) NOT NULL,
