@@ -2,7 +2,7 @@
 
 require_once "../../services/activity_service.php";
 
-$requiredFields = array('mistnost', 'den', 'start', 'ID_Aktiv');
+$requiredFields = array('mistnost', 'den', 'start', 'vyucujici', 'ID_Aktiv');
 $toInsert = array();
 
 foreach($requiredFields as $field) {
@@ -10,5 +10,6 @@ foreach($requiredFields as $field) {
 }
 
 $service = new activityService();
-$message = $service->scheduleActivity($toInsert);
+$service->scheduleActivity($toInsert);
+
 header("Location: ../../views/scheduler_views/schedule_activities.php");

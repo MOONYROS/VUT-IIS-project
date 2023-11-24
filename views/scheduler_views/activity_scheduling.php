@@ -20,6 +20,9 @@ $subjectService = new subjectService();
 
 <?= toSelectedPage('/scheduler_views/schedule_activities.php', 'Zpět k aktivitám'); ?>
 
+<script>
+    let fields = ['start'];
+</script>
 <script src="../../controllers/scheduler_controllers/activity_save_form_values.js"></script>
 
 <!-- THIS PART OF CODE IS CREATED DUE TO TRANSFER TO JAVASCRIPT-->
@@ -48,7 +51,7 @@ $subjectService = new subjectService();
     </li>
 </ul>
 
-<form action="../../controllers/scheduler_controllers/activity_schedule.php" method="post">
+<form action="../../controllers/scheduler_controllers/activity_schedule.php" method="post" onsubmit="return validateForm(fields);">
 
     <input type="hidden" name="ID_Aktiv" value="<?= $_GET['id'] ?>"/>
 
@@ -77,7 +80,7 @@ $subjectService = new subjectService();
     <br>
 
     <label for="vyucujici">Vyučující</label>
-    <select>
+    <select name="vyucujici" id="vyucujici">
         <?php
         $teachers = $subjectService->getSubjectTeachers($activity['predmet']);
         foreach ($teachers as $teacher) {

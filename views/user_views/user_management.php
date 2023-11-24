@@ -9,8 +9,12 @@ make_header("sprava uzivatelu");
 
 <?= toMainPage(); ?>
 
+<script>
+    let fields = ['jmeno', 'prijmeni', 'email', 'heslo', 'telefon'];
+</script>
+
 <h2>Registrace uzivatele</h2>
-<form action="../../controllers/user_controllers/user_register.php" method="post">
+<form action="../../controllers/user_controllers/user_register.php" method="post" onsubmit="return validateForm(fields);">
     <label for="jmeno">Jmeno</label>
     <input type="text" name="jmeno" id="jmeno"><br>
 
