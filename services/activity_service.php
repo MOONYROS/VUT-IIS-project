@@ -147,7 +147,7 @@ class activityService {
     function getUserActivities($userId) {
         try {
             $stmt = $this->pdo->prepare(
-                "SELECT den, predmet, typ, start, delka, mistnost
+                "SELECT den, predmet, typ, start, delka, mistnost, opakovani, vyucujici
                 FROM Vyuk_aktivita WHERE predmet IN 
                 (SELECT zkratka FROM Osoba_predmet WHERE ID_Osoba = ?)
                 AND start IS NOT NULL 
@@ -165,9 +165,9 @@ class activityService {
     function getUserActivitiesDay($userId, $day) {
         try {
             $stmt = $this->pdo->prepare(
-                "SELECT den, predmet, typ, start, delka, mistnost
-                FROM Vyuk_aktivita WHERE predmet IN 
-                (SELECT zkratka FROM Osoba_predmet WHERE ID_Osoba = ? AND den = ?);"
+                "SELECT den, predmet, typ, start, delka, mistnost, opakovani, vyucujici
+                FROM Vyuk_aktivita WHERE predmet  IN 
+                (SELECT zkratka FROM Osoba_predmet WHERE ID_Osoba = ? AND den = ?) ;"
             );
             $stmt->execute([$userId, $day]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);

@@ -31,6 +31,8 @@ make_header("Anotace");
         <th>Od</th>
         <th>Do</th>
         <th>Mistnost</th>
+        <th>Opakovani</th>
+        <th>Vyucujici</th>
     </tr>
 <?php
 if (isset($_GET["day"]) and $_GET["day"] != "tyden") {
