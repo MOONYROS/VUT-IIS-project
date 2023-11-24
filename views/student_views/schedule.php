@@ -6,6 +6,8 @@ require_once "../../controllers/activity_controllers/schedule_controller.php";
 make_header("Anotace");
 ?>
 
+<?= toMainPage(); ?>
+
 <h2>Rozvrh studenta: <?= getStudentName(); ?></h2>
 
 <form action="<?= $_SERVER["PHP_SELF"] ?>" method="get">

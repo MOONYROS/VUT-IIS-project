@@ -5,6 +5,7 @@ function loadAdmin() {
         <li><a href="/views/subject_views/subject_management_admin.php">Spravovat předměty</a></li>
         <li><a href="/views/room_views/room_management.php">Spravovat místnosti</a></li>
         <li><a href="/views/user_views/user_management.php">Spravovat uživatele</a></li>
+        <li><a href="/views/activity_views/activity_management.php">Vytvořit výukovou aktivitu</a></li>
         <li><a href="/views/scheduler_views/schedule_activities.php">Zarazeni aktivit</a></li>
     </ul>';
 }

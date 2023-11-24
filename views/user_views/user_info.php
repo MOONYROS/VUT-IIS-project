@@ -46,7 +46,6 @@ $infoArray = $userService->getUserInfo($_GET["ID"]);
         <option value="stud" <?php if (isset($infoArray["role"])) echo checkSelect("stud", $infoArray['role']) ?>>Student</option>
         <option value="vyuc" <?php if (isset($infoArray["role"])) echo checkSelect("vyuc", $infoArray['role']) ?>>Vyucujici</option>
         <option value="rozv" <?php if (isset($infoArray["role"])) echo checkSelect("rozv", $infoArray['role']) ?>>Rozvrhar</option>
-        <option value="gara" <?php if (isset($infoArray["role"])) echo checkSelect("gara", $infoArray['role']) ?>>Garant</option>
     </select><br>
 
     <input type="submit" value="Ulozit zmeny">

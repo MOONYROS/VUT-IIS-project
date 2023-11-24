@@ -32,10 +32,9 @@ make_header("sprava uzivatelu");
         <option value="stud" selected>Student</option>
         <option value="vyuc">Vyucujici</option>
         <option value="rozv">Rozvrhar</option>
-        <option value="gara">Garant</option>
     </select><br>
 
-    <input type="submit" value="Create new user">
+    <input type="submit" value="Vytvořit nového uživatele">
 </form>
 <br>
 <div>

@@ -71,7 +71,6 @@ make_header("tvorba predmetu");
         <tr>
             <th>Zkratka</th>
             <th>Nazev</th>
-            <th>Anotace</th>
             <th>Pocet kreditu</th>
             <th>Typ ukonceni</th>
             <th>Garant</th>
