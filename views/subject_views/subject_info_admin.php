@@ -18,7 +18,7 @@ $teachers = $subjectService->getSubjectTeachers($_GET["zkratka"]);
 
 <h2>Edit Subject: <?= $infoArray['zkratka']; ?></h2>
 
-<form action="../../controllers/subject_controllers/subject_edit.php" method="post" onsubmit="validateForm(fields)">
+<form action="../../controllers/subject_controllers/subject_edit.php" method="post" onsubmit="return validateForm(fields)">
     <input type="hidden" name="zkratka" value="<?= $infoArray['zkratka']; ?>"/>
 
     <label for="nazev">Nazev predmetu</label>

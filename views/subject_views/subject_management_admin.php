@@ -18,7 +18,7 @@ make_header("tvorba predmetu");
    Vytvořit předmět
 </h2>
 
-<form action="../../controllers/subject_controllers/subject_create.php" method="post" onsubmit="validateForm(fields)">
+<form action="../../controllers/subject_controllers/subject_create.php" method="post" onsubmit="return validateForm(fields)">
     <label for="nazev">Nazev</label>
     <input type="text" name="nazev" id="nazev"><br>
 
