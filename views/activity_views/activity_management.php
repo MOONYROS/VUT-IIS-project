@@ -104,6 +104,8 @@ make_header("správa výukových aktitit");
             <th>Mistnost</th>
             <th>Predmet</th>
             <th>Start</th>
+            <th>Den</th>
+            <th>Trvání v hodinách</th>
         </tr>
         <?php
         $servis = new activityService();
