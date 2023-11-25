@@ -6,6 +6,8 @@ DROP TABLE Rozvrh;
 DROP TABLE Predmet;
 DROP TABLE Osoba;
 
+ALTER DATABASE mydatabase CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
 CREATE TABLE Osoba (
 	ID_Osoba INT(5) NOT NULL AUTO_INCREMENT,
 	jmeno varchar(15) NOT NULL,

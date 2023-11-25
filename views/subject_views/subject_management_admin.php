@@ -8,7 +8,7 @@ require_once "../../services/subject_service.php";
 make_header("tvorba predmetu");
 ?>
 
-<?= toMainPage(); ?>
+<a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
 
 <script>
     let fields = ['nazev', 'zkratka', 'anotace', 'pocet_kreditu'];

@@ -18,7 +18,7 @@ $subjectService = new subjectService();
 
 ?>
 
-<?= toSelectedPage('/scheduler_views/schedule_activities.php', 'Zpět k aktivitám'); ?>
+<a class='direct_link' href='schedule_activities.php'>Zpět k aktivitám</a>
 
 <script>
     let fields = ['start'];

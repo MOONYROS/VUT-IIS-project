@@ -26,7 +26,7 @@ make_header("Info o vyukove aktivite");
 
 ?>
 
-<?= toSelectedPage('/activity_views/activity_management.php', 'Zpět k aktivitám'); ?>
+<a class='direct_link' href="activity_management.php">Zpět k aktivitám</a>
 
 <script>
     let fields = ['delka', 'popis'];

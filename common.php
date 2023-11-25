@@ -71,24 +71,6 @@ function roleName($input): string {
     };
 }
 
-function checkRole($targetRole): bool {
-    global $user;
-    if ($user['role'] == $targetRole) {
-        return true;
-    }
-    else {
-        return false;
-    }
-}
-
-function toMainPage(): string {
-    return "<a class='direct_link' href='/views/main_page.php'>Zpět na hlavní obrazovku</a>";
-}
-
-function toSelectedPage($pagePath, $name): string {
-    return "<a class='direct_link' href=/views" . $pagePath . ">$name</a>";
-}
-
 function requiredField() {
     return '<span class="required">*</span>';
 }

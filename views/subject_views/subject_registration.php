@@ -8,7 +8,7 @@ require_once "../../services/subject_service.php";
 make_header("Registrace predmetu");
 ?>
 
-<?= toMainPage(); ?>
+<a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
 
 <h2>
     Registrace předmětů

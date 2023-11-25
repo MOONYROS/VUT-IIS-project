@@ -8,9 +8,11 @@ make_header("Správa předmětů");
 
 $subjectService = new subjectService();
 $garantedSubjects = $subjectService->getGarantedSubjects($_SESSION["user_id"]);
+?>
 
-echo toMainPage();
+<a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
 
+<?php
 if (!$garantedSubjects) {
     echo "<p>" . "Nejste garantem žádného předmětu." . "</p>";
 }

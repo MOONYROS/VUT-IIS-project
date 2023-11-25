@@ -14,7 +14,7 @@ $infoArray = $roomService->getRoomInfo($_GET["ID_mist"]);
     let fields = ['kapacita', 'popis', 'umisteni'];
 </script>
 
-<?= toSelectedPage('/room_views/room_management.php', 'Zpět k místnostem'); ?>
+<a class='direct_link' href="room_management.php">Zpět k místnostem</a>
 
 <h2>Edit room: <?php if (isset($infoArray["ID_mist"])) echo $infoArray['ID_mist']; ?></h2>
 

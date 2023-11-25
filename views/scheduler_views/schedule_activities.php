@@ -7,7 +7,7 @@ require_once "../../controllers/request_controllers/requests_list.php";
 make_header("Razeni aktivit");
 ?>
 
-<?= toMainPage(); ?>
+<a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
 
 <h1>
     Razeni vyukovych aktivit

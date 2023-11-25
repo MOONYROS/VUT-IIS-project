@@ -9,7 +9,7 @@ make_header("Sprava zadosti");
 
 ?>
 
-<?= toMainPage(); ?>
+<a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
 
 <script>
     let fields = ['zadost'];

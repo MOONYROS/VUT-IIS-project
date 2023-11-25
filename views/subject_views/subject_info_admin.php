@@ -16,7 +16,7 @@ $teachers = $subjectService->getSubjectTeachers($_GET["zkratka"]);
     let fields = ['nazev', 'anotace', 'pocet_kreditu'];
 </script>
 
-<?= toSelectedPage('/subject_views/subject_management_admin.php', 'Zpět k předmětům'); ?>
+<a class='direct_link' href='subject_management_admin.php'>Zpět k předmětům</a>
 
 <h2>Edit Subject: <?= $infoArray['zkratka']; ?></h2>
 

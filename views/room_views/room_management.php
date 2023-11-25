@@ -11,7 +11,7 @@ make_header("správa místností");
     let fields = ['ID_mist', 'kapacita', 'popis', 'umisteni'];
 </script>
 
-<?= toMainPage(); ?>
+<a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
 
 <h2>
     Přidat místnost

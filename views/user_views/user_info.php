@@ -10,7 +10,7 @@ $userService = new userService();
 $infoArray = $userService->getUserInfo($_GET["ID"]);
 ?>
 
-<?= toSelectedPage('/user_views/user_management.php', 'Zpět k uživatelům'); ?>
+<a class='direct_link' href='user_management.php'>Zpět k uživatelům</a>
 
 <script>
     let fields = ['jmeno', 'prijmeni', 'email', 'heslo', 'telefon'];

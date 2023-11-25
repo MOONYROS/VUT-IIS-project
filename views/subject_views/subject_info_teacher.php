@@ -11,7 +11,7 @@ $subjectService = new subjectService();
 $infoArray = $subjectService->getSubjectInfo($_GET["zkratka"]);
 ?>
 
-<?= toSelectedPage('/subject_views/subject_management_teacher.php', 'Zpět k předmětům'); ?>
+<a class='direct_link' href='subject_info_teacher.php'>Zpět k předmětům</a>
 
 <h2>Vyučující předmětu: <?= $infoArray['zkratka']; ?></h2>
 
@@ -34,7 +34,7 @@ else { ?>
                     <td>{$teacher["jmeno"]}</td>
                     <td>{$teacher["prijmeni"]}</td>
                     <td>
-                        <form class='btnForm' method='post' action='/controllers/subject_controllers/remove_teacher.php'>
+                        <form class='btnForm' method='post' action='../../controllers/subject_controllers/remove_teacher.php'>
                             <input type='hidden' name='teacherId' value='{$teacher["ID_Osoba"]}'>
                             <input type='hidden' name='subjectId' value='{$_GET["zkratka"]}'>                            
                             <button class='btnRemove' type='submit'>Odstranit učitele</button>
@@ -68,7 +68,7 @@ else { ?>
                     <td>{$teacher["jmeno"]}</td>
                     <td>{$teacher["prijmeni"]}</td>
                     <td>
-                        <form class='btnForm' method='post' action='/controllers/subject_controllers/add_teacher.php'>
+                        <form class='btnForm' method='post' action='../../controllers/subject_controllers/add_teacher.php'>
                             <input type='hidden' name='teacherId' value='{$teacher["ID_Osoba"]}'>
                             <input type='hidden' name='subjectId' value='{$_GET["zkratka"]}'>
                             <button type='submit'>Přidat učitele</button>

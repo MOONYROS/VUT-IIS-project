@@ -6,7 +6,7 @@ require_once "../../controllers/activity_controllers/schedule_controller.php";
 make_header("Zobrazit rozvrh");
 ?>
 
-<?= toMainPage(); ?>
+<a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
 
 <h2>Rozvrh vyučujícího: <?= getStudentName(); ?></h2>
 

@@ -7,7 +7,7 @@ require_once "../../services/user_service.php";
 make_header("sprava uzivatelu");
 ?>
 
-<?= toMainPage(); ?>
+<a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
 
 <script>
     let fields = ['jmeno', 'prijmeni', 'email', 'heslo', 'telefon'];

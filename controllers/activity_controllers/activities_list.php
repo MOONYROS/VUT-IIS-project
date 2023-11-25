@@ -2,9 +2,6 @@
 require_once "../../services/activity_service.php";
 require_once "../../services/user_service.php";
 
-
-
-
 function listActivity() {
     $activityService = new activityService();
     $activities = $activityService->getAllActivities();

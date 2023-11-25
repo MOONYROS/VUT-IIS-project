@@ -14,7 +14,7 @@ $user = $service->getUserById($_SESSION['user_id']);
 
 make_header('Hlavní stránka');
 ?>
-<a class="direct_link" id="logout" href="/controllers/logout.php">Odhlásit se</a>
+<a class="direct_link" id="logout" href="../controllers/logout.php">Odhlásit se</a>
 
 <h1>
     Vítejte v systému pro vytváření rozvrhů

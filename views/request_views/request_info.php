@@ -4,7 +4,7 @@ require_once "../../common.php";
 make_header("Upravit žádost");
 ?>
 
-<?= toSelectedPage('/request_views/request_management.php', 'Zpět k žádostem'); ?>
+<a class='direct_link' href='request_management.php'>Zpět k žádostem</a>
 
 <script>
     let fields = ['zadost'];
