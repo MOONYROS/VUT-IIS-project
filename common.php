@@ -10,6 +10,7 @@ function make_header($title): void
     <html lang="cs">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
+        <link rel="icon" type="image/x-icon" href="<?= $domain . '/public/scheduler_icon.ico'?>">
         <link rel="stylesheet" href="<?= $domain . '/public/style.css'?>">
         <script src="<?= $domain . '/public/validateForm.js'?>"></script>
         <title><?= $title;?></title>
@@ -56,9 +57,13 @@ function checkRole($targetRole): bool {
 }
 
 function toMainPage(): string {
-    return "<a href='/views/main_page.php'>Zpět na hlavní obrazovku</a>";
+    return "<a class='direct_link' href='/views/main_page.php'>Zpět na hlavní obrazovku</a>";
 }
 
 function toSelectedPage($pagePath, $name): string {
-    return "<a href=/views" . $pagePath . ">$name</a>";
+    return "<a class='direct_link' href=/views" . $pagePath . ">$name</a>";
+}
+
+function requiredField() {
+    return '<span class="required">*</span>';
 }

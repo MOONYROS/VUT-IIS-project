@@ -19,19 +19,19 @@ make_header("tvorba predmetu");
 </h2>
 
 <form action="../../controllers/subject_controllers/subject_create.php" method="post" onsubmit="return validateForm(fields)">
-    <label for="nazev">Nazev</label>
+    <label for="nazev">Nazev<?= requiredField(); ?></label>
     <input type="text" name="nazev" id="nazev"><br>
 
-    <label for="zkratka">Zkratka</label>
+    <label for="zkratka">Zkratka<?= requiredField(); ?></label>
     <input type="text" name="zkratka" id="zkratka"><br>
 
-    <label for="anotace">Anotace</label>
+    <label for="anotace">Anotace<?= requiredField(); ?></label>
     <textarea name="anotace" id="anotace"></textarea><br>
 
-    <label for="pocet_kreditu">Pocet kreditu</label>
+    <label for="pocet_kreditu">Pocet kreditu<?= requiredField(); ?></label>
     <input type="number" name="pocet_kreditu" id="pocet_kreditu"><br>
 
-    <label for="typ_ukonceni">Typ ukonceni</label>
+    <label for="typ_ukonceni">Typ ukonceni<?= requiredField(); ?></label>
     <select id="typ_ukonceni" name="typ_ukonceni">
         <option value="za" selected>zapocet</option>
         <option value="klza">kl zapocet</option>
@@ -39,7 +39,7 @@ make_header("tvorba predmetu");
         <option value="zazk">zapocet zkouska</option>
     </select><br>
 
-    <label for="garant">Garant</label>
+    <label for="garant">Garant<?= requiredField(); ?></label>
     <select name="garant" id="garant">
         <?php
         $userService = new userService();

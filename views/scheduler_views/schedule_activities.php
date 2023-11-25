@@ -5,9 +5,9 @@ require_once "../../controllers/activity_controllers/activities_list.php";
 require_once "../../controllers/request_controllers/requests_list.php";
 
 make_header("Razeni aktivit");
-
-echo toMainPage();
 ?>
+
+<?= toMainPage(); ?>
 
 <h1>
     Razeni vyukovych aktivit

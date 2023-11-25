@@ -23,19 +23,19 @@ $teachers = $subjectService->getSubjectTeachers($_GET["zkratka"]);
 <form action="../../controllers/subject_controllers/subject_edit.php" method="post" onsubmit="return validateForm(fields)">
     <input type="hidden" name="zkratka" value="<?= $infoArray['zkratka']; ?>"/>
 
-    <label for="nazev">Nazev predmetu</label>
+    <label for="nazev">Nazev predmetu<?= requiredField(); ?></label>
     <input type="text" name="nazev" value="<?= $infoArray['nazev']; ?>" id="nazev"/>
     <br>
 
-    <label for="anotace">Anotace predmetu</label>
+    <label for="anotace">Anotace predmetu<?= requiredField(); ?></label>
     <textarea name="anotace" id="anotace"><?= $infoArray['anotace']; ?></textarea>
     <br>
 
-    <label for="pocet_kreditu">Pocet kreditu</label>
+    <label for="pocet_kreditu">Pocet kreditu<?= requiredField(); ?></label>
     <input type="number" name="pocet kreditu" value="<?= $infoArray['pocet_kreditu']; ?>" id="pocet_kreditu"/>
     <br>
 
-    <label for="typ_ukonceni">Typ ukonceni</label>
+    <label for="typ_ukonceni">Typ ukonceni<?= requiredField(); ?></label>
     <select id="typ_ukonceni" name="typ_ukonceni">
         <option value="za" <?= checkSelect("za", $infoArray['typ_ukonceni']) ?>>zapocet</option>
         <option value="klza" <?= checkSelect("klza", $infoArray['typ_ukonceni']) ?>>kl zapocet</option>
@@ -43,7 +43,7 @@ $teachers = $subjectService->getSubjectTeachers($_GET["zkratka"]);
         <option value="zazk" <?= checkSelect("zazk", $infoArray['typ_ukonceni']) ?>>zapocet zkouska</option>
     </select><br>
 
-    <label for="garant">Garant</label>
+    <label for="garant">Garant<?= requiredField(); ?></label>
     <select name="garant" id="garant">
         <?php
         $userService = new userService();
