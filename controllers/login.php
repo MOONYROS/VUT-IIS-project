@@ -12,6 +12,7 @@ $user = $service->verifyLogin($email, $heslo);
 
 if ($user) {
     $_SESSION['user_id'] = $user['ID_Osoba'];
+    $_SESSION['logout_time'] = time();
     // Přesměrování na chráněnou stránku nebo dashboard
     header("Location: ../views/main_page.php");
     exit;

@@ -20,6 +20,9 @@ foreach ($activities as $activity) {
     if ($_POST["mistnost"] != $activity["mistnost"]) {
         continue;
     }
+    if (!collidingWeeks($activity["opakovani"], $newActivity["opakovani"])) {
+        continue;
+    }
 
     if (startIsInActivity($activity, $_POST["start"]) or endIsInActivity($activity, $_POST["start"] + $newActivity["delka"])) {
         $message = urlencode("Výuková aktivita se kryje s jinou.");
@@ -41,4 +44,15 @@ function startIsInActivity($activity, $start): bool {
 function endIsInActivity($activity, $end): bool {
     $oldStop = $activity["start"] + $activity["delka"];
     return ($activity["start"] < $end and $end <= $oldStop);
+}
+
+function collidingWeeks($old, $new): bool {
+    $weekOptions = ["ST", "LT", "KT"];
+    if (!in_array($new, $weekOptions) or !in_array($old, $weekOptions)) {
+        return false;
+    }
+    if ($new == "KT" or $old == "KT") {
+        return true;
+    }
+    return ($new == $old);
 }

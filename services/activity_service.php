@@ -194,7 +194,7 @@ class activityService {
 
     function getActivitiesDay($day) {
         try {
-            $stmt = $this->pdo->prepare("SELECT mistnost, den, start, delka FROM Vyuk_aktivita WHERE den = ?");
+            $stmt = $this->pdo->prepare("SELECT mistnost, den, start, delka, opakovani FROM Vyuk_aktivita WHERE den = ?");
             $stmt->execute([$day]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
