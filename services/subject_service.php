@@ -222,4 +222,15 @@ class subjectService {
             error_log("Failed to remove garant: " . $e->getMessage());
         }
     }
+
+    function getSubjectInfoNoGarant($zkratka) {
+        try {
+            $stmt = $this->pdo->prepare("SELECT zkratka, nazev, pocet_kreditu, typ_ukonceni FROM Predmet WHERE zkratka = ?");
+            $stmt->execute([$zkratka]);
+            return $stmt->fetch(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            error_log("Failed to remove garant: " . $e->getMessage());
+        }
+    }
 }

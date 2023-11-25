@@ -16,6 +16,13 @@ $service = new activityService();
 $activities = $service->getActivitiesDay($_POST["den"]);
 $newActivity = $service->getActivityInfo($_POST["ID_Aktiv"]);
 
+if ($newActivity["mistnost"] != null) {
+    $message = $service->scheduleActivity($toInsert);
+    $message = urlencode($message);
+    header("Location: ../../views/scheduler_views/activity_scheduling.php?id={$_POST["ID_Aktiv"]}&message=$message");
+    exit;
+}
+
 foreach ($activities as $activity) {
     if ($_POST["mistnost"] != $activity["mistnost"]) {
         continue;

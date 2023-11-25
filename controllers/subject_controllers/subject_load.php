@@ -6,7 +6,13 @@ require_once "../../services/user_service.php";
 function loadSubject($abbreviation, $role) {
     $subjectService = new subjectService();
     $subjectInfo = $subjectService->getSubjectInfo($abbreviation);
-    $subjectInfo = replaceIdWithName($subjectInfo);
+    if ($subjectInfo) {
+        $subjectInfo = replaceIdWithName($subjectInfo);
+    }
+    else {
+        $subjectInfo = $subjectService->getSubjectInfoNoGarant($abbreviation);
+        $subjectInfo["garant"] = "Nemá garanta";
+    }
 
     $finalValue = "";
     foreach ($subjectInfo as $item) {
