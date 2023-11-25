@@ -83,3 +83,4 @@ $teachers = $subjectService->getSubjectTeachers($_GET["zkratka"]);
 
 <?php
 make_footer();
+?>

@@ -44,3 +44,7 @@ $infoArray = $roomService->getRoomInfo($_GET["ID_mist"]);
     <input type="submit" value="Ulozit zmeny">
     <input type="submit" formaction="../../controllers/room_controllers/room_delete.php" value="Smazat mistnost" class="btnRemove2">
 </form>
+
+<?php
+make_footer();
+?>

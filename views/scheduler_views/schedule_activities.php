@@ -34,3 +34,4 @@ make_header("Razeni aktivit");
 
 <?php
 make_footer();
+?>

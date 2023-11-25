@@ -72,3 +72,7 @@ make_header("správa místností");
         ?>
     </table>
 </div>
+
+<?php
+make_footer();
+?>

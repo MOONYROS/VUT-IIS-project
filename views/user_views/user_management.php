@@ -74,3 +74,4 @@ make_header("sprava uzivatelu");
 
 <?php
 make_footer();
+?>

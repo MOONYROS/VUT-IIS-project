@@ -47,3 +47,6 @@ make_header("Registrace predmetu");
     ?>
 </table>
 
+<?php
+make_footer();
+?>

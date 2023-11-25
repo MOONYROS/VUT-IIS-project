@@ -72,7 +72,6 @@ foreach ($subjects as $subject) {
 }
 ?>
 
-
-
 <?php
 make_footer();
+?>

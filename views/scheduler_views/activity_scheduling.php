@@ -159,3 +159,4 @@ if (isset($_POST['submit'])) { ?>
 
 <?php
 make_footer();
+?>

@@ -28,3 +28,4 @@ make_header("Upravit žádost");
 
 <?php
 make_footer();
+?>

@@ -86,3 +86,7 @@ make_header("Info o vyukove aktivite");
     <input type="submit" value="Ulozit zmeny">
     <input type="submit" formaction="../../controllers/activity_controllers/activity_delete.php" value="Smazat vyukovou aktivitu" class="btnRemove2">
 </form>
+
+<?php
+make_footer();
+?>

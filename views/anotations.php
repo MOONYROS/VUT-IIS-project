@@ -22,3 +22,4 @@ foreach ($subjectIDs as $subject) {
 }
 
 make_footer();
+?>

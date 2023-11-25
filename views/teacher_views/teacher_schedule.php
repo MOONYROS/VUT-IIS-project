@@ -46,3 +46,4 @@ make_header("Zobrazit rozvrh");
 <?php
 make_footer();
 ?>
+

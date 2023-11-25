@@ -102,3 +102,4 @@ else { ?>
 
 <?php
 make_footer();
+?>

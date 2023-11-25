@@ -84,3 +84,7 @@ make_header("tvorba predmetu");
         ?>
     </table>
 </div>
+
+<?php
+make_footer();
+?>

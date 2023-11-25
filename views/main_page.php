@@ -54,4 +54,3 @@ make_header('Hlavní stránka');
 <?php
 make_footer();
 ?>
-

@@ -125,3 +125,7 @@ make_header("správa výukových aktitit");
         ?>
     </table>
 </div>
+
+<?php
+make_footer();
+?>

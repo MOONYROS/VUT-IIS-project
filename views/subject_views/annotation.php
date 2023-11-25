@@ -29,4 +29,6 @@ $teachers = $subjectService->getSubjectTeachers($subjectId);
     ?>
 </div>
 
-<?php make_footer(); ?>
+<?php
+make_footer();
+?>
