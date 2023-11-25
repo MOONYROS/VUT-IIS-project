@@ -44,7 +44,7 @@ make_header('Hlavní stránka');
             break;
         }
         default: {
-            echo "Yikes neco neni uplne dobre";
+            echo "ERROR - role";
             break;
         }
     }

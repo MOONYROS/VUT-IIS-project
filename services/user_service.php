@@ -11,7 +11,7 @@ class userService {
             $this->pdo = new PDO($params["connString"], $params["userName"], $params["password"], $params["options"]);
         }
         catch (PDOException $e) {
-            error_log("Chyba při navazování spojení s databází: " . $e->getMessage());
+            error_log("Error connecting to database: " . $e->getMessage());
         }
     }
 
@@ -23,7 +23,7 @@ class userService {
             return "User successfully created.";
         }
         catch (PDOException $e) {
-            error_log("Chyba pri vkladani zaznamu:" . $e->getMessage());
+            error_log("User insert failed:" . $e->getMessage());
             return "User insert failed:" . $e->getMessage();
         }
     }
@@ -53,7 +53,7 @@ class userService {
             return null; // Přihlášení neúspěšné
         }
         catch (PDOException $e) {
-            echo "Chyba při ověřování uživatele: " . $e->getMessage();
+            echo "Error validating login: " . $e->getMessage();
         }
         return null;
     }
@@ -66,7 +66,7 @@ class userService {
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
         catch (PDOException $e) {
-            error_log("Chyba při načítání uživatelských informací: " . $e->getMessage());
+            error_log("Error loading user info: " . $e->getMessage());
             return null;
         }
     }
@@ -78,7 +78,7 @@ class userService {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         catch (PDOException $e) {
-            error_log("Chyba při načítání informací o uživatelech $role: " . $e->getMessage());
+            error_log("Error loading info of users with role $role: " . $e->getMessage());
             return null;
         }
     }
@@ -95,7 +95,7 @@ class userService {
             return $userArray;
         }
         catch (PDOException $e) {
-            return "Getting User IDs was unsuccessful: " . $e->getMessage();
+            return "Could not get user IDs: " . $e->getMessage();
         }
     }
 
@@ -118,7 +118,7 @@ class userService {
             return "User successfully deleted.";
         }
         catch (PDOException $e) {
-            error_log("User removal not successful:" . $e->getMessage());
+            error_log("User removal unsuccessful:" . $e->getMessage());
             return "Error when deleting user:" . $e->getMessage();
         }
     }

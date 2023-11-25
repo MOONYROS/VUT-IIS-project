@@ -4,7 +4,7 @@ require_once "../../common.php";
 require_once "../../controllers/room_controllers/room_load.php";
 require_once "../../services/room_service.php";
 
-make_header("správa místností");
+make_header("Správa místností");
 ?>
 
 <script>
@@ -18,7 +18,7 @@ make_header("správa místností");
 </h2>
 
 <form action="../../controllers/room_controllers/room_create.php" method="post" onsubmit=" return validateForm(fields)">
-    <label for="ID_mist">Nazev</label>
+    <label for="ID_mist">Název</label>
     <input type="text" name="ID_mist" id="ID_mist"><br>
 
     <label for="kapacita">Kapacita</label>
@@ -26,7 +26,7 @@ make_header("správa místností");
 
     <label for="typ">Typ</label>
     <select id="typ" name="typ">
-        <option value="poslucharna" selected>Poslucharna</option>
+        <option value="poslucharna" selected>Posluchárna</option>
         <option value="studovna">Studovna</option>
         <option value="pracovna">Pracovna</option>
         <option value="chodba">Chodba</option>
@@ -35,10 +35,10 @@ make_header("správa místností");
     <label for="popis">Popis</label>
     <textarea name="popis" id="popis"></textarea><br>
 
-    <label for="umisteni">Umisteni</label>
+    <label for="umisteni">Umístení</label>
     <input type="text" name="umisteni" id="umisteni"><br>
 
-    <input type="submit" value="Pridat mistnost">
+    <input type="submit" value="Přidat místnost">
 </form>
 <br>
 <div>
@@ -60,7 +60,7 @@ make_header("správa místností");
             <th>Kapacita</th>
             <th>Typ</th>
             <th>Popis</th>
-            <th>Umisteni</th>
+            <th>Umístění</th>
         </tr>
         <?php
 

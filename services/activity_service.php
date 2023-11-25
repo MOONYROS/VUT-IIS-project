@@ -12,7 +12,7 @@ class activityService {
             $this->pdo = new PDO($params["connString"], $params["userName"], $params["password"], $params["options"]);
         }
         catch (PDOException $e) {
-            error_log("Chyba při navazování spojení s databází: " . $e->getMessage());
+            error_log("Error connecting to database: " . $e->getMessage());
         }
     }
 
@@ -25,10 +25,10 @@ class activityService {
         catch (PDOException $e) {
             error_log("Data input failed:" . $e->getMessage());
             if (str_contains($e->getMessage(), 'mistnost')) {
-                return "Activity input failed - neznama mistnost: " . $e->getMessage();
+                return "Activity input failed - unknown room: " . $e->getMessage();
             }
             elseif (str_contains($e->getMessage(), 'predmet')) {
-                return "Activity input failed - neznamy predmet: " . $e->getMessage();
+                return "Activity input failed - unknown subject: " . $e->getMessage();
             }
             else {
                 return "Activity input failed: " . $e->getMessage();
@@ -45,10 +45,10 @@ class activityService {
         catch (PDOException $e) {
             error_log("Activity update failed:" . $e->getMessage());
             if(strpos($e->getMessage(), 'mistnost') !== false){
-                return "Activity update failed - neznama mistnost: " . $e->getMessage();
+                return "Activity update failed - unknown room: " . $e->getMessage();
             }
             elseif(strpos($e->getMessage(), 'predmet') !== false){
-                return "Activity update failed - neznamy predmet: " . $e->getMessage();
+                return "Activity update failed - unknown subject: " . $e->getMessage();
             }
             else{
                 return "Activity update failed: " . $e->getMessage();
@@ -97,7 +97,7 @@ class activityService {
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
         catch (PDOException $e) {
-            error_log("Data input not successful");
+            error_log("Data input unsuccessful");
             return null;
         }
     }
@@ -109,8 +109,8 @@ class activityService {
             return "Activity successfully deleted.";
         }
         catch (PDOException $e) {
-            error_log("Activity removal not successful:" . $e->getMessage());
-            return "Activity removal not successfull: " . $e->getMessage();
+            error_log("Activity removal unsuccessful:" . $e->getMessage());
+            return "Activity removal unsuccessfull: " . $e->getMessage();
         }
     }
 
@@ -121,8 +121,8 @@ class activityService {
             return $stmt->fetchAll();
         }
         catch (PDOException $e) {
-            error_log("Activity removal not successful:" . $e->getMessage());
-            return "Activity removal not successfull: " . $e->getMessage();
+            error_log("Could not load activities:" . $e->getMessage());
+            return "Could not load activities: " . $e->getMessage();
         }
     }
 
@@ -211,7 +211,7 @@ class activityService {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         catch (PDOException $e) {
-            error_log("Could not load activities: " . $e->getMessage());
+            error_log("Could not load teacher activities: " . $e->getMessage());
         }
     }
 
@@ -225,7 +225,7 @@ class activityService {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         catch (PDOException $e) {
-            error_log("Could not load activities: " . $e->getMessage());
+            error_log("Could not load teacher day activities: " . $e->getMessage());
         }
     }
 

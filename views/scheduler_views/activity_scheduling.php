@@ -6,7 +6,7 @@ require_once "../../services/room_service.php";
 require_once "../../controllers/scheduler_controllers/activity_load_specific.php";
 require_once "../../controllers/request_controllers/requests_list.php";
 
-make_header("Zaradit vyukovou aktivitu.");
+make_header("Zařadit výukovou aktivitu.");
 
 $activityService = new activityService();
 $activity = $activityService->getActivityInfo($_GET['id']);
@@ -43,9 +43,9 @@ $subjectService = new subjectService();
 </h3>
 
 <ul>
-    <li><b>Delka:</b> <?= $activity['delka']?> hodiny</li>
-    <li><b>Opakovani:</b> <?= $activity['opakovani']?></li>
-    <li><b>Pozadavek:</b>
+    <li><b>Délka:</b> <?= $activity['delka']?> hodiny</li>
+    <li><b>Opakování:</b> <?= $activity['opakovani']?></li>
+    <li><b>Požadavek:</b>
         <br>
         <?= $activity['pozadavek']?>
     </li>
@@ -55,7 +55,7 @@ $subjectService = new subjectService();
 
     <input type="hidden" name="ID_Aktiv" value="<?= $_GET['id'] ?>"/>
 
-    <label for="mistnost">Mistnost</label>
+    <label for="mistnost">Místnost</label>
     <select name="mistnost" id="mistnost">
         <?php
         foreach ($rooms as $room) {
@@ -104,9 +104,9 @@ $subjectService = new subjectService();
 
 <table>
     <tr>
-        <th>Jmeno</th>
-        <th>Prijmeni</th>
-        <th>Zadost</th>
+        <th>Jméno</th>
+        <th>Příjmení</th>
+        <th>Žádost</th>
     </tr>
     <?php
     echo listRequests($activity['predmet']);

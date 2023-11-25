@@ -5,7 +5,7 @@ require_once "../../common.php";
 require_once "../../services/subject_service.php";
 require_once "../../services/user_service.php";
 
-make_header("Info o predmetu");
+make_header("Info o předmětu");
 
 $subjectService = new subjectService();
 $infoArray = $subjectService->getSubjectInfo($_GET["zkratka"]);
@@ -18,29 +18,29 @@ $teachers = $subjectService->getSubjectTeachers($_GET["zkratka"]);
 
 <a class='direct_link' href='subject_management_admin.php'>Zpět k předmětům</a>
 
-<h2>Edit Subject: <?= $infoArray['zkratka']; ?></h2>
+<h2>Upravit předmět: <?= $infoArray['zkratka']; ?></h2>
 
 <form action="../../controllers/subject_controllers/subject_edit.php" method="post" onsubmit="return validateForm(fields)">
     <input type="hidden" name="zkratka" value="<?= $infoArray['zkratka']; ?>"/>
 
-    <label for="nazev">Nazev predmetu<?= requiredField(); ?></label>
+    <label for="nazev">Název předmětu<?= requiredField(); ?></label>
     <input type="text" name="nazev" value="<?= $infoArray['nazev']; ?>" id="nazev"/>
     <br>
 
-    <label for="anotace">Anotace predmetu<?= requiredField(); ?></label>
+    <label for="anotace">Anotace předmětu<?= requiredField(); ?></label>
     <textarea name="anotace" id="anotace"><?= $infoArray['anotace']; ?></textarea>
     <br>
 
-    <label for="pocet_kreditu">Pocet kreditu<?= requiredField(); ?></label>
+    <label for="pocet_kreditu">Počet kreditů<?= requiredField(); ?></label>
     <input type="number" name="pocet kreditu" value="<?= $infoArray['pocet_kreditu']; ?>" id="pocet_kreditu"/>
     <br>
 
-    <label for="typ_ukonceni">Typ ukonceni<?= requiredField(); ?></label>
+    <label for="typ_ukonceni">Typ ukončení<?= requiredField(); ?></label>
     <select id="typ_ukonceni" name="typ_ukonceni">
-        <option value="za" <?= checkSelect("za", $infoArray['typ_ukonceni']) ?>>zapocet</option>
-        <option value="klza" <?= checkSelect("klza", $infoArray['typ_ukonceni']) ?>>kl zapocet</option>
-        <option value="zk" <?= checkSelect("zk", $infoArray['typ_ukonceni']) ?>>zkouska</option>
-        <option value="zazk" <?= checkSelect("zazk", $infoArray['typ_ukonceni']) ?>>zapocet zkouska</option>
+        <option value="za" <?= checkSelect("za", $infoArray['typ_ukonceni']) ?>>Zápočet</option>
+        <option value="klza" <?= checkSelect("klza", $infoArray['typ_ukonceni']) ?>>Klasifikovaný zápočet</option>
+        <option value="zk" <?= checkSelect("zk", $infoArray['typ_ukonceni']) ?>>Zkouška</option>
+        <option value="zazk" <?= checkSelect("zazk", $infoArray['typ_ukonceni']) ?>>Zápočet zkouška</option>
     </select><br>
 
     <label for="garant">Garant<?= requiredField(); ?></label>
@@ -55,8 +55,8 @@ $teachers = $subjectService->getSubjectTeachers($_GET["zkratka"]);
     </select>
     <br>
 
-    <input type="submit" value="Ulozit zmeny">
-    <input type="submit" formaction="../../controllers/subject_controllers/subject_delete.php" value="Odstranit predmet" class="btnRemove2">
+    <input type="submit" value="Uložit změny">
+    <input type="submit" formaction="../../controllers/subject_controllers/subject_delete.php" value="Odstranit předmět" class="btnRemove2">
 </form>
 
 <?php
