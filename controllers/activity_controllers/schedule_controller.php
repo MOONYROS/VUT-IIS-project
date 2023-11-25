@@ -29,10 +29,20 @@ function getReturnString($activities): string
     return $finalValue;
 }
 
-
-
 function getStudentName(): string {
     $uzivatelServis = new userService();
     $person = $uzivatelServis->getUserInfo($_SESSION["user_id"]);
     return $person["jmeno"] . " " . $person["prijmeni"];
+}
+
+function loadTeacherActivities() {
+    $aktivitaServis = new activityService();
+    $activities = $aktivitaServis->getTeacherActivities($_SESSION["user_id"]);
+    return getReturnString($activities);
+}
+
+function loadTeacherActivitiesDay($day) {
+    $aktivitaServis = new activityService();
+    $activities = $aktivitaServis->getTeacherActivitiesDay($_SESSION["user_id"], $day);
+    return getReturnString($activities);
 }

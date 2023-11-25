@@ -202,4 +202,31 @@ class activityService {
             error_log("Could not load activities: " . $e->getMessage());
         }
     }
+
+
+    function getTeacherActivities ($teacher) {
+        try {
+            $stmt = $this->pdo->prepare("SELECT den, predmet, typ, mistnost, start, delka, opakovani FROM Vyuk_aktivita WHERE vyucujici = ?");
+            $stmt->execute([$teacher]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            error_log("Could not load activities: " . $e->getMessage());
+        }
+    }
+
+    function getTeacherActivitiesDay($teacher, $day) {
+        try {
+            $stmt = $this->pdo->prepare(
+                "SELECT den, predmet, typ, mistnost, start, delka, opakovani
+                FROM Vyuk_aktivita WHERE vyucujici = ? AND den = ? ;"
+            );
+            $stmt->execute([$teacher, $day]);
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
+        }
+        catch (PDOException $e) {
+            error_log("Could not load activities: " . $e->getMessage());
+        }
+    }
+
 }

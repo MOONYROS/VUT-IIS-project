@@ -8,7 +8,7 @@ make_header("Zobrazit rozvrh");
 
 <?= toMainPage(); ?>
 
-<h2>Rozvrh studenta: <?= getStudentName(); ?></h2>
+<h2>Rozvrh vyučujícího: <?= getStudentName(); ?></h2>
 
 <form action="<?= $_SERVER["PHP_SELF"] ?>" method="get">
     <label for="day">Den:</label>
@@ -28,20 +28,19 @@ make_header("Zobrazit rozvrh");
         <th>Den</th>
         <th>Predmet</th>
         <th>Typ</th>
+        <th>Mistnost</th>
         <th>Od</th>
         <th>Do</th>
-        <th>Mistnost</th>
         <th>Opakovani</th>
-        <th>Vyucujici</th>
     </tr>
-<?php
-if (isset($_GET["day"]) and $_GET["day"] != "tyden") {
-    echo loadUserActivitiesDay($_GET["day"]);
-}
-else {
-    echo loadUserActivities();
-}
-?>
+    <?php
+    if (isset($_GET["day"]) and $_GET["day"] != "tyden") {
+        echo loadTeacherActivitiesDay($_GET["day"]);
+    }
+    else {
+        echo loadTeacherActivities();
+    }
+    ?>
 </table>
 
 <?php

@@ -22,6 +22,7 @@ function loadTeacher() {
         <li><a href="/views/subject_views/subject_management_teacher.php">Spravovat předměty</a></li>
         <li><a href="/views/activity_views/activity_management.php">Zažádat o výukovou aktivitu</a></li>
         <li><a href="/views/request_views/request_management.php">Moje žádosti na rozvrh</a></li>
+        <li><a href="/views/teacher_views/teacher_schedule.php?day=tyden">Zobrazit rozvrh</a></li>
     </ul>';
 }
 
