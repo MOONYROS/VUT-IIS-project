@@ -12,7 +12,7 @@ class roomService{
             $this->pdo = new PDO($params["connString"], $params["userName"], $params["password"], $params["options"]);
         }
         catch (PDOException $e) {
-            error_log("Chyba při navazování spojení s databází: " . $e->getMessage());
+            error_log("Error connecting to database: " . $e->getMessage());
         }
     }
 
@@ -23,7 +23,7 @@ class roomService{
             return "Room successfully added";
         }
         catch (PDOException $e) {
-            error_log("Data input failed:" . $e->getMessage());
+            error_log("Room insert failed:" . $e->getMessage());
             return "Room insert failed: " . $e->getMessage();
         }
     }
@@ -63,7 +63,7 @@ class roomService{
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
         catch (PDOException $e) {
-            error_log("Data input not successful");
+            error_log("Could not get room info: " . $e->getMessage());
             return null;
         }
     }
@@ -85,8 +85,8 @@ class roomService{
         catch (PDOException $e) {
             $this->pdo->rollBack();
 
-            error_log("Room removal not successful:" . $e->getMessage());
-            return "Room removal not successfull: " . $e->getMessage();
+            error_log("Room removal unsuccessful:" . $e->getMessage());
+            return "Room removal unsuccessfull: " . $e->getMessage();
         }
     }
 }

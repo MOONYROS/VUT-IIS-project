@@ -16,7 +16,7 @@ if ($userService->getRole($_SESSION['user_id']) == 'admi') {
 
 $subjectService = new subjectService();
 
-make_header("správa výukových aktitit");
+make_header("Správa výukových aktitit");
 ?>
 
 <a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
@@ -32,33 +32,33 @@ make_header("správa výukových aktitit");
 <form action="../../controllers/activity_controllers/activity_create.php" method="post" onsubmit="return validateForm(fields);">
     <label for="typ">Typ</label>
     <select id="typ" name="typ">
-        <option value="prednaska" selected>Prednaska</option>
-        <option value="cviceni">Cviceni</option>
-        <option value="zkouska">Zkouska</option>
+        <option value="prednaska" selected>Přednáška</option>
+        <option value="cviceni">Cvičení</option>
+        <option value="zkouska">Zkouška</option>
     </select>
     <br>
 
-    <label for="delka">Delka v hodinach</label>
+    <label for="delka">Délka v hodinách</label>
     <input type="number" name="delka" id="delka"><br>
 
     <label for="popis">Popis</label>
     <textarea name="popis" id="popis"></textarea>
     <br>
 
-    <label for="opakovani">Opakovani</label>
+    <label for="opakovani">Opakováni</label>
     <select id="opakovani" name="opakovani">
-        <option value="JR" selected>Jednorazove</option>
-        <option value="KT">Kazdy tyden</option>
-        <option value="ST">Sudy tyden</option>
-        <option value="LT">Lichy tyden</option>
+        <option value="JR" selected>Jednorázově</option>
+        <option value="KT">Každý týden</option>
+        <option value="ST">Sudý týden</option>
+        <option value="LT">Lichý týden</option>
     </select>
     <br>
 
-    <label for="pozadavek">Pozadavek</label>
+    <label for="pozadavek">Požadavek</label>
     <textarea name="pozadavek" id="pozadavek"></textarea>
     <br>
 
-    <label for="predmet">Predmet</label>
+    <label for="predmet">Předmět</label>
     <select id="predmet" name="predmet">
         <?php
         if ($isAdmin) {
@@ -77,7 +77,7 @@ make_header("správa výukových aktitit");
     </select>
     <br>
 
-    <input type="submit" value="Pridat vyukovou aktivitu">
+    <input type="submit" value="Přidat výukovou aktivitu">
 </form>
 <br>
 <div>
@@ -97,12 +97,12 @@ make_header("správa výukových aktitit");
         <tr>
             <th>ID</th>
             <th>Typ</th>
-            <th>Delka</th>
+            <th>Délka</th>
             <th>Popis</th>
-            <th>Pozadavek</th>
-            <th>Opakovani</th>
-            <th>Mistnost</th>
-            <th>Predmet</th>
+            <th>Požadavek</th>
+            <th>Opakování</th>
+            <th>Místnost</th>
+            <th>Předmět</th>
             <th>Start</th>
             <th>Den</th>
             <th>Trvání v hodinách</th>

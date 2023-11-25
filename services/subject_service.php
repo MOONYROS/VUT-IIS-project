@@ -11,7 +11,7 @@ class subjectService {
             $this->pdo = new PDO($params["connString"], $params["userName"], $params["password"], $params["options"]);
         }
         catch (PDOException $e) {
-            error_log("Chyba při navazování spojení s databází: " . $e->getMessage());
+            error_log("Error connecting to database: " . $e->getMessage());
         }
     }
 
@@ -23,7 +23,7 @@ class subjectService {
             return "Subject successfully added.";
         }
         catch (PDOException $e) {
-            error_log("Subject insert failed:" . $e->getMessage());
+            error_log("Subject insert failed: " . $e->getMessage());
             return "Subject insert failed: " . $e->getMessage();
         }
     }
@@ -42,7 +42,7 @@ class subjectService {
             return "Subject successfully edited.";
         }
         catch (PDOException $e) {
-            error_log("Subject update failed:" . $e->getMessage());
+            error_log("Subject update failed: " . $e->getMessage());
             return "Subject update failed: " . $e->getMessage();
         }
     }
@@ -58,7 +58,7 @@ class subjectService {
             return $subjectArray;
         }
         catch (PDOException $e) {
-            return "Data input not successful: " . $e->getMessage();
+            return "Could not get subject IDs: " . $e->getMessage();
         }
     }
 
@@ -71,7 +71,7 @@ class subjectService {
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }
         catch (PDOException $e) {
-            error_log("Data input not successful");
+            error_log("Could not get subjet info: ". $e->getMessage());
             return null;
         }
     }
@@ -91,12 +91,12 @@ class subjectService {
 
             $this->pdo->commit();
 
-            return "Subject successfully deleted from Predmet, Osoba_predmet and Vyuk_aktivita table.";
+            return "Subject successfully deleted.";
         }
         catch (PDOException $e) {
             $this->pdo->rollBack();
 
-            error_log("Subject removal not successful: " . $e->getMessage());
+            error_log("Subject removal unsuccessful: " . $e->getMessage());
             return "Subject delete failed: " . $e->getMessage();
         }
     }
@@ -120,7 +120,7 @@ class subjectService {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         catch (PDOException $e) {
-            error_log("Could not fetch teached subjects: " . $e->getMessage());
+            error_log("Could not get teached subjects: " . $e->getMessage());
             return null;
         }
     }
@@ -135,7 +135,7 @@ class subjectService {
             if ($e->getCode() == 23000) {
                 return "Učitel má předmět již zaregistrovaný.";
             }
-            error_log("Chyba pri prirazovani ucitele k predmetu $subjectId:" . $e->getMessage());
+            error_log("Error adding teacher to subject $subjectId:" . $e->getMessage());
             return null;
         }
     }
@@ -151,7 +151,7 @@ class subjectService {
             return "Učitel úspěšně odebrán z předmětu.";
         }
         catch (PDOException $e) {
-            error_log("Chyba pri odstranovani ucitele z predmetu $subjectId:" . $e->getMessage());
+            error_log("Error removing teacher from subject $subjectId:" . $e->getMessage());
             return null;
         }
     }
@@ -163,7 +163,7 @@ class subjectService {
             return "Žádost úspěšně vytvořena";
         }
         catch (PDOException $e) {
-            error_log("Tvorba žádosti selhala: " . $e->getMessage());
+            error_log("Request creation failed: " . $e->getMessage());
             return false;
         }
     }
@@ -176,7 +176,7 @@ class subjectService {
             return "Žádost úspěšně smazána";
         }
         catch (PDOException $e) {
-            error_log("Žádost se nepodařilo smazat: " . $e->getMessage());
+            error_log("Could not delete request: " . $e->getMessage());
             return "Žádost se nepodařilo smazat: " . $e->getMessage();
         }
     }
@@ -191,8 +191,8 @@ class subjectService {
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         catch (PDOException $e) {
-            error_log("Nepodařilo se získat žádosti: " . $e->getMessage());
-            return "Nepodařilo se získat žádosti: " . $e->getMessage();
+            error_log("Could not get requests: " . $e->getMessage());
+            return "Could not get requests: " . $e->getMessage();
         }
     }
 

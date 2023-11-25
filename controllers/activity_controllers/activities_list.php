@@ -23,7 +23,7 @@ function formatActivity($activity) {
 
     foreach ($requiredFields as $item) {
         if (($item == 'mistnost' or $item == 'start' or $item == 'den' or $item == 'vyucujici') and ($activity[$item] == null)) {
-            $finalValue = $finalValue . '<td><b>' . "Neprirazeno" . '</b></td>';
+            $finalValue = $finalValue . '<td><b>' . "Nepřiřazeno" . '</b></td>';
         }
         elseif ($item == 'vyucujici' and $activity[$item] != null) {
             $user = $userService->getUserInfo($activity[$item]);

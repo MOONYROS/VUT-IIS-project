@@ -5,7 +5,7 @@ require_once "../../services/user_service.php";
 require_once "../../controllers/subject_controllers/subject_load.php";
 require_once "../../services/subject_service.php";
 
-make_header("tvorba predmetu");
+make_header("Tvorba předmětu");
 ?>
 
 <a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
@@ -19,7 +19,7 @@ make_header("tvorba predmetu");
 </h2>
 
 <form action="../../controllers/subject_controllers/subject_create.php" method="post" onsubmit="return validateForm(fields)">
-    <label for="nazev">Nazev<?= requiredField(); ?></label>
+    <label for="nazev">Název<?= requiredField(); ?></label>
     <input type="text" name="nazev" id="nazev"><br>
 
     <label for="zkratka">Zkratka<?= requiredField(); ?></label>
@@ -28,15 +28,15 @@ make_header("tvorba predmetu");
     <label for="anotace">Anotace<?= requiredField(); ?></label>
     <textarea name="anotace" id="anotace"></textarea><br>
 
-    <label for="pocet_kreditu">Pocet kreditu<?= requiredField(); ?></label>
+    <label for="pocet_kreditu">Počet kreditů<?= requiredField(); ?></label>
     <input type="number" name="pocet_kreditu" id="pocet_kreditu"><br>
 
-    <label for="typ_ukonceni">Typ ukonceni<?= requiredField(); ?></label>
+    <label for="typ_ukonceni">Typ ukončení<?= requiredField(); ?></label>
     <select id="typ_ukonceni" name="typ_ukonceni">
-        <option value="za" selected>zapocet</option>
-        <option value="klza">kl zapocet</option>
-        <option value="zk">zkouska</option>
-        <option value="zazk">zapocet zkouska</option>
+        <option value="za" selected>Zápočet</option>
+        <option value="klza">Klasifikovaný zápočet</option>
+        <option value="zk">Zkouška</option>
+        <option value="zazk">Zápočet zkouška</option>
     </select><br>
 
     <label for="garant">Garant<?= requiredField(); ?></label>
@@ -51,7 +51,7 @@ make_header("tvorba predmetu");
     </select>
     <br>
 
-    <input type="submit" value="Vytvorit predmet">
+    <input type="submit" value="Vytvořit předmět">
 </form>
 <br>
 <div>
@@ -70,9 +70,9 @@ make_header("tvorba predmetu");
     <table>
         <tr>
             <th>Zkratka</th>
-            <th>Nazev</th>
-            <th>Pocet kreditu</th>
-            <th>Typ ukonceni</th>
+            <th>Název</th>
+            <th>Počet kreditů</th>
+            <th>Typ ukončení</th>
             <th>Garant</th>
         </tr>
         <?php

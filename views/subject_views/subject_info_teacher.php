@@ -5,7 +5,7 @@ require_once "../../common.php";
 require_once "../../services/subject_service.php";
 require_once "../../services/user_service.php";
 
-make_header("Info o predmetu");
+make_header("Info o předmětu");
 
 $subjectService = new subjectService();
 $infoArray = $subjectService->getSubjectInfo($_GET["zkratka"]);

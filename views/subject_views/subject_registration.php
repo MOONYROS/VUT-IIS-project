@@ -5,7 +5,7 @@ require_once "../../controllers/subject_controllers/check_registered.php";
 require_once "../../controllers/subject_controllers/subject_load.php";
 require_once "../../services/subject_service.php";
 
-make_header("Registrace predmetu");
+make_header("Registrace předmetů");
 ?>
 
 <a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
@@ -28,16 +28,16 @@ make_header("Registrace predmetu");
 <p> <?php if (isset($_GET["message"])) echo $_GET["message"]; ?><p>
 
 <h2>
-    Registrovane predmety
+    Registrované předměty
 </h2>
 
 <table>
     <tr>
         <th>Zkratka</th>
-        <th>Nazev</th>
+        <th>Název</th>
         <th>Anotace</th>
-        <th>Pocet kreditu</th>
-        <th>Typ ukonceni</th>
+        <th>Počet kreditů</th>
+        <th>Typ ukončení</th>
     </tr>
     <?php
     global $registeredSubjects;

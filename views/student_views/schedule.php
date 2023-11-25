@@ -26,13 +26,13 @@ make_header("Zobrazit rozvrh");
 <table>
     <tr>
         <th>Den</th>
-        <th>Predmet</th>
+        <th>Předmět</th>
         <th>Typ</th>
         <th>Od</th>
         <th>Do</th>
-        <th>Mistnost</th>
-        <th>Opakovani</th>
-        <th>Vyucujici</th>
+        <th>Místnost</th>
+        <th>Opakování</th>
+        <th>Vyučující</th>
     </tr>
 <?php
 if (isset($_GET["day"]) and $_GET["day"] != "tyden") {

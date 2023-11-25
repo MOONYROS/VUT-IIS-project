@@ -8,7 +8,7 @@ make_header("Anotace");
 
 <a class='direct_link' href='../index.php'>Zpět k přihlášení</a>
 
-<h1>Prohlizeni anotaci predmetu</h1>
+<h1>Prohlížení anotací předmětů</h1>
 
 <?php
 

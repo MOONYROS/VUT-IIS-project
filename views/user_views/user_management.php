@@ -4,7 +4,7 @@ require_once "../../common.php";
 require_once "../../controllers/user_controllers/user_load.php";
 require_once "../../services/user_service.php";
 
-make_header("sprava uzivatelu");
+make_header("Správa uživatelů");
 ?>
 
 <a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
@@ -13,18 +13,18 @@ make_header("sprava uzivatelu");
     let fields = ['jmeno', 'prijmeni', 'email', 'heslo', 'telefon'];
 </script>
 
-<h2>Registrace uzivatele</h2>
+<h2>Registrace uživatele</h2>
 <form action="../../controllers/user_controllers/user_register.php" method="post" onsubmit="return validateForm(fields);">
-    <label for="jmeno">Jmeno</label>
+    <label for="jmeno">Jméno</label>
     <input type="text" name="jmeno" id="jmeno"><br>
 
-    <label for="prijmeni">Prijmeni</label>
+    <label for="prijmeni">Příjmení</label>
     <input type="text" name="prijmeni" id="prijmeni"><br>
 
     <label for="email">Email</label>
     <input type="email" name="email" id="email"><br>
 
-    <label for="heslo">Password</label>
+    <label for="heslo">Heslo</label>
     <input type="password" name="heslo" id="heslo"><br>
 
     <label for="telefon">Telefon</label>
@@ -34,8 +34,8 @@ make_header("sprava uzivatelu");
     <select id="role" name="role">
         <option value="admi">Admin</option>
         <option value="stud" selected>Student</option>
-        <option value="vyuc">Vyucujici</option>
-        <option value="rozv">Rozvrhar</option>
+        <option value="vyuc">Vyučující</option>
+        <option value="rozv">Rozvrhář</option>
     </select><br>
 
     <input type="submit" value="Vytvořit nového uživatele">

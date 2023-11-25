@@ -12,7 +12,7 @@ class registrationService
             $params = getDbConnectionParams();
             $this->pdo = new PDO($params["connString"], $params["userName"], $params["password"], $params["options"]);
         } catch (PDOException $e) {
-            error_log("Chyba při navazování spojení s databází: " . $e->getMessage());
+            error_log("Error connecting to database: " . $e->getMessage());
         }
     }
 
@@ -28,7 +28,7 @@ class registrationService
             return $subjectArray;
         }
         catch (PDOException $e) {
-            error_log("Nepodarilo se najit predmety uzivatele: " . $e->getMessage());
+            error_log("Could not find registered subjects: " . $e->getMessage());
             return null;
         }
     }

@@ -22,7 +22,7 @@ if ($userService->getRole($_SESSION['user_id']) == 'admi') {
     $isAdmin = true;
 }
 
-make_header("Info o vyukove aktivite");
+make_header("Info o vyukové aktivitě");
 
 ?>
 
@@ -32,19 +32,19 @@ make_header("Info o vyukove aktivite");
     let fields = ['delka', 'popis'];
 </script>
 
-<h2>Edit activity: <?php if (isset($infoArray["ID_Aktiv"])) echo $infoArray['ID_Aktiv']; ?></h2>
+<h2>Upravit aktivitu: <?php if (isset($infoArray["ID_Aktiv"])) echo $infoArray['ID_Aktiv']; ?></h2>
 
 <form action="../../controllers/activity_controllers/activity_edit.php" method="post" onsubmit="return validateForm(fields);">
     <input type="hidden" name="ID_Aktiv" value="<?php if (isset($infoArray["ID_Aktiv"])) echo $infoArray['ID_Aktiv']; ?>"/>
 
     <label for="typ">Typ</label>
     <select id="typ" name="typ">
-        <option value="prednaska" <?php if (isset($infoArray["typ"])) echo checkSelect("prednaska", $infoArray['typ']) ?>>Prednaska</option>
-        <option value="cviceni" <?php if (isset($infoArray["typ"])) echo checkSelect("cviceni", $infoArray['typ']) ?>>Cviceni</option>
-        <option value="zkouska" <?php if (isset($infoArray["typ"])) echo checkSelect("zkouska", $infoArray['typ']) ?>>Zkouska</option>
+        <option value="prednaska" <?php if (isset($infoArray["typ"])) echo checkSelect("prednaska", $infoArray['typ']) ?>>Přednáška</option>
+        <option value="cviceni" <?php if (isset($infoArray["typ"])) echo checkSelect("cviceni", $infoArray['typ']) ?>>Cvičení</option>
+        <option value="zkouska" <?php if (isset($infoArray["typ"])) echo checkSelect("zkouska", $infoArray['typ']) ?>>Zkouška</option>
     </select><br>
 
-    <label for="delka">Delka</label>
+    <label for="delka">Délka</label>
     <input type="text" name="delka" value="<?php if (isset($infoArray["delka"])) echo $infoArray['delka']; ?>" id="delka"/>
     <br>
 
@@ -52,19 +52,19 @@ make_header("Info o vyukove aktivite");
     <textarea name="popis" id="popis"><?php if (isset($infoArray["popis"])) echo $infoArray['popis']; ?></textarea>
     <br>
 
-    <label for="opakovani">Opakovani</label>
+    <label for="opakovani">Opakování</label>
     <select id="opakovani" name="opakovani">
-        <option value="JR" <?php if (isset($infoArray["typ"])) echo checkSelect("JR", $infoArray['typ']) ?>>Jednorazove</option>
-        <option value="KT" <?php if (isset($infoArray["typ"])) echo checkSelect("KT", $infoArray['typ']) ?>>Kazdy tyden</option>
-        <option value="ST" <?php if (isset($infoArray["typ"])) echo checkSelect("ST", $infoArray['typ']) ?>>Sudy tyden</option>
-        <option value="LT" <?php if (isset($infoArray["typ"])) echo checkSelect("LT", $infoArray['typ']) ?>>Lichy tyden</option>
+        <option value="JR" <?php if (isset($infoArray["typ"])) echo checkSelect("JR", $infoArray['typ']) ?>>Jednorázově</option>
+        <option value="KT" <?php if (isset($infoArray["typ"])) echo checkSelect("KT", $infoArray['typ']) ?>>Každý týden</option>
+        <option value="ST" <?php if (isset($infoArray["typ"])) echo checkSelect("ST", $infoArray['typ']) ?>>Sudý týden</option>
+        <option value="LT" <?php if (isset($infoArray["typ"])) echo checkSelect("LT", $infoArray['typ']) ?>>Lichý týden</option>
     </select><br>
 
-    <label for="pozadavek"></label>
+    <label for="pozadavek">Požadavek</label>
     <textarea name="pozadavek" id="pozadavek"><?= $infoArray['pozadavek']; ?></textarea>
     <br>
 
-    <label for="predmet">Predmet</label>
+    <label for="predmet">Předmět</label>
     <select id="predmet" name="predmet">
         <?php
         if ($isAdmin) {
@@ -83,8 +83,8 @@ make_header("Info o vyukove aktivite");
     </select>
     <br>
 
-    <input type="submit" value="Ulozit zmeny">
-    <input type="submit" formaction="../../controllers/activity_controllers/activity_delete.php" value="Smazat vyukovou aktivitu" class="btnRemove2">
+    <input type="submit" value="Uložit změny">
+    <input type="submit" formaction="../../controllers/activity_controllers/activity_delete.php" value="Smazat výukovou aktivitu" class="btnRemove2">
 </form>
 
 <?php

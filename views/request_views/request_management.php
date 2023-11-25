@@ -5,7 +5,7 @@ require_once "../../services/subject_service.php";
 $subjectService = new subjectService();
 $subjects = $subjectService->getTeachedSubjects($_SESSION['user_id']);
 
-make_header("Sprava zadosti");
+make_header("Správa žádostí");
 
 ?>
 
