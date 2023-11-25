@@ -79,6 +79,14 @@ nav ul li:hover a {
     color: white;
 }
 
+/* BUTTON FOR VIEWING ANNOTATIONS WITHOUT LOGGING IN */
+#unsigned {
+    text-align: center;
+    display: block;
+    padding: 20px;
+    margin: 30px 0;
+}
+
 /* GLOBAL STYLING */
 * {
     font-family: 'Roboto', sans-serif;

@@ -30,7 +30,7 @@
     ?>
 </p>
 
-<a href="views/anotations.php">Vstup bez prihlaseni</a>
+<a href="views/anotations.php" class='direct_link' id="unsigned">Vstoupit bez přihlášení</a>
 
 <?php
     make_footer();
