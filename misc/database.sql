@@ -25,9 +25,9 @@ CREATE TABLE Predmet (
 	anotace varchar(200) NOT NULL,
 	pocet_kreditu INT(1) NOT NULL,
 	typ_ukonceni varchar(6) NOT NULL,
-    garant int(5) NOT NULL,
+    garant int(5),
 	PRIMARY KEY (zkratka),
-    FOREIGN KEY (garant) REFERENCES Osoba(ID_Osoba)
+    FOREIGN KEY (garant) REFERENCES Osoba(ID_Osoba) ON DELETE SET NULL
 );
 
 CREATE TABLE Osoba_predmet (
@@ -35,7 +35,7 @@ CREATE TABLE Osoba_predmet (
     zkratka varchar(3) NOT NULL,
     zadost varchar(255),
     PRIMARY KEY (ID_Osoba, zkratka),
-    FOREIGN KEY (ID_Osoba) REFERENCES Osoba(ID_Osoba),
+    FOREIGN KEY (ID_Osoba) REFERENCES Osoba(ID_Osoba) ON DELETE CASCADE,
     FOREIGN KEY (zkratka) REFERENCES Predmet(zkratka)
 );
 

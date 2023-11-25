@@ -11,7 +11,7 @@ $subjectService = new subjectService();
 $infoArray = $subjectService->getSubjectInfo($_GET["zkratka"]);
 ?>
 
-<a class='direct_link' href='subject_info_teacher.php'>Zpět k předmětům</a>
+<a class='direct_link' href="subject_management_teacher.php">Zpět k předmětům</a>
 
 <h2>Vyučující předmětu: <?= $infoArray['zkratka']; ?></h2>
 
