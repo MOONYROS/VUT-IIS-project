@@ -6,7 +6,7 @@ function loadAdmin() {
         <li><a href="room_views/room_management.php">Spravovat místnosti</a></li>
         <li><a href="user_views/user_management.php">Spravovat uživatele</a></li>
         <li><a href="activity_views/activity_management.php">Vytvořit výukovou aktivitu</a></li>
-        <li><a href="scheduler_views/schedule_activities.php">Zarazeni aktivit</a></li>
+        <li><a href="scheduler_views/schedule_activities.php">Zařazení aktivit</a></li>
     </ul>';
 }
 
@@ -28,6 +28,6 @@ function loadTeacher() {
 
 function loadRozv() {
     return '<ul>
-        <li><a href="scheduler_views/schedule_activities.php">Zarazeni aktivit</a></li>
+        <li><a href="scheduler_views/schedule_activities.php">Zařazení aktivit</a></li>
     </ul>';
 }
