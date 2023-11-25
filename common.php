@@ -33,6 +33,15 @@ function make_footer() : void
     ?>
     </body>
     </html>
+    <footer>
+        Vytvořili
+        <ul>
+            <li>Jonáš Morkus</li>
+            <li>Ondřej Lukášek</li>
+            <li>Ondřej Koumar</li>
+        </ul>
+        <p>IIS 2023</p>
+    </footer>
     <?php
 }
 

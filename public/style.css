@@ -40,13 +40,41 @@ nav ul li:hover a {
 
 /* STYLE FOR FORMS WITH INVALID INPUT */
 .invalid-input {
-    border: 1px solid red !important;
+    border: 1px solid #e4002b !important;
     border-radius: 5px !important;
 }
 
 /* COLOR FOR REQUIRED FIELDS IN FORMS*/
 .required {
-    color: red;
+    color: #e4002b;
+}
+
+.direct_link {
+    display: inline-block;
+    color: #007bff; /* Modrá barva pro odkazy, odpovídá vašemu tématu */
+    background-color: #fff;
+    padding: 8px 15px;
+    margin: 10px 0;
+    border-radius: 4px;
+    text-decoration: none;
+    border: 1px solid #007bff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.direct_link:hover {
+    background-color: #007bff;
+    color: white;
+    text-decoration: none;
+}
+
+#logout {
+    color: #e4002b;
+    border: 1px solid #e4002b;
+}
+
+#logout:hover {
+    background-color: #e4002b;
+    color: white;
 }
 
 /* GLOBAL STYLING */
