@@ -56,18 +56,18 @@ if ($subjects != null) {
 <?php
 foreach ($subjects as $subject) {
     if ($subject['zadost'] != null) {
-        echo '<h3>' . $subject['zkratka'] . '</h3>' .
+        echo '<div class="group"><h3>' . $subject['zkratka'] . '</h3>' .
             '<p>' . $subject['zadost'] . '</p>
             <form method="post" action="../../controllers/request_controllers/request_delete.php">
-            <input type="hidden" name="ID_Osoba" id="ID_Osoba" value="'. $_SESSION['user_id'] .'">
-            <input type="hidden" name="zkratka" id="zkratka" value="'. $subject['zkratka'] .'">
-            <input type="submit" value="Odstranit žádost">
+                <input type="hidden" name="ID_Osoba" id="ID_Osoba" value="'. $_SESSION['user_id'] .'">
+                <input type="hidden" name="zkratka" id="zkratka" value="'. $subject['zkratka'] .'">
+                <input type="submit" value="Odstranit žádost" class="btnRemove2">
             </form>
             <form method="post" action="request_info.php">
-            <input type="hidden" name="zkratka" id="zkratka" value="'. $subject['zkratka'] .'">
-            <input type="hidden" name="zadost" id="zadost" value="'. $subject['zadost'] .'">
-            <input type="submit" value="Upravit žádost">
-            </form>';
+                <input type="hidden" name="zkratka" id="zkratka" value="'. $subject['zkratka'] .'">
+                <input type="hidden" name="zadost" id="zadost" value="'. $subject['zadost'] .'">
+                <input type="submit" value="Upravit žádost">
+            </form></div>';
     }
 }
 ?>

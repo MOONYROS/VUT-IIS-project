@@ -34,10 +34,10 @@ else { ?>
                     <td>{$teacher["jmeno"]}</td>
                     <td>{$teacher["prijmeni"]}</td>
                     <td>
-                        <form method='post' action='/controllers/subject_controllers/remove_teacher.php'>
+                        <form class='btnForm' method='post' action='/controllers/subject_controllers/remove_teacher.php'>
                             <input type='hidden' name='teacherId' value='{$teacher["ID_Osoba"]}'>
                             <input type='hidden' name='subjectId' value='{$_GET["zkratka"]}'>                            
-                            <button type='submit'>Odstranit učitele</button>
+                            <button class='btnRemove' type='submit'>Odstranit učitele</button>
                         </form>
                     </td>
                 </tr>";
@@ -68,7 +68,7 @@ else { ?>
                     <td>{$teacher["jmeno"]}</td>
                     <td>{$teacher["prijmeni"]}</td>
                     <td>
-                        <form method='post' action='/controllers/subject_controllers/add_teacher.php'>
+                        <form class='btnForm' method='post' action='/controllers/subject_controllers/add_teacher.php'>
                             <input type='hidden' name='teacherId' value='{$teacher["ID_Osoba"]}'>
                             <input type='hidden' name='subjectId' value='{$_GET["zkratka"]}'>
                             <button type='submit'>Přidat učitele</button>
@@ -83,23 +83,22 @@ else { ?>
 
 <p><?php if (isset($_GET["message"])) echo $_GET["message"]; ?></p>
 
-<h1><?= $_GET["zkratka"] ?></h1>
-<h3> Název</h3>
-<p> <?= $infoArray["nazev"] ?> </p>
-<h3> Anotace</h3>
-<p> <?= $infoArray["anotace"] ?> </p>
-<h3> Počet kreditů</h3>
-<p> <?= $infoArray["pocet_kreditu"] ?> </p>
-<h3> Typ ukončení</h3>
-<p> <?= $infoArray["typ_ukonceni"] ?> </p>
-<h3> Garant</h3>
-<p> <?= "{$infoArray["jmeno"]} {$infoArray["prijmeni"]}" ?> </p>
-<h3> Vyučující</h3>
-<?php
-$finalValue = "";
-foreach ($subjectTeachers as $teacher) {
-    $finalValue = $finalValue . "{$teacher["jmeno"]} {$teacher["prijmeni"]}<br>";
-}
-echo $finalValue;
-?>
+<div class="group">
+    <h1><?= $_GET["zkratka"] ?> (<?= $infoArray["nazev"] ?>)</h1>
+    <p> <?= $infoArray["anotace"] ?> </p>
+    <h3>Počet kreditů: <?= $infoArray["pocet_kreditu"] ?></h3>
+    <h3>Typ ukončení: <?= $infoArray["typ_ukonceni"] ?></h3>
+    <h3> Garant</h3>
+    <p> <?= "{$infoArray["jmeno"]} {$infoArray["prijmeni"]}" ?> </p>
+    <h3> Vyučující</h3>
+    <?php
+    $finalValue = "";
+    foreach ($teachers as $teacher) {
+        $finalValue = $finalValue . "{$teacher["jmeno"]} {$teacher["prijmeni"]}<br>";
+    }
+    echo $finalValue;
+    ?>
+</div>
 
+<?php
+make_footer();

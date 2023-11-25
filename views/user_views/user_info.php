@@ -56,5 +56,5 @@ $infoArray = $userService->getUserInfo($_GET["ID"]);
     <br>
 
     <input type="submit" value="Ulozit zmeny">
-    <input type="submit" formaction="../../controllers/user_controllers/user_delete.php" value="Smazat uzivatele">
+    <input type="submit" formaction="../../controllers/user_controllers/user_delete.php" value="Smazat uzivatele" class="btnRemove2">
 </form>

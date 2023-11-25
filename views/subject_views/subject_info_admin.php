@@ -56,7 +56,7 @@ $teachers = $subjectService->getSubjectTeachers($_GET["zkratka"]);
     <br>
 
     <input type="submit" value="Ulozit zmeny">
-    <input type="submit" formaction="../../controllers/subject_controllers/subject_delete.php" value="Odstranit predmet">
+    <input type="submit" formaction="../../controllers/subject_controllers/subject_delete.php" value="Odstranit predmet" class="btnRemove2">
 </form>
 
 <?php

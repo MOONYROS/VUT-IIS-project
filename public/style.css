@@ -146,9 +146,12 @@ form {
     margin-bottom: 20px;
 }
 
-label {
-    display: block;
-    margin-bottom: 5px;
+.btnForm {
+    background: #f8f9fa;
+    box-shadow: none;
+    padding: 0;
+    border-radius: 0;
+    margin: 0;
 }
 
 input,
@@ -170,6 +173,23 @@ select {
     box-sizing: border-box;
 }
 
+input[type="checkbox"] {
+    width: auto; /* Resetuje šířku na defaultní hodnotu */
+    margin-right: 10px; /* Přidává mírný pravý okraj */
+    vertical-align: middle; /* Zarovnání s textem labelu */
+}
+
+label {
+    display: inline-block; /* Umožňuje flexibilní zobrazení labelu a checkboxu vedle sebe */
+    align-items: center; /* Vertikální vycentrování textu labelu a checkboxu */
+    margin-right: 20px; /* Přidává okraj pro oddělení jednotlivých checkboxů */
+    margin-bottom: 10px;
+}
+
+#registration {
+    width: 50px;
+}
+
 textarea {
     width: 100%;
     height: 60px;
@@ -178,6 +198,7 @@ textarea {
     border-radius: 4px;
     border: 2px solid #ddd;
     box-sizing: border-box;
+    font-size: 1em;
 }
 
 input[type="submit"] {
@@ -220,7 +241,29 @@ tr:nth-child(even) {
     background-color: #f9f9f9;
 }
 
-table a {
+button {
+    background-color: #f8f9fa;
+}
+
+.btnRemove {
+    color: #e4002b;
+    border: 1px solid #e4002b;
+}
+
+.btnRemove:hover {
+    background-color: #e4002b;
+}
+
+.btnRemove2 {
+    background: #e4002b !important;
+}
+
+.btnRemove2:hover {
+    background: #b60021 !important;
+}
+
+table a,
+button{
     text-decoration: none;
     color: #007bff;
     border: 1px solid #007bff;
@@ -229,7 +272,8 @@ table a {
     transition: background-color 0.3s, color 0.3s;
 }
 
-table a:hover {
+table a:hover,
+button:hover {
     color: #f8f9fa;
     background-color: #007bff;
     transition: background-color 0.3s, color 0.3s;
@@ -242,6 +286,13 @@ table a:hover {
     background-color: #f8f9fa;
     border-radius: 4px;
     box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.group form {
+    background: inherit;
+    display: inline;
+    padding: 10px;
+    box-shadow: none;
 }
 
 /* FOOTER STYLE */
