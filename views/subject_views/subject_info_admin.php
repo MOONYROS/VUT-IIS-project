@@ -64,22 +64,22 @@ $teachers = $subjectService->getSubjectTeachers($_GET["zkratka"]);
         echo "<br>{$_GET["message"]}";
 ?>
 
-<h1><?= $_GET["zkratka"] ?></h1>
-<h3> Název</h3>
-<p> <?= $infoArray["nazev"] ?> </p>
-<h3> Anotace</h3>
-<p> <?= $infoArray["anotace"] ?> </p>
-<h3> Počet kreditů</h3>
-<p> <?= $infoArray["pocet_kreditu"] ?> </p>
-<h3> Typ ukončení</h3>
-<p> <?= $infoArray["typ_ukonceni"] ?> </p>
-<h3> Garant</h3>
-<p> <?= "{$infoArray["jmeno"]} {$infoArray["prijmeni"]}" ?> </p>
-<h3> Vyučující</h3>
+<div class="group">
+    <h1><?= $_GET["zkratka"] ?> (<?= $infoArray["nazev"] ?>)</h1>
+    <p> <?= $infoArray["anotace"] ?> </p>
+    <h3> Počet kreditů: <?= $infoArray["pocet_kreditu"] ?></h3>
+    <h3> Typ ukončení: <?= $infoArray["typ_ukonceni"] ?></h3>
+    <h3> Garant</h3>
+    <p> <?= "{$infoArray["jmeno"]} {$infoArray["prijmeni"]}" ?> </p>
+    <h3> Vyučující</h3>
+    <?php
+    $finalValue = "";
+    foreach ($teachers as $teacher) {
+        $finalValue = $finalValue . "{$teacher["jmeno"]} {$teacher["prijmeni"]}<br>";
+    }
+    echo $finalValue;
+    ?>
+</div>
+
 <?php
-$finalValue = "";
-foreach ($teachers as $teacher) {
-    $finalValue = $finalValue . "{$teacher["jmeno"]} {$teacher["prijmeni"]}<br>";
-}
-echo $finalValue;
-?>
+make_footer();

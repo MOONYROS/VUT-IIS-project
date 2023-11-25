@@ -17,8 +17,8 @@ $subjectIDs = $subjectService->getSubjectIDs();
 
 foreach ($subjectIDs as $subject) {
     $subject = $subjectService->getSubjectInfo($subject);
-    echo '<h2>' . $subject['nazev'] . ' (' . $subject['zkratka'] . ')</h2>';
-    echo '<p>'. $subject['anotace'] .'</p>';
+    echo '<div class="group"><h2>' . $subject['nazev'] . ' (' . $subject['zkratka'] . ')</h2>';
+    echo '<p>'. $subject['anotace'] .'</p></div>';
 }
 
 make_footer();

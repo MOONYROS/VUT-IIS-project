@@ -16,9 +16,11 @@ make_header('Hlavní stránka');
 ?>
 <a class="direct_link" id="logout" href="/controllers/logout.php">Odhlásit se</a>
 
-<h1>Vítejte v systému: <?= $user["jmeno"] . " " . $user["prijmeni"] ?></h1>
+<h1>
+    Vítejte v systému pro vytváření rozvrhů
+</h1>
 
-<p>Přihlášen jako: <b><?= roleName($user['role']); ?></b></p>
+<p>Přihlášen jako: <b><?= $user["jmeno"] . " " . $user["prijmeni"] . "</b> (" . roleName($user['role']); ?>)</p>
 
 <p>Toto je hlavní stránka. Račte se odnavigovat.</p>
 

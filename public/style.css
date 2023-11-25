@@ -1,3 +1,4 @@
+/* FONT IMPORTING */
 @import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
 
 /* NAVIGATION BAR */
@@ -19,7 +20,7 @@ nav ul {
 }
 
 nav ul li {
-    margin: 10px; /* Horizontal margin for spacing */
+    margin: 10px;
     transition: background-color 0.3s, color 0.3s;
 }
 
@@ -37,7 +38,7 @@ nav ul li:hover {
 }
 
 nav ul li:hover a {
-    color: white;
+    color: #f8f9fa;
 }
 
 /* STYLE FOR FORMS WITH INVALID INPUT */
@@ -53,7 +54,7 @@ nav ul li:hover a {
 
 .direct_link {
     display: inline-block;
-    color: #007bff; /* Modrá barva pro odkazy, odpovídá vašemu tématu */
+    color: #007bff;
     background-color: #fff;
     padding: 8px 15px;
     margin: 10px 0;
@@ -65,7 +66,7 @@ nav ul li:hover a {
 
 .direct_link:hover {
     background-color: #007bff;
-    color: white;
+    color: #f8f9fa;
     text-decoration: none;
 }
 
@@ -76,7 +77,7 @@ nav ul li:hover a {
 
 #logout:hover {
     background-color: #e4002b;
-    color: white;
+    color: #f8f9fa;
 }
 
 /* BUTTON FOR VIEWING ANNOTATIONS WITHOUT LOGGING IN */
@@ -181,7 +182,7 @@ textarea {
 
 input[type="submit"] {
     background: #007bff;
-    color: white;
+    color: #f8f9fa;
     padding: 10px 15px;
     border: none;
     border-radius: 5px;
@@ -220,7 +221,6 @@ tr:nth-child(even) {
 }
 
 table a {
-    /*background-color: #007bff;*/
     text-decoration: none;
     color: #007bff;
     border: 1px solid #007bff;
@@ -230,18 +230,28 @@ table a {
 }
 
 table a:hover {
-    color: white;
+    color: #f8f9fa;
     background-color: #007bff;
     transition: background-color 0.3s, color 0.3s;
 }
 
+/* GROUP */
+.group {
+    padding: 10px;
+    margin: 20px 0;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
 /* FOOTER STYLE */
 footer {
-    background-color: #f8f9fa; /* Světle šedé pozadí */
+    background-color: #f8f9fa;
     color: #333;
     padding: 20px 0;
-    border-top: 2px solid #e7e7e7; /* Jemná horní hranice */
+    border-top: 2px solid #e7e7e7;
     font-size: 0.9em;
+    margin-top: 40px;
 }
 
 footer .container {
@@ -283,7 +293,7 @@ footer #creators ul li:hover {
 }
 
 footer #creators ul li:hover a {
-    color: white;
+    color: #f8f9fa;
     transition: background-color 0.3s, color 0.3s;
 }
 
