@@ -86,6 +86,10 @@ body {
     background-color: #f4f4f4;
     color: #333;
     line-height: 1.6;
+    margin: 8px 0;
+}
+
+.container {
     width: 70%;
     margin: auto;
 }
@@ -199,4 +203,61 @@ th {
 
 tr:nth-child(even) {
     background-color: #f9f9f9;
+}
+
+/* FOOTER STYLE */
+footer {
+    background-color: #f8f9fa; /* Světle šedé pozadí */
+    color: #333;
+    padding: 20px 0;
+    border-top: 2px solid #e7e7e7; /* Jemná horní hranice */
+    font-size: 0.9em;
+}
+
+footer .container {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 70%;
+    margin: auto;
+}
+
+footer span {
+    display: inline-block;
+    font-size: 1.2em;
+    padding-bottom: 0.3em;
+}
+
+footer #creators ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+footer #creators ul li {
+    margin-bottom: 5px;
+    background-color: #f8f9fa;
+    border: 1px solid #007bff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+footer #creators ul li a {
+    color: #007bff;
+    text-decoration: none;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+footer #creators ul li:hover {
+    background-color: #007bff;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+footer #creators ul li:hover a {
+    color: white;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+footer #origin p {
+    margin: 0;
+    font-size: 1.5em;
 }

@@ -24,6 +24,7 @@ function make_header($title): void
         <title><?= $title;?></title>
     </head>
     <body>
+    <div class="container">
     <?php
         
 }
@@ -31,16 +32,23 @@ function make_header($title): void
 function make_footer() : void
 {
     ?>
+    </div>
     </body>
     </html>
     <footer>
-        Vytvořili
-        <ul>
-            <li>Jonáš Morkus</li>
-            <li>Ondřej Lukášek</li>
-            <li>Ondřej Koumar</li>
-        </ul>
-        <p>IIS 2023</p>
+        <div class="container">
+            <div id="creators">
+                <span>Vytvořili</span>
+                <ul>
+                    <li><a href="https://github.com/jonys124" target="_blank">Jonáš Morkus</a></li>
+                    <li><a href="https://github.com/MOONYROS" target="_blank">Ondřej Lukášek</a></li>
+                    <li><a href="https://github.com/Kumismar" target="_blank">Ondřej Koumar</a></li>
+                </ul>
+            </div>
+            <div id="origin">
+                <p>IIS 2023</p>
+            </div>
+        </div>
     </footer>
     <?php
 }
