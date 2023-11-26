@@ -18,7 +18,14 @@ class subjectService {
     function insertNewSubject($data) {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni, garant) VALUES (?, ?, ?, ?, ?, ?)");
-            $stmt->execute($data);
+            $stmt->execute([
+                $data["zkratka"],
+                $data["nazev"],
+                $data["anotace"],
+                $data["pocet_kreditu"],
+                $data["typ_ukonceni"],
+                $data["garant"]
+            ]);
             $this->addTeacher($data["zkratka"], $data["garant"]);
             return "Subject successfully added.";
         }
@@ -78,24 +85,11 @@ class subjectService {
 
     function deleteSubject($id): string {
         try {
-            $this->pdo->beginTransaction();
-
-            $stmt = $this->pdo->prepare("DELETE FROM Osoba_predmet WHERE zkratka = ?");
-            $stmt->execute(array($id));
-
-            $stmt = $this->pdo->prepare("DELETE FROM Vyuk_aktivita WHERE predmet = ?");
-            $stmt->execute(array($id));
-
             $stmt = $this->pdo->prepare("DELETE FROM Predmet WHERE zkratka = ?");
             $stmt->execute(array($id));
-
-            $this->pdo->commit();
-
             return "Subject successfully deleted.";
         }
         catch (PDOException $e) {
-            $this->pdo->rollBack();
-
             error_log("Subject removal unsuccessful: " . $e->getMessage());
             return "Subject delete failed: " . $e->getMessage();
         }

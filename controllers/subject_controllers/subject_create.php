@@ -6,7 +6,7 @@ $requiredFields = array("zkratka", "nazev", "anotace", "pocet_kreditu", "typ_uko
 $toInsert = array();
 
 foreach($requiredFields as $field) {
-    $toInsert[] = $_POST[$field];
+    $toInsert[$field] = $_POST[$field];
 }
 
 $service = new subjectService();

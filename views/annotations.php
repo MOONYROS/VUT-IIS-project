@@ -16,9 +16,12 @@ $subjectService = new subjectService();
 $subjectIDs = $subjectService->getSubjectIDs();
 
 foreach ($subjectIDs as $subject) {
-    $subject = $subjectService->getSubjectInfo($subject);
-    echo '<div class="group"><h2>' . $subject['nazev'] . ' (' . $subject['zkratka'] . ')</h2>';
-    echo '<p>'. $subject['anotace'] .'</p></div>';
+    $subjectInfo = $subjectService->getSubjectInfo($subject);
+    if (!$subjectInfo) {
+        $subjectInfo = $subjectService->getSubjectInfoNoGarant($subject);
+    }
+    echo '<div class="group"><h2>' . $subjectInfo['nazev'] . ' (' . $subjectInfo['zkratka'] . ')</h2>';
+    echo '<p>'. $subjectInfo['anotace'] .'</p></div>';
 }
 
 make_footer();

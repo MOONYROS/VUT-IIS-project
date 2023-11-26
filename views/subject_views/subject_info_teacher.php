@@ -93,7 +93,7 @@ else { ?>
     <h3> Vyučující</h3>
     <?php
     $finalValue = "";
-    foreach ($teachers as $teacher) {
+    foreach ($subjectTeachers as $teacher) {
         $finalValue = $finalValue . "{$teacher["jmeno"]} {$teacher["prijmeni"]}<br>";
     }
     echo $finalValue;

@@ -70,16 +70,8 @@ class roomService{
 
     function deleteRoom($id) {
         try {
-            $this->pdo->beginTransaction();
-
-            $stmt = $this->pdo->prepare("DELETE from Vyuk_aktivita where mistnost = ?");
-            $stmt->execute(array($id));
-
             $stmt = $this->pdo->prepare("DELETE from Mistnost where ID_mist = ?");
             $stmt->execute(array($id));
-
-            $this->pdo->commit();
-
             return "Room successfully deleted.";
         }
         catch (PDOException $e) {
