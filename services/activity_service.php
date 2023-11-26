@@ -285,7 +285,18 @@ class activityService
     function getTeacherActivities(string $teacher): array|false|string
     {
         try {
-            $stmt = $this->pdo->prepare("SELECT den, predmet, typ, mistnost, start, delka, opakovani FROM Vyuk_aktivita WHERE vyucujici = ?");
+            $stmt = $this->pdo->prepare("SELECT den, predmet, typ, mistnost, start, delka, opakovani 
+                                            FROM Vyuk_aktivita WHERE vyucujici = ?
+                                            ORDER BY
+                                              CASE
+                                                WHEN den = 'po' THEN 1
+                                                WHEN den = 'ut' THEN 2
+                                                WHEN den = 'st' THEN 3
+                                                WHEN den = 'ct' THEN 4
+                                                WHEN den = 'pa' THEN 5
+                                                ELSE 6 
+                                              END,
+                                              start");
             $stmt->execute([$teacher]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
@@ -308,7 +319,7 @@ class activityService
         try {
             $stmt = $this->pdo->prepare(
                 "SELECT den, predmet, typ, mistnost, start, delka, opakovani
-                FROM Vyuk_aktivita WHERE vyucujici = ? AND den = ? ;"
+                FROM Vyuk_aktivita WHERE vyucujici = ? AND den = ? ORDER BY start ;"
             );
             $stmt->execute([$teacher, $day]);
             return $stmt->fetchAll(PDO::FETCH_ASSOC);
