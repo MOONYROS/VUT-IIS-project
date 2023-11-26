@@ -117,13 +117,13 @@ make_header("Správa výukových aktivit");
             if ($isAdmin) {
                 $activities = $servis->getActivityIDs($subject);
                 foreach($activities as $activity) {
-                    echo '<tr>' . loadActivity($activity) . '</tr>';
+                    echo '<tr>' . loadActivity($activity['ID_Aktiv']) . '</tr>';
                 }
             }
             else {
                 $activities = $servis->getActivityIDs($subject['zkratka']);
                 foreach($activities as $activity) {
-                    echo '<tr>' . loadActivity($activity) . '</tr>';
+                    echo '<tr>' . loadActivity($activity['ID_Aktiv']) . '</tr>';
                 }
             }
         }
