@@ -37,7 +37,7 @@ make_header("Úprava výukové aktivity");
 </h1>
 
 <h2>
-    Upravit aktivitu: <?php if (isset($infoArray["ID_Aktiv"])) echo $infoArray['ID_Aktiv']; ?>
+    Upravit aktivitu: <?= $infoArray['typ'] . " " . $infoArray['predmet']; ?>
 </h2>
 
 <form action="../../controllers/activity_controllers/activity_edit.php" method="post" onsubmit="return validateForm(fields);">
@@ -60,10 +60,10 @@ make_header("Úprava výukové aktivity");
 
     <label for="opakovani">Opakování<?= requiredField(); ?></label>
     <select id="opakovani" name="opakovani">
-        <option value="JR" <?php if (isset($infoArray["typ"])) echo checkSelect("JR", $infoArray['typ']) ?>>Jednorázově</option>
-        <option value="KT" <?php if (isset($infoArray["typ"])) echo checkSelect("KT", $infoArray['typ']) ?>>Každý týden</option>
-        <option value="ST" <?php if (isset($infoArray["typ"])) echo checkSelect("ST", $infoArray['typ']) ?>>Sudý týden</option>
-        <option value="LT" <?php if (isset($infoArray["typ"])) echo checkSelect("LT", $infoArray['typ']) ?>>Lichý týden</option>
+        <option value="JR" <?php if (isset($infoArray["opakovani"])) echo checkSelect("JR", $infoArray['opakovani']) ?>>Jednorázově</option>
+        <option value="KT" <?php if (isset($infoArray["opakovani"])) echo checkSelect("KT", $infoArray['opakovani']) ?>>Každý týden</option>
+        <option value="ST" <?php if (isset($infoArray["opakovani"])) echo checkSelect("ST", $infoArray['opakovani']) ?>>Sudý týden</option>
+        <option value="LT" <?php if (isset($infoArray["opakovani"])) echo checkSelect("LT", $infoArray['opakovani']) ?>>Lichý týden</option>
     </select><br>
 
     <label for="pozadavek">Požadavek</label>

@@ -88,38 +88,42 @@ CREATE TABLE Rozvrh_aktivita (
 # SAMPLOVI UZIVATELE
 -- heslo 'admin'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
-VALUES (1, 'admin', 'adminovaty', 'admin@admin.admin', '$2y$10$krWfrVmZh6PVfES6TeEJWe18dEV8l.ZLvvyEgE0wLvRKcFtYhMhGC', 111111111, 'admi');
+VALUES (1, 'Leo', 'Galante', 'admin@admin.admin', '$2y$10$krWfrVmZh6PVfES6TeEJWe18dEV8l.ZLvvyEgE0wLvRKcFtYhMhGC', 111111111, 'admi');
 
 -- heslo 'student'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
-VALUES (2, 'student', 'studentsky', 'stud@stud.stud', '$2y$10$.7uByVdYNUtMT6zWvIvLYeL1tXWLnV17JBE.a9lq6Y.ChTjtMD3Z6', 123123123, 'stud');
+VALUES (2, 'William', 'Blazkowicz', 'stud@stud.stud', '$2y$10$.7uByVdYNUtMT6zWvIvLYeL1tXWLnV17JBE.a9lq6Y.ChTjtMD3Z6', 123123123, 'stud');
 
 -- heslo 'vyucujici'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
-VALUES (3, 'vyucujici', 'Mucici', 'vyuc@vyuc.vyuc', '$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS', 123412341, 'vyuc');
+VALUES (3, 'Carl', 'Johnson', 'vyuc@vyuc.vyuc', '$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS', 123412341, 'vyuc');
 
 -- heslo 'vyucujici'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
-VALUES (4, 'Doktor', 'Doktorsky', 'vyucitel@vyucitel.vyuc', '$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS', 123412341, 'vyuc');
+VALUES (4, 'Vito', 'Scaletta', 'vyucitel@vyucitel.vyuc', '$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS', 123412341, 'vyuc');
 
 -- heslo 'vyucujici'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
-VALUES (6, 'Učtel', 'Naškole', 'ucitel@ucitel.uc', '$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS', 922922922, 'vyuc');
+VALUES (6, 'Nico', 'Bellic', 'ucitel@ucitel.uc', '$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS', 922922922, 'vyuc');
 
 -- heslo 'vyucujici'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
 VALUES (7, 'Van', 'Helsing', 'van@helsing.vh', '$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS', 666666666, 'vyuc');
 
+-- heslo 'vyucujici'
+INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
+VALUES (8, 'Joe', 'Barbaro', 'joe@joe.ba', '$2y$10$zEdObEn2JwT8wjNDUPrWcODBUfJaMoN9YLH02jH.7ZB.c0.cENgaS', 666666666, 'vyuc');
+
 -- heslo 'rozvrhar'
 INSERT INTO Osoba (ID_Osoba, jmeno, prijmeni, email, heslo, telefon, role)
-VALUES (5, 'rozvrhar', 'rozvrzeny', 'rozv@rozv.rozv', '$2y$10$Fw3uu/mQiX3V74XLoKZZguCjggMITIOIxSJC2JFysCrF2EAPUcxLO', 123456789, 'rozv');
+VALUES (5, 'Tommy', 'Angelo', 'rozv@rozv.rozv', '$2y$10$Fw3uu/mQiX3V74XLoKZZguCjggMITIOIxSJC2JFysCrF2EAPUcxLO', 123456789, 'rozv');
 
 # SAMPLOVE PREDMETY
 INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni, garant)
-VALUES ('IZP', 'Zaklady programovani', 'Predmet o zakladech programovani v jazyce C.', 7, 'zazk', 3);
+VALUES ('IZP', 'Zaklady programovani', 'Predmet o zakladech programovani v jazyce C.', 7, 'zazk', 6);
 
 INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni, garant)
-VALUES ('IOS', 'Operacni systemy', 'Naprosta deadly silenost o tom, jak funguji operacni systemy.', 5, 'zazk', 3);
+VALUES ('IOS', 'Operacni systemy', 'Naprosta deadly silenost o tom, jak funguji operacni systemy.', 5, 'zazk', 7);
 
 INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni, garant)
 VALUES ('IEL', 'Elektronika pro FIT', 'Nejaky zaklady o elektronice, rezistory, tranzistory, etc.', 5, 'zazk', 4);
@@ -128,23 +132,8 @@ INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni, garan
 VALUES ('HVR', 'Vedeni tymu', 'Dalsi to-be-banger predmet se Silvii.', 3, 'za', 4);
 
 INSERT INTO Predmet (zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni, garant)
-VALUES ('ITU', 'Tvorba UI', 'Predmet, ktery taky bude naprosta silenost s divnymi pravidly.', 5, 'klza', 3);
+VALUES ('ITU', 'Tvorba UI', 'Predmet, ktery taky bude naprosta silenost s divnymi pravidly.', 5, 'klza', 6);
 
-# SAMPLE GARANTI V KURZU
-INSERT INTO Osoba_predmet (zkratka, ID_Osoba)
-VALUES ('IZP', 3);
-
-INSERT INTO Osoba_predmet (zkratka, ID_Osoba)
-VALUES ('IOS', 3);
-
-INSERT INTO Osoba_predmet (zkratka, ID_Osoba)
-VALUES ('IEL', 4);
-
-INSERT INTO Osoba_predmet (zkratka, ID_Osoba)
-VALUES ('HVR', 4);
-
-INSERT INTO Osoba_predmet (zkratka, ID_Osoba)
-VALUES ('ITU', 3);
 
 # SAMPLOVE MISTNOSTI
 INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
@@ -152,6 +141,18 @@ VALUES ('C127.1', 6, 'studovna', 'Naprosto banger roomka.', 'knihovna');
 
 INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
 VALUES ('D105', 380, 'poslucharna', 'Nejvetsi prednaskovka na celym FITu. Celkem solid.', 'u fontany');
+
+INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
+VALUES ('D206', 60, 'poslucharna', 'Dobrá místnost na cvičení.', 'u fontany');
+
+INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
+VALUES ('D207', 60, 'poslucharna', 'Dobrá místnost na cvičení.', 'u fontany');
+
+INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
+VALUES ('N204', 30, 'studovna', 'Počítačová laboratoř.', 'CVT');
+
+INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
+VALUES ('N205', 30, 'studovna', 'Počítačová laboratoř.', 'CVT');
 
 INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
 VALUES ('Q202', 8, 'pracovna', 'Pracovna grafiku z FITu, jako treba gigachada Mileta.', 'chodba k menze');
@@ -163,8 +164,26 @@ INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni)
 VALUES ('S207', 12, 'studovna', 'Velka studovna v Sku, kdysi tam byla spatna wifi, tedka uz to celkem jde.', 'oddelena budova');
 
 # SAMPLE VYUCUJICI V KURZU
-INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (3, 'IEL');
-INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (3, 'HVR');
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (3, 'IEL', 'Nemůžu v pondělí a ve středu.');
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (8, 'IEL', 'Můžu dopledne.');
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (6, 'IEL');
+INSERT INTO Osoba_predmet (zkratka, ID_Osoba) VALUES ('IEL', 4);
+
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (3, 'HVR', 'Jedině sudý týden.');
+INSERT INTO Osoba_predmet (zkratka, ID_Osoba, zadost) VALUES ('HVR', 4, 'Můžu v lichý týden.');
+
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (6, 'IZP', 'Nemůžu vést cvičení.');
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (7, 'IZP', 'Nemůžu v pátek.');
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (3, 'IZP');
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (8, 'IZP', 'Můžu odpoledne.');
+
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (3, 'IOS', 'Nemůžu vést přednášku.');
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (6, 'IOS', 'Nemůžu v úterý.');
+INSERT INTO Osoba_predmet (zkratka, ID_Osoba) VALUES ('IOS', 7);
+
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (7, 'ITU', 'Chci cvičení na FIGMU.');
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (8, 'ITU', 'Chci cvičení na QT.');
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (6, 'ITU', 'Prosím cvičení na WinAPI.');
 
 # SAMPLE VYUKOVE AKTIVITY
 # IOS
