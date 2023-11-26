@@ -21,7 +21,7 @@ $subjectService = new subjectService();
 <a class='direct_link' href="schedule_activities.php">Zpět k aktivitám</a>
 
 <script>
-    let fields = ['start'];
+    let fields = ['start', 'vyucujici'];
 </script>
 <script src="../../controllers/scheduler_controllers/activity_save_form_values.js"></script>
 
@@ -83,9 +83,14 @@ $subjectService = new subjectService();
     <select name="vyucujici" id="vyucujici">
         <?php
         $teachers = $subjectService->getSubjectTeachers($activity['predmet']);
-        foreach ($teachers as $teacher) {
-            echo "<option " . checkSelect($teacher['ID_Osoba'], $activity['vyucujici']) . " value='" . $teacher['ID_Osoba'] . "'>" . $teacher['jmeno'] . " " . $teacher['prijmeni'] . "</option>";
+        if (!$teachers) {
+            echo "<option value='' selected>Předmět nemá vyučující.</option>";
+        }
+        else {
+            foreach ($teachers as $teacher) {
+                echo "<option " . checkSelect($teacher['ID_Osoba'], $activity['vyucujici']) . " value='" . $teacher['ID_Osoba'] . "'>" . $teacher['jmeno'] . " " . $teacher['prijmeni'] . "</option>";
 
+            }
         }
         ?>
     </select>

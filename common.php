@@ -1,7 +1,7 @@
 <?php
 session_start();
 
-if (isset($_SESSION['logout_time']) && (time() - $_SESSION['logout_time']) > 600) {
+if (isset($_SESSION['logout_time']) && (time() - $_SESSION['logout_time']) > 1800) {
     session_unset();
     echo "<script>alert(\"Byl/a jste odhlášen/a.\"); window.location.href=\"/index.php\"</script>";
     exit;

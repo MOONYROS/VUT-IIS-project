@@ -11,6 +11,7 @@ function loadSubject($abbreviation, $role) {
     }
     else {
         $subjectInfo = $subjectService->getSubjectInfoNoGarant($abbreviation);
+        unset($subjectInfo["anotace"]);
         $subjectInfo["garant"] = "Nemá garanta";
     }
 

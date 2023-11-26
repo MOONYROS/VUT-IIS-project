@@ -225,7 +225,7 @@ class subjectService {
 
     function getSubjectInfoNoGarant($zkratka) {
         try {
-            $stmt = $this->pdo->prepare("SELECT zkratka, nazev, pocet_kreditu, typ_ukonceni FROM Predmet WHERE zkratka = ?");
+            $stmt = $this->pdo->prepare("SELECT zkratka, nazev, anotace, pocet_kreditu, typ_ukonceni FROM Predmet WHERE zkratka = ?");
             $stmt->execute([$zkratka]);
             return $stmt->fetch(PDO::FETCH_ASSOC);
         }

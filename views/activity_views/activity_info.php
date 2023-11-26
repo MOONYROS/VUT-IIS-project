@@ -84,7 +84,7 @@ make_header("Info o vyukové aktivitě");
     <br>
 
     <input type="submit" value="Uložit změny">
-    <input type="submit" formaction="../../controllers/activity_controllers/activity_delete.php" value="Smazat výukovou aktivitu" class="btnRemove2">
+    <input type="submit" formaction="../../controllers/activity_controllers/activity_delete.php" value="Smazat výukovou aktivitu" class="btnRemove2" onsubmit="return true">
 </form>
 
 <?php

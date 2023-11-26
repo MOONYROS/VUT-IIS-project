@@ -9,6 +9,10 @@ make_header("Info o předmětu");
 
 $subjectService = new subjectService();
 $infoArray = $subjectService->getSubjectInfo($_GET["zkratka"]);
+if (!$infoArray) {
+    $infoArray = $subjectService->getSubjectInfoNoGarant($_GET["zkratka"]);
+    $infoArray["garant"] = "Nemá garanta";
+}
 $teachers = $subjectService->getSubjectTeachers($_GET["zkratka"]);
 ?>
 
@@ -46,6 +50,9 @@ $teachers = $subjectService->getSubjectTeachers($_GET["zkratka"]);
     <label for="garant">Garant<?= requiredField(); ?></label>
     <select name="garant" id="garant">
         <?php
+        if ($infoArray["garant"] == "Nemá garanta") {
+            echo '<option value="' . 'none' . '"' . ' selected' . '>' . 'Žádný' . '</option>';
+        }
         $userService = new userService();
         $users = $userService->getUsersByRole("vyuc");
         foreach ($users as $user) {
@@ -70,7 +77,10 @@ $teachers = $subjectService->getSubjectTeachers($_GET["zkratka"]);
     <h3> Počet kreditů: <?= $infoArray["pocet_kreditu"] ?></h3>
     <h3> Typ ukončení: <?= $infoArray["typ_ukonceni"] ?></h3>
     <h3> Garant</h3>
-    <p> <?= "{$infoArray["jmeno"]} {$infoArray["prijmeni"]}" ?> </p>
+    <p> <?php
+        if (isset($infoArray["jmeno"])) echo "{$infoArray["jmeno"]} {$infoArray["prijmeni"]}";
+        else echo "Předmět nemá garanta.";
+        ?> </p>
     <h3> Vyučující</h3>
     <?php
     $finalValue = "";
