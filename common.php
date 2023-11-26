@@ -40,9 +40,9 @@ function make_footer() : void
             <div id="creators">
                 <span>Vytvořili</span>
                 <ul>
-                    <li><a href="https://github.com/jonys124" target="_blank">Jonáš Morkus</a></li>
-                    <li><a href="https://github.com/MOONYROS" target="_blank">Ondřej Lukášek</a></li>
-                    <li><a href="https://github.com/Kumismar" target="_blank">Ondřej Koumar</a></li>
+                    <li><a href="https://github.com/jonys124" target="_blank">Jonáš Morkus (xmorku03)</a></li>
+                    <li><a href="https://github.com/MOONYROS" target="_blank">Ondřej Lukášek (xlukas15)</a></li>
+                    <li><a href="https://github.com/Kumismar" target="_blank">Ondřej Koumar (xkouma02)</a></li>
                 </ul>
             </div>
             <div id="origin">

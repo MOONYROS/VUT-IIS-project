@@ -13,7 +13,13 @@ $infoArray = $subjectService->getSubjectInfo($_GET["zkratka"]);
 
 <a class='direct_link' href="subject_management_teacher.php">Zpět k předmětům</a>
 
-<h2>Vyučující předmětu: <?= $infoArray['zkratka']; ?></h2>
+<h1>
+    Úprava předmětu <?= $infoArray['zkratka']; ?>
+</h1>
+
+<h2>
+    Tabulka vyučujících
+</h2>
 
 <?php
 $subjectService = new subjectService();
@@ -82,6 +88,10 @@ else { ?>
 <?php } ?>
 
 <p><?php if (isset($_GET["message"])) echo $_GET["message"]; ?></p>
+
+<h2>
+    Karta předmětu
+</h2>
 
 <div class="group">
     <h1><?= $_GET["zkratka"] ?> (<?= $infoArray["nazev"] ?>)</h1>

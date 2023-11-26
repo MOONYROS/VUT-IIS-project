@@ -8,7 +8,7 @@
     let fields = ['email', 'heslo'];
 </script>
 
-<h1>GigaWeb</h1>
+<h1>Systém pro tvorbu rozvrhů</h1>
 
 <h2>Přihlášení</h2>
 <form action="controllers/login.php" method="post" onsubmit="return validateForm(fields);">

@@ -25,8 +25,12 @@ make_header("Správa výukových aktitit");
     let fields = ['delka', 'popis'];
 </script>
 
+<h1>
+    Správa výukových aktivit
+</h1>
+
 <h2>
-    Přidat výukovou aktivitu
+    Vytvořit výukovou aktivitu
 </h2>
 
 <form action="../../controllers/activity_controllers/activity_create.php" method="post" onsubmit="return validateForm(fields);">
@@ -89,7 +93,7 @@ make_header("Správa výukových aktitit");
 </div>
 
 <h2>
-    Správa výukových aktivit
+    Tabulka výukových aktivit
 </h2>
 
 <div>

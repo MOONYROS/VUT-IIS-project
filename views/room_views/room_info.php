@@ -16,7 +16,13 @@ $infoArray = $roomService->getRoomInfo($_GET["ID_mist"]);
 
 <a class='direct_link' href="room_management.php">Zpět k místnostem</a>
 
-<h2>Upravit místnost: <?php if (isset($infoArray["ID_mist"])) echo $infoArray['ID_mist']; ?></h2>
+<h1>
+    Úprava místnosti
+</h1>
+
+<h2>
+    Místnost: <?php if (isset($infoArray["ID_mist"])) echo $infoArray['ID_mist']; ?>
+</h2>
 
 <form action="../../controllers/room_controllers/room_edit.php" method="post" onsubmit="return validateForm(fields)">
     <input type="hidden" name="ID_mist" value="<?php if (isset($infoArray["ID_mist"])) echo $infoArray['ID_mist']; ?>"/>

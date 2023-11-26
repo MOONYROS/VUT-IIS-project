@@ -14,7 +14,7 @@ make_header("Řazení aktivit");
 </h1>
 
 <h2>
-    Aktivity
+    Tabulka aktivit
 </h2>
 
 <table>

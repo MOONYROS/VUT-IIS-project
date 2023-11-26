@@ -16,6 +16,10 @@ $teachers = $subjectService->getSubjectTeachers($subjectId);
 
 <a class='direct_link' href='subject_registration.php'>Zpět k registracím předmětů</a>
 
+<h1>
+    Karta předmětu
+</h1>
+
 <div class="group">
     <h1><?= $subjectId ?> (<?= $infoArray["nazev"] ?>)</h1>
     <p> <?= $infoArray["anotace"] ?> </p>

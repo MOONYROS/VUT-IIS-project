@@ -1,6 +1,7 @@
 <?php
 
 require_once "../../common.php";
+require_once "../../controllers/activity_controllers/schedule_controller.php";
 require_once "../../services/activity_service.php";
 require_once "../../services/room_service.php";
 require_once "../../controllers/scheduler_controllers/activity_load_specific.php";
@@ -39,7 +40,7 @@ $subjectService = new subjectService();
 </h2>
 
 <h3>
-    <?= $activity['predmet'] ?> <?= $activity['typ'] ?>
+    <?= $activity['predmet'] ?> <?= typeText($activity['typ']) ?>
 </h3>
 
 <ul>

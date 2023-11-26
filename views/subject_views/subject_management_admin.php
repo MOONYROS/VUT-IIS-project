@@ -14,6 +14,10 @@ make_header("Tvorba předmětu");
     let fields = ['nazev', 'zkratka', 'anotace', 'pocet_kreditu'];
 </script>
 
+<h1>
+    Správa předmětů
+</h1>
+
 <h2>
    Vytvořit předmět
 </h2>
@@ -63,7 +67,7 @@ make_header("Tvorba předmětu");
 </div>
 
 <h2>
-   Správa předmětů
+   Tabulka předmětů
 </h2>
 
 <div>

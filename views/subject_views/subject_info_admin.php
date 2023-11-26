@@ -22,7 +22,13 @@ $teachers = $subjectService->getSubjectTeachers($_GET["zkratka"]);
 
 <a class='direct_link' href='subject_management_admin.php'>Zpět k předmětům</a>
 
-<h2>Upravit předmět: <?= $infoArray['zkratka']; ?></h2>
+<h1>
+    Úprava předmětu
+</h1>
+
+<h2>
+    Upravit předmět: <?= $infoArray['zkratka']; ?>
+</h2>
 
 <form action="../../controllers/subject_controllers/subject_edit.php" method="post" onsubmit="return validateForm(fields)">
     <input type="hidden" name="zkratka" value="<?= $infoArray['zkratka']; ?>"/>
@@ -71,8 +77,12 @@ $teachers = $subjectService->getSubjectTeachers($_GET["zkratka"]);
         echo "<br>{$_GET["message"]}";
 ?>
 
+<h2>
+    Karta předmětu
+</h2>
+
 <div class="group">
-    <h1><?= $_GET["zkratka"] ?> (<?= $infoArray["nazev"] ?>)</h1>
+    <h2><?= $_GET["zkratka"] ?> (<?= $infoArray["nazev"] ?>)</h2>
     <p> <?= $infoArray["anotace"] ?> </p>
     <h3> Počet kreditů: <?= $infoArray["pocet_kreditu"] ?></h3>
     <h3> Typ ukončení: <?= $infoArray["typ_ukonceni"] ?></h3>

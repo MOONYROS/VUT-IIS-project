@@ -13,6 +13,10 @@ make_header("Správa místností");
 
 <a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
 
+<h1>
+    Správa místností
+</h1>
+
 <h2>
     Přidat místnost
 </h2>
@@ -50,7 +54,7 @@ make_header("Správa místností");
 </div>
 
 <h2>
-    Správa místností
+    Tabulka mísností
 </h2>
 
 <div>

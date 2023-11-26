@@ -10,9 +10,9 @@ make_header("Registrace předmetů");
 
 <a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
 
-<h2>
+<h1>
     Registrace předmětů
-</h2>
+</h1>
 
 <form action="../../controllers/subject_controllers/register_subjects.php" method="post">
     <?php

@@ -12,6 +12,14 @@ $garantedSubjects = $subjectService->getGarantedSubjects($_SESSION["user_id"]);
 
 <a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
 
+<h1>
+    Správa předmětů
+</h1>
+
+<h2>
+    Tabulka garantovaných předmětů
+</h2>
+
 <?php
 if (!$garantedSubjects) {
     echo "<p>" . "Nejste garantem žádného předmětu." . "</p>";

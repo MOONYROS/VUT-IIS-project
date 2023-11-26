@@ -32,7 +32,13 @@ make_header("Info o vyukové aktivitě");
     let fields = ['delka', 'popis'];
 </script>
 
-<h2>Upravit aktivitu: <?php if (isset($infoArray["ID_Aktiv"])) echo $infoArray['ID_Aktiv']; ?></h2>
+<h1>
+    Úprava aktivity
+</h1>
+
+<h2>
+    Upravit aktivitu: <?php if (isset($infoArray["ID_Aktiv"])) echo $infoArray['ID_Aktiv']; ?>
+</h2>
 
 <form action="../../controllers/activity_controllers/activity_edit.php" method="post" onsubmit="return validateForm(fields);">
     <input type="hidden" name="ID_Aktiv" value="<?php if (isset($infoArray["ID_Aktiv"])) echo $infoArray['ID_Aktiv']; ?>"/>

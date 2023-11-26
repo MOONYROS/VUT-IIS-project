@@ -20,7 +20,7 @@ make_header('Hlavní stránka');
     Vítejte v systému pro vytváření rozvrhů
 </h1>
 
-<p>Přihlášen jako: <b><?= $user["jmeno"] . " " . $user["prijmeni"] . "</b> (" . roleName($user['role']); ?>)</p>
+<p>Jste přihlášen jako: <b><?= $user["jmeno"] . " " . $user["prijmeni"] . "</b> (" . roleName($user['role']); ?>)</p>
 
 <p>Toto je hlavní stránka. Račte se odnavigovat.</p>
 

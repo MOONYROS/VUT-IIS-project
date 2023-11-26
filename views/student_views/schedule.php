@@ -8,7 +8,13 @@ make_header("Zobrazit rozvrh");
 
 <a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
 
-<h2>Rozvrh studenta: <?= getStudentName(); ?></h2>
+<h1>
+    Individuální rozvrh
+</h1>
+
+<h2>
+    Rozvrh uživatele: <?= getStudentName(); ?>
+</h2>
 
 <form action="<?= $_SERVER["PHP_SELF"] ?>" method="get">
     <label for="day">Den:</label>
