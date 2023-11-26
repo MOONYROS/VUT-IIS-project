@@ -95,17 +95,16 @@ make_header("Správa výukových aktitit");
 <div>
     <table>
         <tr>
-            <th>ID</th>
-            <th>Typ</th>
-            <th>Délka</th>
-            <th>Popis</th>
-            <th>Požadavek</th>
-            <th>Opakování</th>
-            <th>Místnost</th>
             <th>Předmět</th>
-            <th>Start</th>
+            <th>Typ</th>
+            <th>Vyučující</th>
+            <th>Popis</th>
+            <th>Opakování</th>
             <th>Den</th>
-            <th>Trvání v hodinách</th>
+            <th>Start</th>
+            <th>Délka</th>
+            <th>Místnost</th>
+            <th>Úprava</th>
         </tr>
         <?php
         $servis = new activityService();

@@ -10,7 +10,7 @@ make_header("Řazení aktivit");
 <a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>
 
 <h1>
-    ŘazenÍ výukových aktivit
+    Řazení výukových aktivit
 </h1>
 
 <h2>
