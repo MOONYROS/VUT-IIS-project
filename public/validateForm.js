@@ -1,4 +1,9 @@
 function validateForm(fields) {
+    let deleteButton = document.getElementById('deleteButton');
+    if (deleteButton) {
+        return true;
+    }
+
     let isValid = true;
 
     fields.forEach(function(field) {
