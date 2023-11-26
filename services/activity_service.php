@@ -2,9 +2,14 @@
 
 require_once __DIR__ . "/../misc/db_conn_parameters.php";
 
-class activityService {
-
+/**
+ * @brief A class responsible for writing activity-related data to the database.
+ * Uses PDO for data manipulation.
+ */
+class activityService
+{
     private PDO $pdo;
+
     function __construct()
     {
         try {
@@ -16,7 +21,15 @@ class activityService {
         }
     }
 
-    function insertNewActivity($data) {
+    /**
+     * @brief Inserts requirement from subject garant for activity into the database.
+     * Doesn't have room, teacher, time and day specified yet.
+     *
+     * @param array $data Fields in array to be inserted.
+     * @return string Message that will be printed out to the user, whether it succeeds or not.
+     */
+    function insertNewActivity(array $data): string
+    {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO Vyuk_aktivita(typ, delka, popis, opakovani, pozadavek, predmet) VALUES (?, ?, ?, ?, ?, ?)");
             $stmt->execute($data);
@@ -36,7 +49,15 @@ class activityService {
         }
     }
 
-    function updateActivity($data){
+    /**
+     * @brief Updates activity requirement in database when teacher edits it.
+     * The updated fields don't include teacher, room, time and day.
+     *
+     * @param array $data Updated fields to be inserted into database.
+     * @return string Message to be shown to user, whether it succeeds or not.
+     */
+    function updateActivity(array $data): string
+    {
         try {
             $stmt = $this->pdo->prepare("UPDATE Vyuk_aktivita SET  typ = ?, delka = ?, popis = ?, opakovani = ?, pozadavek = ?, predmet = ? WHERE ID_Aktiv = ?");
             $stmt->execute($data);
@@ -44,19 +65,26 @@ class activityService {
         }
         catch (PDOException $e) {
             error_log("Activity update failed:" . $e->getMessage());
-            if(strpos($e->getMessage(), 'mistnost') !== false){
+            if (str_contains($e->getMessage(), 'mistnost')) {
                 return "Activity update failed - unknown room: " . $e->getMessage();
             }
-            elseif(strpos($e->getMessage(), 'predmet') !== false){
+            elseif (str_contains($e->getMessage(), 'predmet')) {
                 return "Activity update failed - unknown subject: " . $e->getMessage();
             }
-            else{
+            else {
                 return "Activity update failed: " . $e->getMessage();
             }
         }
     }
 
-    function scheduleActivity($data) {
+    /**
+     * @brief Sets room, day, time and teacher to activity requirement, making it a valid activity.
+     *
+     * @param array $data Fields to be inserted into the database.
+     * @return string Message to be printed out to the user, whether it succeeds or not.
+     */
+    function scheduleActivity(array $data)
+    {
         try {
             $stmt = $this->pdo->prepare("UPDATE Vyuk_aktivita SET mistnost = ?, den = ?, start = ?, vyucujici = ? WHERE ID_Aktiv = ?");
             $stmt->execute([
@@ -74,15 +102,18 @@ class activityService {
         }
     }
 
-    function getActivityIDs($zkratka){
+    /**
+     * @brief Searches for all activities of one subject and returns them in array.
+     *
+     * @param string $subject Subject abbreviation for which the activities will be searched.
+     * @return array|null Array of activity IDs on success, null on failure.
+     */
+    function getActivityIDs(string $subject): array|null
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT ID_Aktiv FROM Vyuk_aktivita WHERE predmet = ?");
-            $stmt->execute(array($zkratka));
-            $subjectArray = array();
-            while ($row = $stmt->fetch(PDO::FETCH_ASSOC)) {
-                $subjectArray[] = $row['ID_Aktiv'];
-            }
-            return $subjectArray;
+            $stmt->execute(array($subject));
+            return $stmt->fetchAll(PDO::FETCH_ASSOC);
         }
         catch (PDOException $e) {
             error_log("Activity not found: " . $e->getMessage());
@@ -90,7 +121,14 @@ class activityService {
         }
     }
 
-    function getActivityInfo($id){
+    /**
+     * @brief Finds all the information about activity and returns it as array.
+     *
+     * @param string $id Activity ID for which the information will be searched.
+     * @return array|false|null Array of fields on success, false on no record found, null on PDO exception.
+     */
+    function getActivityInfo(string $id): array|false|null
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM Vyuk_aktivita WHERE ID_Aktiv = (?)");
             $stmt->execute(array($id));
@@ -102,7 +140,14 @@ class activityService {
         }
     }
 
-    function deleteActivity($id) {
+    /**
+     * @brief Deletes activity from database.
+     *
+     * @param string $id ID of activity to be deleted.
+     * @return string Message for user that will be printed out, it succeeds or not.
+     */
+    function deleteActivity(string $id): string
+    {
         try {
             $stmt = $this->pdo->prepare("DELETE from Vyuk_aktivita where ID_Aktiv = ?");
             $stmt->execute(array($id));
@@ -114,19 +159,13 @@ class activityService {
         }
     }
 
-    function getGarantedActivities($zkratka) {
-        try {
-            $stmt = $this->pdo->prepare("SELECT * FROM Vyuk_aktivita WHERE predmet = ?");
-            $stmt->execute(array($zkratka));
-            return $stmt->fetchAll();
-        }
-        catch (PDOException $e) {
-            error_log("Could not load activities:" . $e->getMessage());
-            return "Could not load activities: " . $e->getMessage();
-        }
-    }
-
-    function getAllActivities() {
+    /**
+     * @brief Gets all the activities from database.
+     *
+     * @return array|false|string Array of activities on success, false on no records found, error message on exception.
+     */
+    function getAllActivities(): array|false|string
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM Vyuk_aktivita");
             $stmt->execute();
@@ -138,7 +177,15 @@ class activityService {
         }
     }
 
-    function getRoomDayActivity($room, $day) {
+    /**
+     * @brief Gets all activities from database in specified room and day and returns it as array.
+     *
+     * @param string $room Room ID in which the activities take place.
+     * @param string $day Day in which the activities are organized.
+     * @return array|false|string Array of activities on success, false on no records found, error message on exception.
+     */
+    function getRoomDayActivity(string $room, string $day): array|false|string
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM Vyuk_aktivita WHERE mistnost = ? AND den = ?");
             $stmt->execute(array($room, $day));
@@ -150,7 +197,15 @@ class activityService {
         }
     }
 
-    function getUserActivities($userId) {
+    /**
+     * @brief Gets all activities from database that user is included in.
+     * User can be either teacher or student.
+     *
+     * @param string $userId ID of the user for whom activities are being searched.
+     * @return array|false|string Array of activities on success, false on no records found, error message on exception.
+     */
+    function getUserActivities(string $userId): array|false|string
+    {
         try {
             $stmt = $this->pdo->prepare(
                 "SELECT den, predmet, typ, start, delka, mistnost, opakovani, vyucujici
@@ -177,7 +232,16 @@ class activityService {
         }
     }
 
-    function getUserActivitiesDay($userId, $day) {
+    /**
+     * @brief Gets all activities that user is included in on specified day.
+     * User can be either teacher or student.
+     *
+     * @param string $userId ID of the user for whom activities are being searched.
+     * @param string $day Specifies the target day for activity retrieval.
+     * @return array|false|string Array of activities on success, false on no records found, error message on exception.
+     */
+    function getUserActivitiesDay(string $userId, string $day): array|false|string
+    {
         try {
             $stmt = $this->pdo->prepare(
                 "SELECT den, predmet, typ, start, delka, mistnost, opakovani, vyucujici
@@ -189,10 +253,18 @@ class activityService {
         }
         catch (PDOException $e) {
             error_log("Could not load activities: " . $e->getMessage());
+            return "Could not load activities: " . $e->getMessage();
         }
     }
 
-    function getActivitiesDay($day) {
+    /**
+     * @brief Gets all activities on specified day independently on users.
+     *
+     * @param string $day Specifies the target day for activity retrieval.
+     * @return array|false|string Array of activities on success, false on no records found, error message on exception.
+     */
+    function getActivitiesDay(string $day): array|false|string
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT mistnost, den, start, delka, opakovani FROM Vyuk_aktivita WHERE den = ?");
             $stmt->execute([$day]);
@@ -200,11 +272,18 @@ class activityService {
         }
         catch (PDOException $e) {
             error_log("Could not load activities: " . $e->getMessage());
+            return "Could not load activities: " . $e->getMessage();
         }
     }
 
-
-    function getTeacherActivities ($teacher) {
+    /**
+     * @brief Gets all activities of teacher specified by $teacher.
+     *
+     * @param string $teacher ID of the teacher for whom activities are being searched.
+     * @return array|false|string Array of activities on success, false on no records found, error message on exception.
+     */
+    function getTeacherActivities(string $teacher): array|false|string
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT den, predmet, typ, mistnost, start, delka, opakovani FROM Vyuk_aktivita WHERE vyucujici = ?");
             $stmt->execute([$teacher]);
@@ -212,10 +291,20 @@ class activityService {
         }
         catch (PDOException $e) {
             error_log("Could not load teacher activities: " . $e->getMessage());
+            return "Could not load activities: " . $e->getMessage();
         }
     }
 
-    function getTeacherActivitiesDay($teacher, $day) {
+    /**
+     * @brief Gets all activities that teacher is included in on specified day.
+     * User can be either teacher or student.
+     *
+     * @param string $teacher ID of the teacher for whom activities are being searched.
+     * @param string $day Specifies the target day for activity retrieval.
+     * @return array|false|string Array of activities on success, false on no records found, error message on exception.
+     */
+    function getTeacherActivitiesDay(string $teacher, string $day): array|false|string
+    {
         try {
             $stmt = $this->pdo->prepare(
                 "SELECT den, predmet, typ, mistnost, start, delka, opakovani
@@ -226,6 +315,7 @@ class activityService {
         }
         catch (PDOException $e) {
             error_log("Could not load teacher day activities: " . $e->getMessage());
+            return "Could not load activities: " . $e->getMessage();
         }
     }
 
