@@ -36,7 +36,7 @@ CREATE TABLE Osoba_predmet (
     zadost varchar(255),
     PRIMARY KEY (ID_Osoba, zkratka),
     FOREIGN KEY (ID_Osoba) REFERENCES Osoba(ID_Osoba) ON DELETE CASCADE,
-    FOREIGN KEY (zkratka) REFERENCES Predmet(zkratka)
+    FOREIGN KEY (zkratka) REFERENCES Predmet(zkratka) ON DELETE CASCADE
 );
 
 CREATE TABLE Mistnost (
@@ -61,9 +61,9 @@ CREATE TABLE Vyuk_aktivita (
     den varchar(2),
     vyucujici INT(5),
 	PRIMARY KEY (ID_Aktiv),
-    FOREIGN KEY (predmet) REFERENCES Predmet(zkratka),
-    FOREIGN KEY (mistnost) REFERENCES Mistnost(ID_mist),
-    FOREIGN KEY (vyucujici) REFERENCES Osoba(ID_Osoba)
+    FOREIGN KEY (predmet) REFERENCES Predmet(zkratka) ON DELETE CASCADE,
+    FOREIGN KEY (mistnost) REFERENCES Mistnost(ID_mist) ON DELETE SET NULL,
+    FOREIGN KEY (vyucujici) REFERENCES Osoba(ID_Osoba) ON DELETE SET NULL
 );
 
 CREATE TABLE Rozvrh (
@@ -72,8 +72,8 @@ CREATE TABLE Rozvrh (
 	vyucujici INT(5),
 	rozvrhar INT(5) NOT NULL,
 	PRIMARY KEY (`ID_Rozvrh`),
-    FOREIGN KEY (student) REFERENCES Osoba(ID_Osoba),
-    FOREIGN KEY (vyucujici) REFERENCES Osoba(ID_Osoba),
+    FOREIGN KEY (student) REFERENCES Osoba(ID_Osoba) ON DELETE CASCADE,
+    FOREIGN KEY (vyucujici) REFERENCES Osoba(ID_Osoba) ON DELETE CASCADE,
     FOREIGN KEY (rozvrhar) REFERENCES Osoba(ID_Osoba)
 );
 
@@ -81,8 +81,8 @@ CREATE TABLE Rozvrh_aktivita (
     ID_Rozvrh INT(5) NOT NULL,
     ID_Aktiv INT(5) NOT NULL,
     PRIMARY KEY (ID_Rozvrh, ID_Aktiv),
-    FOREIGN KEY (ID_Rozvrh) REFERENCES Rozvrh(ID_Rozvrh),
-    FOREIGN KEY (ID_Aktiv) REFERENCES Vyuk_aktivita(ID_Aktiv)
+    FOREIGN KEY (ID_Rozvrh) REFERENCES Rozvrh(ID_Rozvrh) ON DELETE CASCADE,
+    FOREIGN KEY (ID_Aktiv) REFERENCES Vyuk_aktivita(ID_Aktiv) ON DELETE CASCADE
 );
 
 # SAMPLOVI UZIVATELE
