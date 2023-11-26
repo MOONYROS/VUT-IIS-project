@@ -177,8 +177,8 @@ INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (7, 'IZP', 'Nemůž
 INSERT INTO Osoba_predmet (ID_Osoba, zkratka) VALUES (3, 'IZP');
 INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (8, 'IZP', 'Můžu odpoledne.');
 
-INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (3, 'IOS', 'Neůžu vést přednášku.');
-INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (6, 'IOS', 'Neůžu v úterý.');
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (3, 'IOS', 'Nemůžu vést přednášku.');
+INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (6, 'IOS', 'Nemůžu v úterý.');
 INSERT INTO Osoba_predmet (zkratka, ID_Osoba) VALUES ('IOS', 7);
 
 INSERT INTO Osoba_predmet (ID_Osoba, zkratka, zadost) VALUES (7, 'ITU', 'Chci cvičení na FIGMU.');
