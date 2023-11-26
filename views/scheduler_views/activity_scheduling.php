@@ -55,7 +55,7 @@ $subjectService = new subjectService();
 
     <input type="hidden" name="ID_Aktiv" value="<?= $_GET['id'] ?>"/>
 
-    <label for="mistnost">Místnost</label>
+    <label for="mistnost">Místnost<?= requiredField(); ?></label>
     <select name="mistnost" id="mistnost">
         <?php
         foreach ($rooms as $room) {
@@ -65,7 +65,7 @@ $subjectService = new subjectService();
     </select>
     <br>
 
-    <label for="den">Den</label>
+    <label for="den">Den<?= requiredField(); ?></label>
     <select name="den" id="den">
         <option value="PO" <?= checkSelect("PO", $activity['den']) ?>>Pondělí</option>
         <option value="UT" <?= checkSelect("UT", $activity['den']) ?>>Úterý</option>
@@ -75,11 +75,11 @@ $subjectService = new subjectService();
     </select>
     <br>
 
-    <label for="start">Začátek</label>
+    <label for="start">Začátek<?= requiredField(); ?></label>
     <input type="number" min="8" max="20" name="start" id="start" value="<?php if (isset($activity['start'])) {echo $activity['start'];}  ?>" />
     <br>
 
-    <label for="vyucujici">Vyučující</label>
+    <label for="vyucujici">Vyučující<?= requiredField(); ?></label>
     <select name="vyucujici" id="vyucujici">
         <?php
         $teachers = $subjectService->getSubjectTeachers($activity['predmet']);

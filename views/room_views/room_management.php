@@ -18,13 +18,13 @@ make_header("Správa místností");
 </h2>
 
 <form action="../../controllers/room_controllers/room_create.php" method="post" onsubmit=" return validateForm(fields)">
-    <label for="ID_mist">Název</label>
+    <label for="ID_mist">Název<?= requiredField(); ?></label>
     <input type="text" name="ID_mist" id="ID_mist"><br>
 
-    <label for="kapacita">Kapacita</label>
+    <label for="kapacita">Kapacita<?= requiredField(); ?></label>
     <input type="text" name="kapacita" id="kapacita"><br>
 
-    <label for="typ">Typ</label>
+    <label for="typ">Typ<?= requiredField(); ?></label>
     <select id="typ" name="typ">
         <option value="poslucharna" selected>Posluchárna</option>
         <option value="studovna">Studovna</option>
@@ -32,10 +32,10 @@ make_header("Správa místností");
         <option value="chodba">Chodba</option>
     </select><br>
 
-    <label for="popis">Popis</label>
+    <label for="popis">Popis<?= requiredField(); ?></label>
     <textarea name="popis" id="popis"></textarea><br>
 
-    <label for="umisteni">Umístení</label>
+    <label for="umisteni">Umístení<?= requiredField(); ?></label>
     <input type="text" name="umisteni" id="umisteni"><br>
 
     <input type="submit" value="Přidat místnost">

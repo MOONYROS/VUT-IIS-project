@@ -15,22 +15,22 @@ make_header("Správa uživatelů");
 
 <h2>Registrace uživatele</h2>
 <form action="../../controllers/user_controllers/user_register.php" method="post" onsubmit="return validateForm(fields);">
-    <label for="jmeno">Jméno</label>
+    <label for="jmeno">Jméno<?= requiredField(); ?></label>
     <input type="text" name="jmeno" id="jmeno"><br>
 
-    <label for="prijmeni">Příjmení</label>
+    <label for="prijmeni">Příjmení<?= requiredField(); ?></label>
     <input type="text" name="prijmeni" id="prijmeni"><br>
 
-    <label for="email">Email</label>
+    <label for="email">Email<?= requiredField(); ?></label>
     <input type="email" name="email" id="email"><br>
 
-    <label for="heslo">Heslo</label>
+    <label for="heslo">Heslo<?= requiredField(); ?></label>
     <input type="password" name="heslo" id="heslo"><br>
 
-    <label for="telefon">Telefon</label>
+    <label for="telefon">Telefon<?= requiredField(); ?></label>
     <input type="tel" id="telefon" name="telefon"><br>
 
-    <label for="role">Role</label>
+    <label for="role">Role<?= requiredField(); ?></label>
     <select id="role" name="role">
         <option value="admi">Admin</option>
         <option value="stud" selected>Student</option>

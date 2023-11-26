@@ -18,7 +18,7 @@ make_header("Upravit žádost");
     <input type="hidden" name="ID_Osoba" value="<?= $_SESSION['user_id'] ?>">
     <input type="hidden" name="zkratka" value="<?= $_POST['zkratka'] ?>">
 
-    <label for="zadost">Text žádosti</label>
+    <label for="zadost">Text žádosti<?= requiredField(); ?></label>
     <textarea name="zadost" id="zadost"><?= $_POST['zadost'] ?></textarea>
     <br>
 

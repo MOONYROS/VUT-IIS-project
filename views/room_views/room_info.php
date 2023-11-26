@@ -21,11 +21,11 @@ $infoArray = $roomService->getRoomInfo($_GET["ID_mist"]);
 <form action="../../controllers/room_controllers/room_edit.php" method="post" onsubmit="return validateForm(fields)">
     <input type="hidden" name="ID_mist" value="<?php if (isset($infoArray["ID_mist"])) echo $infoArray['ID_mist']; ?>"/>
 
-    <label for="kapacita">Kapacita</label>
+    <label for="kapacita">Kapacita<?= requiredField(); ?></label>
     <input type="number" name="kapacita" value="<?php if (isset($infoArray["kapacita"])) echo $infoArray['kapacita']; ?>" id="kapacita"/>
     <br>
 
-    <label for="typ">Typ</label>
+    <label for="typ">Typ<?= requiredField(); ?></label>
     <select id="typ" name="typ">
         <option value="poslucharna" <?php if (isset($infoArray["typ"])) echo checkSelect("poslucharna", $infoArray['typ']) ?>>Poslucharna</option>
         <option value="studovna" <?php if (isset($infoArray["typ"])) echo checkSelect("studovna", $infoArray['typ']) ?>>Studovna</option>
@@ -33,11 +33,11 @@ $infoArray = $roomService->getRoomInfo($_GET["ID_mist"]);
         <option value="chodba" <?php if (isset($infoArray["typ"])) echo checkSelect("chodba", $infoArray['typ']) ?>>Chodba</option>
     </select><br>
 
-    <label for="popis">Popis</label>
+    <label for="popis">Popis<?= requiredField(); ?></label>
     <textarea name="popis" id="popis"><?php if (isset($infoArray["popis"])) echo $infoArray['popis']; ?></textarea>
     <br>
 
-    <label for="umisteni">Umístění</label>
+    <label for="umisteni">Umístění<?= requiredField(); ?></label>
     <input type="text" name="umisteni" value="<?php if (isset($infoArray["umisteni"])) echo $infoArray['umisteni']; ?>" id="umisteni"/>
     <br>
 

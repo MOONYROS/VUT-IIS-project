@@ -28,7 +28,7 @@ else {
           <form action="../../controllers/request_controllers/request_create.php" method="post" onsubmit="return validateForm(fields);">
             <input type="hidden" name="ID_Osoba" value="' . $_SESSION['user_id'] . '">
 
-            <label for="zkratka">Předmět</label>
+            <label for="zkratka">Předmět<span class="required">*</span></label>
             <select name="zkratka" id="zkratka">';
             foreach ($subjects as $subject) {
                 echo '<option value="' . $subject['zkratka'] . '">' . $subject['zkratka'] . '</option>';
@@ -36,7 +36,7 @@ else {
             echo '</select>
             </br>
             
-            <label for="zadost">Text žádosti</label>
+            <label for="zadost">Text žádosti<span class="required">*</span></label>
             <textarea name="zadost" id="zadost"></textarea>
             </br>
             

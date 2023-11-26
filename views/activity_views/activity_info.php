@@ -37,22 +37,22 @@ make_header("Info o vyukové aktivitě");
 <form action="../../controllers/activity_controllers/activity_edit.php" method="post" onsubmit="return validateForm(fields);">
     <input type="hidden" name="ID_Aktiv" value="<?php if (isset($infoArray["ID_Aktiv"])) echo $infoArray['ID_Aktiv']; ?>"/>
 
-    <label for="typ">Typ</label>
+    <label for="typ">Typ<?= requiredField(); ?></label>
     <select id="typ" name="typ">
         <option value="prednaska" <?php if (isset($infoArray["typ"])) echo checkSelect("prednaska", $infoArray['typ']) ?>>Přednáška</option>
         <option value="cviceni" <?php if (isset($infoArray["typ"])) echo checkSelect("cviceni", $infoArray['typ']) ?>>Cvičení</option>
         <option value="zkouska" <?php if (isset($infoArray["typ"])) echo checkSelect("zkouska", $infoArray['typ']) ?>>Zkouška</option>
     </select><br>
 
-    <label for="delka">Délka</label>
+    <label for="delka">Délka<?= requiredField(); ?></label>
     <input type="text" name="delka" value="<?php if (isset($infoArray["delka"])) echo $infoArray['delka']; ?>" id="delka"/>
     <br>
 
-    <label for="popis">Popis</label>
+    <label for="popis">Popis<?= requiredField(); ?></label>
     <textarea name="popis" id="popis"><?php if (isset($infoArray["popis"])) echo $infoArray['popis']; ?></textarea>
     <br>
 
-    <label for="opakovani">Opakování</label>
+    <label for="opakovani">Opakování<?= requiredField(); ?></label>
     <select id="opakovani" name="opakovani">
         <option value="JR" <?php if (isset($infoArray["typ"])) echo checkSelect("JR", $infoArray['typ']) ?>>Jednorázově</option>
         <option value="KT" <?php if (isset($infoArray["typ"])) echo checkSelect("KT", $infoArray['typ']) ?>>Každý týden</option>
@@ -64,7 +64,7 @@ make_header("Info o vyukové aktivitě");
     <textarea name="pozadavek" id="pozadavek"><?= $infoArray['pozadavek']; ?></textarea>
     <br>
 
-    <label for="predmet">Předmět</label>
+    <label for="predmet">Předmět<?= requiredField(); ?></label>
     <select id="predmet" name="predmet">
         <?php
         if ($isAdmin) {

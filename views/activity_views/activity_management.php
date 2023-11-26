@@ -30,7 +30,7 @@ make_header("Správa výukových aktitit");
 </h2>
 
 <form action="../../controllers/activity_controllers/activity_create.php" method="post" onsubmit="return validateForm(fields);">
-    <label for="typ">Typ</label>
+    <label for="typ">Typ<?= requiredField(); ?></label>
     <select id="typ" name="typ">
         <option value="prednaska" selected>Přednáška</option>
         <option value="cviceni">Cvičení</option>
@@ -38,14 +38,14 @@ make_header("Správa výukových aktitit");
     </select>
     <br>
 
-    <label for="delka">Délka v hodinách</label>
+    <label for="delka">Délka v hodinách<?= requiredField(); ?></label>
     <input type="number" name="delka" id="delka"><br>
 
-    <label for="popis">Popis</label>
+    <label for="popis">Popis<?= requiredField(); ?></label>
     <textarea name="popis" id="popis"></textarea>
     <br>
 
-    <label for="opakovani">Opakováni</label>
+    <label for="opakovani">Opakováni<?= requiredField(); ?></label>
     <select id="opakovani" name="opakovani">
         <option value="JR" selected>Jednorázově</option>
         <option value="KT">Každý týden</option>
@@ -58,7 +58,7 @@ make_header("Správa výukových aktitit");
     <textarea name="pozadavek" id="pozadavek"></textarea>
     <br>
 
-    <label for="predmet">Předmět</label>
+    <label for="predmet">Předmět<?= requiredField(); ?></label>
     <select id="predmet" name="predmet">
         <?php
         if ($isAdmin) {

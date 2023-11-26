@@ -26,27 +26,27 @@ $infoArray = $userService->getUserInfo($_GET["ID"]);
 <form action="../../controllers/user_controllers/user_edit.php" method="post" onsubmit="return validateForm(fields);">
     <input type="hidden" name="ID_Osoba" value="<?php if (isset($infoArray["ID_Osoba"])) echo $infoArray['ID_Osoba']; ?>">
 
-    <label for="jmeno">Jméno</label>
+    <label for="jmeno">Jméno<?= requiredField(); ?></label>
     <input type="text" name="jmeno" value="<?php if (isset($infoArray["jmeno"])) echo $infoArray['jmeno']; ?>" id="jmeno">
     <br>
 
-    <label for="prijmeni">Příjmení</label>
+    <label for="prijmeni">Příjmení<?= requiredField(); ?></label>
     <input type="text" name="prijmeni" value="<?php if (isset($infoArray["prijmeni"])) echo $infoArray['prijmeni']; ?>" id="prijmeni">
     <br>
 
-    <label for="email">Email</label>
+    <label for="email">Email<?= requiredField(); ?></label>
     <input type="email" name="email" value="<?php if (isset($infoArray["email"])) echo $infoArray['email']; ?>" id="email">
     <br>
 
-    <label for="heslo">Heslo</label>
+    <label for="heslo">Heslo<?= requiredField(); ?></label>
     <input type="password" name="heslo" id="heslo">
     <br>
 
-    <label for="telefon">Telefon</label>
+    <label for="telefon">Telefon<?= requiredField(); ?></label>
     <input type="tel" name="telefon" value="<?php if (isset($infoArray["telefon"])) echo $infoArray['telefon']; ?>" id="telefon">
     <br>
 
-    <label for="role">Role</label>
+    <label for="role">Role<?= requiredField(); ?></label>
     <select id="role" name="role">
         <option value="admi" <?php if (isset($infoArray["role"])) echo checkSelect("admi", $infoArray['role']) ?>>Admin</option>
         <option value="stud" <?php if (isset($infoArray["role"])) echo checkSelect("stud", $infoArray['role']) ?>>Student</option>
