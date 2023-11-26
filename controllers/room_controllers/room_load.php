@@ -11,8 +11,19 @@ function loadRoom($ID) {
             $finalValue = '<td><a href="../../views/room_views/room_info.php?ID_mist='. $item . '">' . $item. '</a></td>';
         }
         else {
+            $item = roomTypeText($item);
             $finalValue = $finalValue . '<td>' . $item . '</td>';
         }
     }
     return $finalValue;
+}
+
+function roomTypeText($type) {
+    return match ($type) {
+        'chodba' => 'Chodba',
+        'poslucharna' => 'Posluchárna',
+        'pracovna' => 'Pracovna',
+        'studovna' => 'Studovna',
+        default => $type,
+    };
 }

@@ -1,6 +1,7 @@
 <?php
 require_once "../../services/activity_service.php";
 require_once "../../services/user_service.php";
+require_once "schedule_controller.php";
 
 function listActivity() {
     $activityService = new activityService();
@@ -22,6 +23,13 @@ function formatActivity($activity) {
 
 
     foreach ($requiredFields as $item) {
+        if ($item == 'typ') {
+            $activity[$item] = typeText($activity[$item]);
+        }
+        if ($item == 'opakovani') {
+            $activity[$item] = repetitionText($activity[$item]);
+        }
+
         if (($item == 'mistnost' or $item == 'start' or $item == 'den' or $item == 'vyucujici') and ($activity[$item] == null)) {
             $finalValue = $finalValue . '<td><b>' . "Nepřiřazeno" . '</b></td>';
         }

@@ -43,20 +43,22 @@ function getReturnString($activities): string
 }
 
 function typeText($type) {
-    switch ($type) {
-        case 'cviceni': return 'Cvičení';
-        case 'prednaska': return 'Přednáška';
-        case 'zkouska': return 'Zkouška';
-    }
+    return match ($type) {
+        'cviceni' => 'Cvičení',
+        'prednaska' => 'Přednáška',
+        'zkouska' => 'Zkouška',
+        default => $type,
+    };
 }
 
 function repetitionText($rep) {
-    switch ($rep) {
-        case 'KT': return 'Každý týden';
-        case 'ST': return 'Sudý týden';
-        case 'LT': return 'Lichý týden';
-        case 'JR': return 'Jednorázově';
-    }
+    return match ($rep) {
+        'KT' => 'Každý týden',
+        'ST' => 'Sudý týden',
+        'LT' => 'Lichý týden',
+        'JR' => 'Jednorázově',
+        default => $rep,
+    };
 }
 
 function getTeacherReturnString($activities): string

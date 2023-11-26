@@ -23,6 +23,7 @@ function loadSubject($abbreviation, $role) {
             $finalValue = $finalValue . '<td>' . $link . '</td>';
         }
         else {
+            $item = endingText($item);
             $finalValue = $finalValue . '<td>' . $item . '</td>';
         }
     }
@@ -53,4 +54,14 @@ function isTeacher($teacherId, $teachers) {
         }
     }
     return false;
+}
+
+function endingText($type) {
+    return match ($type) {
+        'za' => 'Zápočet',
+        'zazk' => 'Zápočet a zkouška',
+        'zk' => 'Zkouška',
+        'klza' => 'Klasifikovaný zápočet',
+        default => $type,
+    };
 }
