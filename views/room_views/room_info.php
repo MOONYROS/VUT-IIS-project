@@ -4,7 +4,7 @@ require_once "../../controllers/room_controllers/room_load.php";
 require_once "../../common.php";
 require_once "../../services/room_service.php";
 
-make_header("Info o místnosti");
+make_header("Úprava místnosti");
 
 $roomService = new roomService();
 $infoArray = $roomService->getRoomInfo($_GET["ID_mist"]);

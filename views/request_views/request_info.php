@@ -1,7 +1,7 @@
 <?php
 require_once "../../common.php";
 
-make_header("Upravit žádost");
+make_header("Úprava žádosti");
 ?>
 
 <a class='direct_link' href='request_management.php'>Zpět k žádostem</a>

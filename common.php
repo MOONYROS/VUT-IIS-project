@@ -21,7 +21,7 @@ function make_header($title): void
         <link rel="icon" type="image/x-icon" href="<?= $domain . '/public/scheduler_icon.ico'?>">
         <link rel="stylesheet" href="<?= $domain . '/public/style.css'?>">
         <script src="<?= $domain . '/public/validateForm.js'?>"></script>
-        <title><?= $title;?></title>
+        <title>SPVR | <?= $title;?></title>
     </head>
     <body>
     <div class="container">

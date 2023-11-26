@@ -16,7 +16,7 @@ if ($userService->getRole($_SESSION['user_id']) == 'admi') {
 
 $subjectService = new subjectService();
 
-make_header("Správa výukových aktitit");
+make_header("Správa výukových aktivit");
 ?>
 
 <a class='direct_link' href='../main_page.php'>Zpět na hlavní obrazovku</a>

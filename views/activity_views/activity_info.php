@@ -22,7 +22,7 @@ if ($userService->getRole($_SESSION['user_id']) == 'admi') {
     $isAdmin = true;
 }
 
-make_header("Info o vyukové aktivitě");
+make_header("Úprava výukové aktivity");
 
 ?>
 
