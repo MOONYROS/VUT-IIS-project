@@ -4,7 +4,14 @@ require_once "../../services/activity_service.php";
 require_once "../../services/user_service.php";
 require_once "schedule_controller.php";
 
-function loadActivity($ID) {
+/**
+ * @brief Get all activity fields from database and table row from it.
+ *
+ * @param string $ID Activity ID.
+ * @return string Activity fields as table row items concatenated.
+ */
+function loadActivity(string $ID): string
+{
     $activityService = new activityService();
     $activityInfo = $activityService->getActivityInfo($ID);
 
@@ -27,5 +34,5 @@ function loadActivity($ID) {
         '<td>' . $activityInfo['start'] . '</td>' .
         '<td>' . $activityInfo['delka'] . '</td>' .
         '<td>' . $activityInfo['mistnost'] . '</td>' .
-        '<td><a href="../../views/activity_views/activity_info.php?ID_Aktiv='. $ID . '">Upravit</a></td>';
+        '<td><a href="../../views/activity_views/activity_info.php?ID_Aktiv=' . $ID . '">Upravit</a></td>';
 }

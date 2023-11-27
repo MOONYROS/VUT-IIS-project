@@ -1,5 +1,12 @@
 <?php
 
+/**
+ * @brief Get activities in a room within specified day and make each activity an html table row.
+ *
+ * @param string $room Room ID.
+ * @param string $day Day of the week.
+ * @return string Html table rows with activity fields, concatenated.
+ */
 function loadRoomDayActivities($room, $day): string {
     $activityService = new activityService();
     $activities = $activityService->getRoomDayActivity($room, $day);

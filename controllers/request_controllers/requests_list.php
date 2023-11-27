@@ -1,7 +1,14 @@
 <?php
 require_once "../../services/subject_service.php";
 
-function listRequests($subject) {
+/**
+ * @brief Takes all teacher requests from database and makes html table from them.
+ *
+ * @param string $subject Subject ID.
+ * @return string Table rows that include requests, concatenated.
+ */
+function listRequests(string $subject): string
+{
     $subjectService = new subjectService();
     $requests = $subjectService->getRequestsBySubject($subject);
     $finalValue = '';

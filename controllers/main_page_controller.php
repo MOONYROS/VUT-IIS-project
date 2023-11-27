@@ -1,6 +1,10 @@
 <?php
 
-function loadAdmin() {
+/**
+ * @return string Main page navigation for admin.
+ */
+function loadAdmin(): string
+{
     return '<ul>
         <li><a href="subject_views/subject_management_admin.php">Spravovat předměty</a></li>
         <li><a href="room_views/room_management.php">Spravovat místnosti</a></li>
@@ -10,14 +14,22 @@ function loadAdmin() {
     </ul>';
 }
 
-function loadStudent() {
+/**
+ * @return string Main page navigation for student.
+ */
+function loadStudent(): string
+{
     return '<ul>
         <li><a href="subject_views/subject_registration.php">Registrace předmětů</a></li>
         <li><a href=student_views/schedule.php?day=tyden">Zobrazit rozvrh</a></li>
     </ul>';
 }
 
-function loadTeacher() {
+/**
+ * @return string Main page navigation for teacher.
+ */
+function loadTeacher(): string
+{
     return '<ul>
         <li><a href="subject_views/subject_management_teacher.php">Spravovat předměty</a></li>
         <li><a href="activity_views/activity_management.php">Zažádat o výukovou aktivitu</a></li>
@@ -26,7 +38,11 @@ function loadTeacher() {
     </ul>';
 }
 
-function loadRozv() {
+/**
+ * @return string Main page navigation for scheduler.
+ */
+function loadRozv(): string
+{
     return '<ul>
         <li><a href="scheduler_views/schedule_activities.php">Zařazení aktivit</a></li>
     </ul>';

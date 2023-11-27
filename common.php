@@ -10,7 +10,13 @@ else {
     $_SESSION['logout_time'] = time();
 }
 
-function make_header($title): void
+/**
+ * @brief Makes HTML head of view and sets window title.
+ *
+ * @param string $title Window title.
+ * @return void
+ */
+function make_header(string $title): void
 {
     $domain = 'http://localhost:8080';
     ?>
@@ -18,18 +24,23 @@ function make_header($title): void
     <html lang="cs">
     <head>
         <meta http-equiv="content-type" content="text/html; charset=utf-8">
-        <link rel="icon" type="image/x-icon" href="<?= $domain . '/public/scheduler_icon.ico'?>">
-        <link rel="stylesheet" href="<?= $domain . '/public/style.css'?>">
-        <script src="<?= $domain . '/public/validateForm.js'?>"></script>
-        <title>SPVR | <?= $title;?></title>
+        <link rel="icon" type="image/x-icon" href="<?= $domain . '/public/scheduler_icon.ico' ?>">
+        <link rel="stylesheet" href="<?= $domain . '/public/style.css' ?>">
+        <script src="<?= $domain . '/public/validateForm.js' ?>"></script>
+        <title>SPVR | <?= $title; ?></title>
     </head>
     <body>
     <div class="container">
     <?php
-        
+
 }
 
-function make_footer() : void
+/**
+ * @brief Makes footer with authors below <body> element on every page.
+ *
+ * @return void
+ */
+function make_footer(): void
 {
     ?>
     </div>
@@ -53,14 +64,32 @@ function make_footer() : void
     <?php
 }
 
-function checkSelect($option, $to_check): string {
-    if ($option == $to_check)
+/**
+ * @brief Auxiliary function for returning "selected" option in dropdowns.
+ *
+ * @param string $option Option that is searched for.
+ * @param string $to_check Current dropdown option.
+ * @return string "Selected" for matching option.
+ */
+function checkSelect($option, $to_check): string
+{
+    if ($option == $to_check) {
         return "selected";
-    else
+    }
+    else {
         return "";
+    }
 }
 
-function roleName($input): string {
+/**
+ * @brief Auxiliary function for mapping role abbreviations to full-named fields.
+ * Used for better displaying on pages.
+ *
+ * @param string $input Role to match.
+ * @return string Mapped role.
+ */
+function roleName(string $input): string
+{
     return match ($input) {
         "admi" => "Administrátor",
         "stud" => "Student",
@@ -71,6 +100,11 @@ function roleName($input): string {
     };
 }
 
-function requiredField() {
+/**
+ * @brief Auxiliary function for not having to write html elements.
+ * @return string Span class required.
+ */
+function requiredField(): string
+{
     return '<span class="required">*</span>';
 }
