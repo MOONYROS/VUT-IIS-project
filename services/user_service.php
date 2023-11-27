@@ -2,8 +2,10 @@
 
 require_once __DIR__ . "/../misc/db_conn_parameters.php";
 
-class userService {
+class userService
+{
     private PDO $pdo;
+
     function __construct()
     {
         try {
@@ -15,7 +17,13 @@ class userService {
         }
     }
 
-    function insertNewUser($data)
+    /**
+     * @brief Inserts new user to database.
+     *
+     * @param array $data User information to be inserted.
+     * @return string Success or error message for user.
+     */
+    function insertNewUser(array $data): string
     {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO Osoba (jmeno, prijmeni, email, heslo, telefon, role) VALUES (?, ?, ?, ?, ?, ?)");
@@ -28,7 +36,14 @@ class userService {
         }
     }
 
-    function updateUser($data) {
+    /**
+     * @brief Updates user information with fields specified in $data.
+     *
+     * @param array $data Data to be updated.
+     * @return string Success or error message for user.
+     */
+    function updateUser(array $data): string
+    {
         try {
             $stmt = $this->pdo->prepare("UPDATE Osoba SET jmeno = ?, prijmeni = ?, email = ?, heslo = ?, telefon = ?, role = ? WHERE ID_Osoba = ?");
             $stmt->execute($data);
@@ -40,7 +55,14 @@ class userService {
         }
     }
 
-    function verifyLogin($email, $heslo)
+    /**
+     * @brief Checks if user is present in the database.
+     *
+     * @param string $email User email from login form.
+     * @param string $heslo User password from login form.
+     * @return array|null User info as array on success, null on unsuccessful login.
+     */
+    function verifyLogin(string $email, string $heslo): array|null
     {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM Osoba WHERE email = ?");
@@ -58,7 +80,13 @@ class userService {
         return null;
     }
 
-    function getUserById($userId)
+    /**
+     * @brief Get user information specified with $userId.
+     *
+     * @param string $userId User ID.
+     * @return array|false|null User information on success, false on no records found, null on exceptions.
+     */
+    function getUserById(string $userId): array|false|null
     {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM Osoba WHERE ID_Osoba = ?");
@@ -71,7 +99,14 @@ class userService {
         }
     }
 
-    function getUsersByRole($role) {
+    /**
+     * @brief Get all users from database who are specified $role.
+     * Role can be "stud", "vyuc", etc.
+     * @param string $role Role of user in the information system.
+     * @return array|false|null User array on success, false on no records found, null on exceptions.
+     */
+    function getUsersByRole(string $role): array|false|null
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT ID_Osoba, jmeno, prijmeni FROM Osoba WHERE role = ?");
             $stmt->execute(array($role));
@@ -83,6 +118,11 @@ class userService {
         }
     }
 
+    /**
+     * @brief Retrieves all user IDs from database.
+     *
+     * @return array|string Array on success (empty or non-empty), err string on failure.
+     */
     function getUserIDs(): array|string
     {
         try {
@@ -99,7 +139,14 @@ class userService {
         }
     }
 
-    function getUserInfo($ID) {
+    /**
+     * @brief Get all user information and return it in array.
+     *
+     * @param string $ID User ID.
+     * @return array|false|null Array with fields on success, false on no records found, null on exceptions.
+     */
+    function getUserInfo(string $ID): array|false|null
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM Osoba WHERE ID_Osoba = ?");
             $stmt->execute(array($ID));
@@ -111,7 +158,14 @@ class userService {
         }
     }
 
-    function deleteUser($id): string {
+    /**
+     * @brief Delete user specified by $id from database.
+     *
+     * @param string $id User ID.
+     * @return string Success or error message for user.
+     */
+    function deleteUser(string $id): string
+    {
         try {
             $stmt = $this->pdo->prepare("DELETE from Osoba where ID_Osoba = ?");
             $stmt->execute(array($id));
@@ -123,7 +177,14 @@ class userService {
         }
     }
 
-    function getRole($ID) {
+    /**
+     * @brief Get role of user specified with $ID.
+     *
+     * @param string $ID User role.
+     * @return string|null User role on success, null on error.
+     */
+    function getRole(string $ID): string|null
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT role FROM Osoba WHERE ID_Osoba = ?");
             $stmt->execute(array($ID));

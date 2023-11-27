@@ -2,10 +2,6 @@
 
 require_once __DIR__ . "/../misc/db_conn_parameters.php";
 
-/**
- * @brief A class responsible for writing activity-related data to the database.
- * Uses PDO for data manipulation.
- */
 class activityService
 {
     private PDO $pdo;
