@@ -1,6 +1,6 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
     "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
-<html>
+<html lang="cs">
 <head>
     <meta http-equiv="content-type" content="text/html; charset=iso-8859-2"/>
     <title>Projekt IIS</title>
@@ -12,51 +12,101 @@
 </head>
 <body>
 
-<!-- Zkontrolujte prosím nastavení kódování v hlavičce dokumentu 
-     podle použitého editoru -->
+<!-- Zkontrolujte prosím nastavení kódování v hlavičce dokumentu podle použitého editoru -->
 
-<h1>Název zadání (editujte)</h1> <!-- Nahradte názvem svého zadání -->
+<h1>Plánování rozvrhů</h1>
 
 <dl>
 	<dt>Autoři</dt>
-	<dd>První jméno <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
-	    <a href="mailto:xautor01@stud.fit.vutbr.cz">xautor01@stud.fit.vutbr.cz</a> -
+
+	<dd>Jonáš Morkus
+	    <a href="mailto:xmorku03@stud.fit.vutbr.cz">xmorku03@stud.fit.vutbr.cz</a> -
 		popis činnosti v týmu
 	</dd>
-	<dd>Druhé jméno <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
-	    <a href="mailto:xautor02@stud.fit.vutbr.cz">xautor02@stud.fit.vutbr.cz</a> - 
+
+	<dd>Ondřej Lukášek
+	    <a href="mailto:xlukas15@stud.fit.vutbr.cz">xlukas15@stud.fit.vutbr.cz</a> -
 		popis činnosti v týmu
 	</dd>
-  <dd>Třetí jméno <!-- Nahraďte skutečným jménem a e-mailem autora a popisem činnosti -->
-	    <a href="mailto:xautor03@stud.fit.vutbr.cz">xautor03@stud.fit.vutbr.cz</a> - 
+
+	<dd>Ondřej Koumar
+	    <a href="mailto:xkouma02@stud.fit.vutbr.cz">xkouma02@stud.fit.vutbr.cz</a> -
 		popis činnosti v týmu
 	</dd>
+
 	<dt>URL aplikace</dt>
-	<dd><a href="http://www.stud.fit.vutbr.cz/~xautor01/IIS">http://www.stud.fit.vutbr.cz/~xautor01/IIS</a></dd>
-	<dd>(pokud má aplikace více vstupních stránek, napište obdobně další URL)</dd>
+
+	<dd>
+		<a href="http://www.stud.fit.vutbr.cz/~xlukas15/">http://www.stud.fit.vutbr.cz/~xlukas15/</a>
+	</dd>
 </dl>
 
 <h2>Uživatelé systému pro testování</h2>
-<p>Uveďte prosím existující zástupce <strong>všech rolí uživatelů</strong>.</p>
+
+<p>
+	Uveďte prosím existující zástupce <strong>všech rolí uživatelů</strong>.
+</p>
+<!-- TODO domluvit se na rolich zastupcu -->
 <table>
-<tr><th>Login</th><th>Heslo</th><th>Role</th></tr>
-<tr><td>admin</td><td>admin</td><td>Administrátor</td></tr>
-<tr><td>prodavac</td><td>prodavac</td><td>Prodavač</td></tr>
-<tr><td>franta</td><td>franta</td><td>Zákazník</td></tr>
+	<tr>
+		<th>Email</th>
+		<th>Heslo</th>
+		<th>Role</th>
+	</tr>
+	<tr>
+		<td>admin@admin.admin</td>
+		<td>admin</td>
+		<td>Administrátor</td>
+	</tr>
+	<tr>
+		<td>vyuc@vyuc.vyuc</td>
+		<td>vyucujici</td>
+		<td>Vyučující (garant nějakého předmětu)</td>
+	</tr>
+	<tr>
+		<td><!-- TODO --></td>
+		<td><!-- TODO --></td>
+		<td>Vyučující (negarantuje žádný předmět)</td>
+	</tr>
+	<tr>
+		<td>rozv@rozv.rozv</td>
+		<td>rozvrhar</td>
+		<td>Rozvrhář</td>
+	</tr>
+	<tr>
+		<td>stud@stud.stud</td>
+		<td>student</td>
+		<td>Student</td>
+	</tr>
+	<tr>
+		<td>-</td>
+		<td>-</td>
+		<td>Neregistrovaný uživatel ("Vstoupit bez přihlášení" na login stránce)</td>
+	</tr>
 </table>
 
+<!-- TODO - implementujeme vsechno tak, jak bychom asi meli???-->
 <p>(Diagram případů užití není nutné vkládat, pokud IS implementuje role a případy užití definované zadáním.)</p> 
 
+<!-- TODO video + link -->
 <h3>Video</h3>
-
-<p>Přiložte odkaz na komentované video demostrující použití informačního systému. Zaměřte se na případy užití definované zadáním (např. registrace uživatele, správa uživatelů a činnosti jednotlivých rolí). Video nahrajte například na VUT Google Drive, kde ho bude možné přímo spustit z odkazu.</p> 
+<p>
+	Přiložte odkaz na komentované video demostrující použití informačního systému. Zaměřte se na případy užití definované zadáním (např. registrace uživatele, správa uživatelů a činnosti jednotlivých rolí). Video nahrajte například na VUT Google Drive, kde ho bude možné přímo spustit z odkazu.
+</p>
 
 <h2>Implementace</h2>
-<p>Stručná dokumentace k implementaci, která popisuje, které části projektu (např. PHP skripty) implementují jednotlivé případy použití.</p>
+<p>
+	Stručná dokumentace k implementaci, která popisuje, které části projektu (např. PHP skripty) implementují jednotlivé případy použití.
+</p>
 
 <h3>Databáze</h3>
 
-Zde vložte grafické schéma relační databáze (tabulek v databázi).
+<p>
+	Databázi si je možné prohlédnout v SQL kódu ve složce <i>misc/database.sql</i>.
+	Součástí kódu této databáze jsou příkazy pro vložení samplových dat.
+</p>
+
+<img src="IIS_diagram_160ppi.png" alt="Diagram databáze">
 
 <h2>Instalace</h2>
 
@@ -67,7 +117,114 @@ Stručně popište:
 <li>jak rozbalit, konfigurovat, inicializovat databázi, ...</li>
 </ul>
 
+<h3>Softwarové požadavky</h3>
+<p>
+	Celý informační systém je otestován na serveru EVA (eva.fit.vutbr.cz).
+	V praxi byl informační systém vyvíjen v Docker containerech (MySQL Server a Apache).
+	Informační systém je tedy funkční a otestovaný na následujícím softwaru.
+</p>
+
+<ul>
+	<li>
+		Apache webový server
+		<ul>
+			<li>PHP 8.2 (Docker)</li>
+			<li>PHP 8.1.25 (EVA)</li>
+		</ul>
+	</li>
+	<li>
+		MySQL databázový server
+		<ul>
+			<li>Verze 8.2.0 (Docker)</li>
+			<li>Verze 5.7.42 (EVA)</li>
+		</ul>
+	</li>
+</ul>
+
+<h3>Postup instalace na server</h3>
+<p>
+	Jako první je potřeba si zařídit a nainstalovat webový a databázový server (jejich specifikace jsou výše).
+	Do kořenového adresáře Vašeho webového serveru je následně potřeba umístit obsah archivu, odevzdaného týmem xmorku03.
+	Pro ověření, že jste jej umístili na správné místo si můžete zobrazit ve Vašem webovém prohlížeči URL vašeho webového serveru.
+	Pokud se Vám zobrazí přihlašovací stránka (bez jakékoliv stylizace), jsou zdrojové soubory umístěny správně.
+</p>
+<p>
+	Nyní je ještě potřeba nastavit správně cestu ke CSS stylovému souboru a k Javascipt skriptu pro kontrolu vyplněnosti formulářů.
+	Pro její nastavení prosím běžte do souboru <i>common.php</i> do funkce <i>make_header()</i>.
+	Zde je potřeba nastavit hodnotu proměnné <i>$domain</i> na URL vašeho webového serveru místo aktuálního <i>'http://localhost:8080'</i>.
+	Je to z důvodu, že soubory je potřeba mít dostupné z mnoha kontextů informačního systému a na serveru EVA,
+	není kořenový adresář webového serveru nastaven na adresář studenta.
+</p>
+<p>
+	Po nastavení hodnoty proměnné je dobré si vyzkoušet, zdali byla nastavená správně.
+	Pokud se Vám při otevření URL webového serveru ve vašem prohlížeči nezobrazí přihlašovací stránka, obsahující stylování,
+	potom může být ještě chyba v cache vaše prohlížeče, který si vaši stránku uložil.
+	Pokuste se vyčistit cache vašeho prohlížeče pro URL webového serveru a URL serveru znova otevřete.
+</p>
+<p>
+	Pokud se ani nyní nevykresluje stylizovaná přihlašovací stránka, je chyba v nastavení proměnné <i>$domain</i>.
+	Zkuste ji znovu nastavit a zopakovat předchozí postup.
+	Při správném nastavení proměnné se styl načte.
+</p>
+
+<h3>Nastavení databáze</h3>
+<p>
+	Pokud jste si vyzkoušeli přihlášení nebo jenom vstoupit bez přihlášení, všimli jste si, že vás systém nepřihlásil nebo nevypsal anotace předmětů.
+	To je z důvodu nenastaveného databázového serveru. Proto bude potřeba následující:
+</p>
+
+<ul>
+	<li>Nastavení PDO připojení</li>
+	<li>Spuštění SQL skriptu (nahrání tabulek a sample dat)</li>
+</ul>
+
+<p>
+	Nyní je potřeba si zjistit <b>adresu databázového serveru</b>, <b>jméno uživatele databázového serveru</b> a <b>heslo uživatele databázového serveru</b>.
+</p>
+<p>
+	Pokud máte všechny tyto údaje, otevřete si soubor <i>db_conn_parameters.php</i> ve složce <i>misc</i>.
+	Zde doplňte vaše zjištěné údaje do proměnných <i>$connString</i>, <i>$userName</i>, <i>$password</i>.
+	Údaje doplňte tak aby:
+</p>
+
+<ul>
+	<li>
+		proměnná <i>$connString</i> obsahovala adresu databázového serveru,
+	</li>
+	<li>
+		proměnná <i>$userName</i> obsahovala jméno uživatele databázového serveru,
+	</li>
+	<li>
+		proměnná <i>$password</i> obsahovala heslo uživatele databázového serveru.
+	</li>
+</ul>
+
+<p>
+	Nyní je nastaveno PDO připojení k databázi a je potřeba pouze naplnit Vaši databázi tabulkami a ukázkovými daty.
+	Pro to doporučujeme se připojit k vaší databázi nějakého nástroje. Námi testované nástroje jsou například
+	<a href="https://www.jetbrains.com/datagrip/">JetBrains Datagrip</a>,
+	<a href="https://www.mysql.com/products/workbench/">MySQL Workbench</a> nebo webový klient (pokud jej máte nastavený)
+	<a href="https://www.phpmyadmin.net/">phpMyAdmin</a>.
+</p>
+<p>
+	Nyní si okopírujte obsah souboru <i>database.sql</i> ze složky <i>misc</i> do vašeho zvoleného klienta a skript spusťte.
+	Pokud skript proběhl bez potíží, je vše zařízeno a můžete se přihlásit a začít používat informační systém.
+</p>
+<p>
+	Pokud se při spuštění skriptu vyskytly komplikace, je možné, že užíváte nekompatibilní verzi MySQL nebo máte
+	špatně nastavený nástroj pro spouštění skriptu.
+	Ověřte si správnost vašeho nastavení a verzi SQL a opakujte postup.
+</p>
+<p>
+	Pokud skript proběhl bez potíží, ale nevidíte stále žádná data a nemůžete se přihlásit, je zřejmě špatné nastavení PDO připojení.
+	Zkuste si ověřit správnost Vašich zadaných dat a postup znovu opakujte.
+</p>
+<p>
+	Nyní by měl být informační systém kompletně funkční.
+</p>
+
 <h2>Známé problémy</h2>
+<!-- TODO probrat s ostatními -->
 <p>Zde popište, které body zadání nejsou implementovány a z jakého důvodu. Např. &bdquo;Z časových důvodů nebyla implementována správa uživatelů.&rdquo; Pomůžete tím zrychlit hodnocení, když neimplementované funkce nebudeme muset dlouze hledat.</p>
 
 </body>
