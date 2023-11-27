@@ -8,30 +8,31 @@
     	table { border-collapse: collapse; }
     	td, th { border: 1px solid black; padding: 0.3em 0.5em; text-align: left; }
     	dt { font-weight: bold; margin-top: 0.5em; }
+		body {
+			width: 70%;
+			margin: auto;
+		}
     </style>
 </head>
 <body>
 
-<!-- Zkontrolujte prosím nastavení kódování v hlavièce dokumentu podle pou¾itého editoru -->
-
 <h1>Plánování rozvrhù</h1>
-
 <dl>
 	<dt>Autoøi</dt>
 
 	<dd>Joná¹ Morkus
 	    <a href="mailto:xmorku03@stud.fit.vutbr.cz">xmorku03@stud.fit.vutbr.cz</a> -
-		popis èinnosti v týmu
+		modelování databáze, implementace views, controllers, services, video.
 	</dd>
 
 	<dd>Ondøej Luká¹ek
 	    <a href="mailto:xlukas15@stud.fit.vutbr.cz">xlukas15@stud.fit.vutbr.cz</a> -
-		popis èinnosti v týmu
+		implementace views, controllers, services, stylování, dokumentace.
 	</dd>
 
 	<dd>Ondøej Koumar
 	    <a href="mailto:xkouma02@stud.fit.vutbr.cz">xkouma02@stud.fit.vutbr.cz</a> -
-		popis èinnosti v týmu
+		implementace views, controllers, services, Doxygen komentáøe, kolize rozvrhu.
 	</dd>
 
 	<dt>URL aplikace</dt>
@@ -42,7 +43,6 @@
 </dl>
 
 <h2>U¾ivatelé systému pro testování</h2>
-<!-- TODO domluvit se na rolich zastupcu -->
 <table>
 	<tr>
 		<th>Email</th>
@@ -55,13 +55,13 @@
 		<td>Administrátor</td>
 	</tr>
 	<tr>
-		<td>vyuc@vyuc.vyuc</td>
+		<td>ucitel@ucitel.uc</td>
 		<td>vyucujici</td>
 		<td>Vyuèující (garant nìjakého pøedmìtu)</td>
 	</tr>
 	<tr>
-		<td><!-- TODO --></td>
-		<td><!-- TODO --></td>
+		<td>vyuc@vyuc.vyuc</td>
+		<td>vyucujici</td>
 		<td>Vyuèující (negarantuje ¾ádný pøedmìt)</td>
 	</tr>
 	<tr>
@@ -81,19 +81,10 @@
 	</tr>
 </table>
 
-<!-- TODO - implementujeme vsechno tak, jak bychom asi meli???-->
-<p>(Diagram pøípadù u¾ití není nutné vkládat, pokud IS implementuje role a pøípady u¾ití definované zadáním.)</p> 
-
-<!-- TODO video + link -->
 <h3>Video</h3>
-<p>
-	Pøilo¾te odkaz na komentované video demostrující pou¾ití informaèního systému. Zamìøte se na pøípady u¾ití definované zadáním (napø. registrace u¾ivatele, správa u¾ivatelù a èinnosti jednotlivých rolí). Video nahrajte napøíklad na VUT Google Drive, kde ho bude mo¾né pøímo spustit z odkazu.
-</p>
+<a href="https://vutbr-my.sharepoint.com/:v:/g/personal/xmorku03_vutbr_cz/ETpLcjTg8AJElAXixU67QP0BhePgdCRaUbnNRd3frzAEhQ?nav=eyJyZWZlcnJhbEluZm8iOnsicmVmZXJyYWxBcHAiOiJPbmVEcml2ZUZvckJ1c2luZXNzIiwicmVmZXJyYWxBcHBQbGF0Zm9ybSI6IldlYiIsInJlZmVycmFsTW9kZSI6InZpZXciLCJyZWZlcnJhbFZpZXciOiJNeUZpbGVzTGlua0RpcmVjdCJ9fQ&e=jjpjcl">Odkaz na video na Sharepointu</a>
 
 <h2>Implementace</h2>
-<p>
-	Struèná dokumentace k implementaci, která popisuje, které èásti projektu (napø. PHP skripty) implementují jednotlivé pøípady pou¾ití.
-</p>
 <p>
 	Projekt jsme se sna¾ili rozdìlit do 3 vrstev:
 </p>
@@ -104,6 +95,11 @@
 	<li>Services - pokládají dotazy a úkoly databázi</li>
 </ul>
 
+<p>
+	Projekt je vypracován bez vyu¾ití frameworkù (typu Laravel, Symfony, apod.).
+	Na komunikaci s databází bylo vyu¾ito PDO.
+	Pro frontend bylo vyu¾ito jazyka CSS, opìt bez ¾ádných frameworkù (typu Bootstrap), ale byl psán ruènì.
+</p>
 <p>
 	Jednotlivé pøípady u¾ití jsou organizovány podle slo¾ek.
 	To znamená, ¾e napøíklad o správu místností se stará pro views slo¾ka <i>views/room_views</i>,
@@ -118,11 +114,25 @@
 	které v¾dy smìøuji na primární klíèe jiných tabulek (oznaèeny &lt;&lt;PK&gt;&gt;) a
 	díky tomu jednoznaènì identifikují daný øadek odkazované tabulky.
 </p>
-
-<h3>Garant pøedmìtu</h3>
+<p>
+	Mezi nejpodstatnìj¹í funkce se øadí <i>loadActivity($ID)</i> nebo funkce ve scriptu <i>schedule_controller.php</i>.
+	Bez nich by nebylo mo¾né poøádnì zobrazit rozvrh nebo s ním manipulovat (filtrovat si jednotlivé dny, apod.).
+</p>
+<p>
+	Dal¹í dùle¾itou souèástí jsou scripty pro manipulaci s osobami (mazání, vytváøení, úprava, naèítání seznamu u¾ivatelù).
+</p>
+<p>
+	V¹echna potøebná pole ve formuláøích jsou zasílána pøevá¾nì metodou <b>post</b>.
+	Je to z dùvodu, ¾e pøi posílání velkého mno¾ství informací by URL adresa vypadala velmi nevzhlednì.
+	Metodou <b>get</b> si posíláme napøíklad jednorázové zprávy nebo pøíznaky nìjaké akce (chybové kódy, krátká ID).
+	Vyplnìní jednotlivých políèek formuláøù je kontrolováno za pomocí Javascriptu (<i>/public/validateForm.js</i>).
+	V nìm jsou nastavena povinná pole formuláøe.
+	Pøi odeslání formuláøe se funkce spustí a zkontroluje vyplnìní v¹ech povinných polí.
+	Nevyplnìná povinná pole jsou následnì ohranièena èerveným rámeèkem, aby bylo jasnì vidìt,
+	která políèka je¹tì musí u¾ivatel vyplnit.
+</p>
 
 <h3>Databáze</h3>
-
 <p>
 	Databázi si je mo¾né prohlédnout v SQL kódu ve slo¾ce <i>misc/database.sql</i>.
 	Souèástí kódu této databáze jsou pøíkazy pro vlo¾ení samplových dat.
@@ -131,14 +141,6 @@
 <img src="IIS_diagram_160ppi.png" alt="Diagram databáze">
 
 <h2>Instalace</h2>
-
-Struènì popi¹te: 
-<ul>
-<li>postup instalace na server,</li>
-<li>softwarové po¾adavky (verze PHP apod.),</li>
-<li>jak rozbalit, konfigurovat, inicializovat databázi, ...</li>
-</ul>
-
 <h3>Softwarové po¾adavky</h3>
 <p>
 	Celý informaèní systém je otestován na serveru EVA (eva.fit.vutbr.cz).
@@ -246,8 +248,10 @@ Struènì popi¹te:
 </p>
 
 <h2>Známé problémy</h2>
-<!-- TODO probrat s ostatními -->
-<p>Zde popi¹te, které body zadání nejsou implementovány a z jakého dùvodu. Napø. &bdquo;Z èasových dùvodù nebyla implementována správa u¾ivatelù.&rdquo; Pomù¾ete tím zrychlit hodnocení, kdy¾ neimplementované funkce nebudeme muset dlouze hledat.</p>
+<p>
+	Systém implementuje v¹echny body zadání, ale nicménì se najdou drobnosti, které lehce kazí pou¾itelnost.
+	Napøíklad filtrování osob podle jejich role nebo filtrování místností podle jejich atributù, a podobnì.
+</p>
 
 </body>
 </html>
