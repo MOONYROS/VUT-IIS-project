@@ -1,5 +1,6 @@
 <?php
 
+require_once "../../common.php";
 require_once "../../services/user_service.php";
 require_once "../../services/activity_service.php";
 
@@ -35,7 +36,12 @@ function getReturnString(array $activities): string
     $finalValue = "";
     $uzivatelServis = new userService();
     foreach ($activities as $activity) {
-        $info = $uzivatelServis->getUserInfo($activity["vyucujici"]);
+        try {
+            $info = $uzivatelServis->getUserInfo($activity["vyucujici"]);
+        }
+        catch (TypeError) {
+            $activity["vyucujici"] = null;
+        }
         $activity["delka"] = $activity["start"] + $activity["delka"]; // Tohle je strasna prasarna
 
         $finalValue = $finalValue . '<tr>';

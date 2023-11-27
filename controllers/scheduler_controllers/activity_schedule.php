@@ -17,6 +17,11 @@ $activities = $service->getActivitiesDay($_POST["den"]);
 $newActivity = $service->getActivityInfo($_POST["ID_Aktiv"]);
 
 if ($newActivity["mistnost"] != null) {
+    if ($_POST["start"] + $newActivity["delka"] > 22) {
+        $message = urlencode("Výuková aktivita může nejpozději končit ve 22:00.");
+        header("Location: ../../views/scheduler_views/activity_scheduling.php?id={$_POST["ID_Aktiv"]}&message=$message");
+        exit;
+    }
     $message = $service->scheduleActivity($toInsert);
     $message = urlencode($message);
     header("Location: ../../views/scheduler_views/activity_scheduling.php?id={$_POST["ID_Aktiv"]}&message=$message");
@@ -27,11 +32,16 @@ foreach ($activities as $activity) {
     if ($_POST["mistnost"] != $activity["mistnost"]) {
         continue;
     }
-    if (!collidingWeeks($activity["opakovani"], $newActivity["opakovani"])) {
+    else if (!collidingWeeks($activity["opakovani"], $newActivity["opakovani"])) {
         continue;
     }
 
-    if (startIsInActivity($activity, $_POST["start"]) or endIsInActivity($activity, $_POST["start"] + $newActivity["delka"])) {
+    if ($_POST["start"] + $newActivity["delka"] > 22) {
+        $message = urlencode("Výuková aktivita může nejpozději končit ve 22:00.");
+        header("Location: ../../views/scheduler_views/activity_scheduling.php?id={$_POST["ID_Aktiv"]}&message=$message");
+        exit;
+    }
+    else if (startIsInActivity($activity, $_POST["start"]) or endIsInActivity($activity, $_POST["start"] + $newActivity["delka"])) {
         $message = urlencode("Výuková aktivita se kryje s jinou.");
         header("Location: ../../views/scheduler_views/activity_scheduling.php?id={$_POST["ID_Aktiv"]}&message=$message");
         exit;
@@ -72,11 +82,11 @@ function endIsInActivity(array $activity, int $end): bool
 /**
  * @brief Checks if newly added activity has colliding weeks with $old, that has already been in database.
  *
- * @param array $old Activity from database.
- * @param array $new Activity to be inserted.
+ * @param string $old Activity from database.
+ * @param string $new Activity to be inserted.
  * @return bool
  */
-function collidingWeeks(array $old, array $new): bool
+function collidingWeeks(string $old, string $new): bool
 {
     $weekOptions = ["ST", "LT", "KT"];
     if (!in_array($new, $weekOptions) or !in_array($old, $weekOptions)) {
