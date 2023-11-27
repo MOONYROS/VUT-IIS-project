@@ -3,7 +3,13 @@
 require_once "../../services/subject_service.php";
 
 $subjectService = new subjectService();
-$message = $subjectService->addTeacher($_POST["subjectId"], $_POST["teacherId"]);
+
+try {
+    $message = $subjectService->addTeacher($_POST["subjectId"], $_POST["teacherId"]);
+}
+catch (PDOException $e) {
+    $message = "Při nastavování učitele nastala chyba: " . $e->getMessage();
+}
 
 $subjectId = $_POST["subjectId"];
 if ($message == null) {
