@@ -42,10 +42,6 @@
 </dl>
 
 <h2>U¾ivatelé systému pro testování</h2>
-
-<p>
-	Uveïte prosím existující zástupce <strong>v¹ech rolí u¾ivatelù</strong>.
-</p>
 <!-- TODO domluvit se na rolich zastupcu -->
 <table>
 	<tr>
@@ -98,6 +94,32 @@
 <p>
 	Struèná dokumentace k implementaci, která popisuje, které èásti projektu (napø. PHP skripty) implementují jednotlivé pøípady pou¾ití.
 </p>
+<p>
+	Projekt jsme se sna¾ili rozdìlit do 3 vrstev:
+</p>
+
+<ul>
+	<li>Views - Vizuální stránka informaèního systému, vykresluje data z Controllers a do nich posílá data z formuláøù</li>
+	<li>Controllers - pøedávají data mezi Services a Views</li>
+	<li>Services - pokládají dotazy a úkoly databázi</li>
+</ul>
+
+<p>
+	Jednotlivé pøípady u¾ití jsou organizovány podle slo¾ek.
+	To znamená, ¾e napøíklad o správu místností se stará pro views slo¾ka <i>views/room_views</i>,
+	pro services skript <i>services/room_service.php</i>,
+	a nakonec pro controllers slo¾ka <i>controllers/room_controllers</i>.
+	Velmi obdobnì je tomu tak i se správou osob, pøedmìtù a výukových aktivit.
+</p>
+<p>
+	Trochu jinak v¹ak funguje systém pro zobrazování rozvrhù, jejich øazení, systém zobrazování ¾ádostí, a podobnì.
+	Tyto funkcionality jsou toti¾ èasto vyu¾ívané ve spojitosti s vícero tabulkami nebo spojovacími tabulkami.
+	Z tìch se dále vyèítá více údajù z jiných tabulek prostøednictvím cizích klíèù (v diagramu oznaèeny &lt;&lt;FK&gt;&gt;),
+	které v¾dy smìøuji na primární klíèe jiných tabulek (oznaèeny &lt;&lt;PK&gt;&gt;) a
+	díky tomu jednoznaènì identifikují daný øadek odkazované tabulky.
+</p>
+
+<h3>Garant pøedmìtu</h3>
 
 <h3>Databáze</h3>
 
