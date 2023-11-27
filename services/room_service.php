@@ -2,9 +2,11 @@
 
 require_once __DIR__ . "/../misc/db_conn_parameters.php";
 
-class roomService{
+class roomService
+{
 
     private PDO $pdo;
+
     function __construct()
     {
         try {
@@ -16,7 +18,14 @@ class roomService{
         }
     }
 
-    function insertNewRoom($data){
+    /**
+     * @brief Inserts new room to the database.
+     *
+     * @param array $data Database fields in array.
+     * @return string Either error or success message for user.
+     */
+    function insertNewRoom(array $data): string
+    {
         try {
             $stmt = $this->pdo->prepare("INSERT INTO Mistnost (ID_mist, kapacita, typ, popis, umisteni) VALUES (?, ?, ?, ?, ?)");
             $stmt->execute($data);
@@ -28,7 +37,14 @@ class roomService{
         }
     }
 
-    function updateRoom($data){
+    /**
+     * @brief Updates room information in database.
+     *
+     * @param array $data Fields to update in database.
+     * @return string Either error or success message for user.
+     */
+    function updateRoom(array $data): string
+    {
         try {
             $stmt = $this->pdo->prepare("UPDATE Mistnost SET kapacita = ?, typ = ?, popis = ?, umisteni = ? WHERE ID_mist = ?");
             $stmt->execute($data);
@@ -40,7 +56,13 @@ class roomService{
         }
     }
 
-    function getRoomIDs(){
+    /**
+     * @brief Retrieves all room IDs from database and returns it as array.
+     *
+     * @return array|null Array of room IDs on success, error message on failure.
+     */
+    function getRoomIDs(): array|string
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT ID_mist FROM Mistnost");
             $stmt->execute();
@@ -52,11 +74,18 @@ class roomService{
         }
         catch (PDOException $e) {
             error_log("Room not found: " . $e->getMessage());
-            return null;
+            return "Room not found: " . $e->getMessage();
         }
     }
 
-    function getRoomInfo($id){
+    /**
+     * @brief Retrieves all information about room in database and returns it as array.
+     *
+     * @param string $id ID of room.
+     * @return array|false|string Array of room information on success, false on no records found, error message on exception.
+     */
+    function getRoomInfo(string $id): array|false|string
+    {
         try {
             $stmt = $this->pdo->prepare("SELECT * FROM Mistnost WHERE ID_mist = (?)");
             $stmt->execute(array($id));
@@ -64,11 +93,18 @@ class roomService{
         }
         catch (PDOException $e) {
             error_log("Could not get room info: " . $e->getMessage());
-            return null;
+            return "An error occured when searching for room.";
         }
     }
 
-    function deleteRoom($id) {
+    /**
+     * @brief Deletes room from database.
+     *
+     * @param string $id Room ID.
+     * @return string Either error or success message for user.
+     */
+    function deleteRoom(string $id): string
+    {
         try {
             $stmt = $this->pdo->prepare("DELETE from Mistnost where ID_mist = ?");
             $stmt->execute(array($id));
