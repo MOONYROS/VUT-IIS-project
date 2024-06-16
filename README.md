@@ -2,9 +2,9 @@
 	
 ## Autoři
 
-* Jonáš Morkus (modelování databáze, implementace views, controllers, services, video)
-* Ondřej Lukášek (implementace views, controllers, services, stylování, dokumentace)
-* Ondřej Koumar (implementace views, controllers, services, Doxygen komentáře, kolize rozvrhu)
+* [Jonáš Morkus](https://github.com/jonys124) (modelování databáze, implementace views, controllers, services, video)
+* [Ondřej Lukášek](https://github.com/MOONYROS) (implementace views, controllers, services, stylování, dokumentace)
+* [Ondřej Koumar](https://github.com/Kumismar) (implementace views, controllers, services, Doxygen komentáře, kolize rozvrhu)
 
 ## Uživatelé systému pro testování
 
@@ -146,3 +146,7 @@ Nyní by měl být informační systém kompletně funkční.
 
 Systém implementuje všechny body zadání, ale nicméně se najdou drobnosti, které lehce kazí použitelnost.
 Například filtrování osob podle jejich role nebo filtrování místností podle jejich atributů, a podobně.
+
+## Hodnocení
+
+Celkové hodnocení: 25/30
